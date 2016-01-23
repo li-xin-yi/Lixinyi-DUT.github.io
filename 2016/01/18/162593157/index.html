@@ -16,9 +16,8 @@
 要想理解可靠数据传输（Reliable Data Transfer），那么不妨结合与其相对的概念——不可靠数据传输进行理解。
 1. 什么是可靠数据传输服务？什么是可靠数据传输协议？比如我们要实现这样的一组通信，发送方通过一个网络协议给接收方发送一些数据分组，接收方有可能接收到">
 <meta property="og:image" content="https://ooo.0o0.ooo/2016/01/22/56a24adcadb55.png">
-<meta property="og:image" content="https://ooo.0o0.ooo/2016/01/22/56a24cc125daf.png">
 <meta property="og:image" content="https://ooo.0o0.ooo/2016/01/22/56a24d21cca90.png">
-<meta property="og:updated_time" content="2016-01-22T16:23:34.099Z">
+<meta property="og:updated_time" content="2016-01-23T17:55:25.126Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="怎么有效理解可靠数据传输？">
 <meta name="twitter:description" content="原回答地址：https://www.zhihu.com/question/39324847/answer/82082794
@@ -269,7 +268,60 @@ var _hmt = _hmt || [];
 <p>传输层之下的网络层，主要使用的是因特网协议（IP协议）。IP协议是一个尽力而为（<em>best-effort</em>）的传送协议，只实现通信方之间逻辑上的连接，IP协议只能尽力去传送通信双方的报文段，而不作出任何保证（完整性、正确性、有序性）</p>
 <h3 id="2-1_为什么可以同时允许可靠/不可靠数据传输服务的存在？">2.1 为什么可以同时允许可靠/不可靠数据传输服务的存在？</h3><p>协议栈中只要有协议提供可靠数据传输服务，那么整个协议栈提供的服务就是可靠的。仅仅看网络层和传输层，UDP/IP架构是不可靠的，TCP/IP则是可靠的，很容易理解，这是一个“或/析取”的关系。假设整个协议栈各层由${ {p_1},{p_2}, \ldots ,{p_n}} $构成，$p_i$表示第$i$层所使用的协议，其值为是否提供可靠数据传输服务，那么整个协议栈的可靠性可以表示为$P = \bigcup\limits_{i = 1}^n $，当然这是个简单粗暴的表达形式，实际上不是每层都有真正意义上的唯一协议，而且各层之间并非完全独立。</p>
 <p>在实际上的通信实现中，选取怎样的协议，设计怎样的协议栈，协议本身特性固然重要，但也有考虑通信需求的进程。说具体一些的例子，一般常用的应用涉及的也就是TCP和UDP的选择，当然现实中还是使用TCP较多，因为大多数应用对数据的完整性、正确性有很高的要求，比如邮件服务/文件下载，但是对吞吐量和时间却没什么要求，而有些应用比如视频游戏/即时通讯对实时性的要求非常高，对数据丢失却是可以容忍的，视频聊天的时候清晰度不高或者出现小规模马赛克，略显失真不是什么大事，所以这个时候选用UDP协议更合适。</p>
-<p><img src="https://ooo.0o0.ooo/2016/01/22/56a24cc125daf.png" alt="各应用的需求分析"></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">应用</th>
+<th style="text-align:left">数据丢失</th>
+<th style="text-align:left">吞吐量</th>
+<th style="text-align:left">时间敏感性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">文件传输/下载</td>
+<td style="text-align:left">无丢失</td>
+<td style="text-align:left">弹性</td>
+<td style="text-align:left">无</td>
+</tr>
+<tr>
+<td style="text-align:left">电子邮件</td>
+<td style="text-align:left">无丢失</td>
+<td style="text-align:left">弹性</td>
+<td style="text-align:left">无</td>
+</tr>
+<tr>
+<td style="text-align:left">Web文档</td>
+<td style="text-align:left">无丢失</td>
+<td style="text-align:left">弹性（几kbps）</td>
+<td style="text-align:left">无</td>
+</tr>
+<tr>
+<td style="text-align:left">网络电话/视频会议</td>
+<td style="text-align:left">可容忍丢失</td>
+<td style="text-align:left">视频：几kbps-1Mbps 音频：10kbps-5Mbps</td>
+<td style="text-align:left">有，100ms</td>
+</tr>
+<tr>
+<td style="text-align:left">流存储音频/视频</td>
+<td style="text-align:left">可容忍丢失</td>
+<td style="text-align:left">同上</td>
+<td style="text-align:left">有，几秒</td>
+</tr>
+<tr>
+<td style="text-align:left">互动游戏</td>
+<td style="text-align:left">可容忍丢失</td>
+<td style="text-align:left">几kbps-10kbps</td>
+<td style="text-align:left">有，几秒</td>
+</tr>
+<tr>
+<td style="text-align:left">即时消息</td>
+<td style="text-align:left">无丢失</td>
+<td style="text-align:left">弹性</td>
+<td style="text-align:left">有或没有</td>
+</tr>
+</tbody>
+</table>
 <p>还是沿用上面的类比，传输层协议就像记者一样，每个记者的技能点不一样，一般情况下我们当然会偏爱知识水平高、立场客观真实的西方记者，所以他的出勤会比较多比较著名。那么香港记者经验不足太肤浅、年轻不足以报道全部内容，她就一无是处吗？不是的，她就像UDP，不存在任何拥塞控制而且轻量简单（<em>simple</em>），跑的比谁都快，善于弄大新闻，对于实时性很高的新闻事件让她去也很合适。</p>
 <p><img src="https://ooo.0o0.ooo/2016/01/22/56a24d21cca90.png" alt="应用层各协议依赖的传输层协议"></p>
 <p>因此应用层上的每个协议都会根据需求选择与之对应的传输层协议。</p>
