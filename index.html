@@ -125,7 +125,7 @@ var _hmt = _hmt || [];
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/MGC301/" style="font-size: 10px;">MGC301</a> <a href="/tags/R/" style="font-size: 10px;">R</a> <a href="/tags/TCP-IP/" style="font-size: 10px;">TCP/IP</a> <a href="/tags/Wolfram/" style="font-size: 10px;">Wolfram</a> <a href="/tags/一本正经胡说八道/" style="font-size: 20px;">一本正经胡说八道</a> <a href="/tags/信息论/" style="font-size: 15px;">信息论</a> <a href="/tags/偶像组合/" style="font-size: 10px;">偶像组合</a> <a href="/tags/凸优化/" style="font-size: 10px;">凸优化</a> <a href="/tags/可视化/" style="font-size: 10px;">可视化</a> <a href="/tags/吐槽型自传体/" style="font-size: 10px;">吐槽型自传体</a> <a href="/tags/地域黑/" style="font-size: 10px;">地域黑</a> <a href="/tags/完全非技术类文档/" style="font-size: 10px;">完全非技术类文档</a> <a href="/tags/密码学/" style="font-size: 10px;">密码学</a> <a href="/tags/年终总结/" style="font-size: 10px;">年终总结</a> <a href="/tags/指点江山/" style="font-size: 10px;">指点江山</a> <a href="/tags/机器学习/" style="font-size: 20px;">机器学习</a> <a href="/tags/知乎/" style="font-size: 20px;">知乎</a> <a href="/tags/统计学/" style="font-size: 10px;">统计学</a> <a href="/tags/网络安全/" style="font-size: 10px;">网络安全</a> <a href="/tags/营销软文/" style="font-size: 10px;">营销软文</a> <a href="/tags/计算机网络/" style="font-size: 10px;">计算机网络</a> <a href="/tags/资源/" style="font-size: 10px;">资源</a>
+						<a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/MGC301/" style="font-size: 10px;">MGC301</a> <a href="/tags/R/" style="font-size: 10px;">R</a> <a href="/tags/TCP-IP/" style="font-size: 10px;">TCP/IP</a> <a href="/tags/Wolfram/" style="font-size: 10px;">Wolfram</a> <a href="/tags/一本正经胡说八道/" style="font-size: 20px;">一本正经胡说八道</a> <a href="/tags/信息论/" style="font-size: 15px;">信息论</a> <a href="/tags/偶像组合/" style="font-size: 10px;">偶像组合</a> <a href="/tags/凸优化/" style="font-size: 15px;">凸优化</a> <a href="/tags/可视化/" style="font-size: 10px;">可视化</a> <a href="/tags/吐槽型自传体/" style="font-size: 10px;">吐槽型自传体</a> <a href="/tags/地域黑/" style="font-size: 10px;">地域黑</a> <a href="/tags/完全非技术类文档/" style="font-size: 10px;">完全非技术类文档</a> <a href="/tags/密码学/" style="font-size: 10px;">密码学</a> <a href="/tags/年终总结/" style="font-size: 10px;">年终总结</a> <a href="/tags/微积分/" style="font-size: 10px;">微积分</a> <a href="/tags/指点江山/" style="font-size: 10px;">指点江山</a> <a href="/tags/机器学习/" style="font-size: 20px;">机器学习</a> <a href="/tags/知乎/" style="font-size: 20px;">知乎</a> <a href="/tags/线性代数/" style="font-size: 10px;">线性代数</a> <a href="/tags/统计学/" style="font-size: 10px;">统计学</a> <a href="/tags/网络安全/" style="font-size: 10px;">网络安全</a> <a href="/tags/营销软文/" style="font-size: 10px;">营销软文</a> <a href="/tags/计算机网络/" style="font-size: 10px;">计算机网络</a> <a href="/tags/资源/" style="font-size: 10px;">资源</a>
 					</div>
 				</section>
 				
@@ -200,6 +200,137 @@ var _hmt = _hmt || [];
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-826442654" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/03/14/826442654/" class="article-date">
+  	<time datetime="2016-03-13T16:00:00.000Z" itemprop="datePublished">2016-03-14</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/14/826442654/">这么早就说Hessian矩阵是半正定的，会不会给人一种凸函数的感觉？</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我大湾里技校网管系扛把子的<a href="https://www.zhihu.com/people/lfgu_dut" target="_blank" rel="external">顾凌峰</a>同学说他已经决定了，让我来整理这篇回答，和大家传授一些关于Hessian矩阵和函数凸性关系的人生经验。原回答地址：<a href="https://www.zhihu.com/question/40181086/answer/85707932" target="_blank" rel="external">怎么理解二阶偏导与凸函数的Hessian矩阵是半正定的？ - 顾凌峰的回答</a></p>
+<p>本文将着力于分析多元函数Hessian矩阵的性质和函数凸性之间的充要关系，但由于我知识水平低下，也实在不是谦虚，严谨的数学证明还是另请高明，只试图给出一些直观的理解。</p>
+<p>接下来我们将介绍凸函数的定义、一阶条件、二阶条件，以及这三者之间的<strong>充要</strong>关系。*表示内容为扩展的支线剧情，对主线没有影响，各位读者量力而行，觉得实在难以理解或者浪费时间可以直接跳过。</p>
+<p>为了方便起见，我们忽略一些无关紧要的部分，假设函数具有良好的性质</p>
+<ul>
+<li>定义域${\rm{dom}}f$为凸集</li>
+<li>在定义域上连续</li>
+<li>在定义域上二次可导</li>
+</ul>
+<p>这些条件当然不是必要的，我们将在后记部分进行详细的说明。</p>
+<h2 id="凸函数（Convex_Function）">凸函数（<em>Convex Function</em>）</h2><blockquote>
+<p>我一个看上去像“凹”字的函数，怎么就把我定义成凸函数了呢？</p>
+</blockquote>
+<h3 id="定义（Definition）">定义（<em>Definition</em>）</h3><p>对于一元函数$y=f\left( \cdot \right)$来说，函数为凸的定义是:</p>
+<p>对于定义域内两个任意的自变量$x_1$和$x_2$，且有任意$0 \le \theta \le 1$，如果函数$f\left( \cdot \right)$满足$$f\left( {\theta {x_1} + \left( {1 - \theta } \right){x_2}} \right) \le \theta f\left(x_1 \right) + \left( {1 - \theta } \right)f\left( x_2 \right)$$那么函数$f\left( \cdot \right)$是凸函数。</p>
+<p><img src="https://ooo.0o0.ooo/2016/03/10/56e13c531e869.png" alt="凸函数的基本法"></p>
+<p>我们可以理解为连接函数图像两点构成的线段始终在函数曲线上方。</p>
+<p>把这个定义推广到多元函数：多变量函数可以把自变量写成一个向量${\bf{x}} = {\left[x_1,x_2, \ldots ,x_n\right]}^T$，同理对于定义域的任意两个自变量${\bf{x}}_1$和${\bf{x}}_2$，以及任意$0 \le \theta \le 1$，如果函数$f\left( \cdot \right)$满足$$f\left( {\theta {\bf{x_1}} + \left( {1 - \theta } \right){\bf{x_2}}} \right) \le \theta f\left( {\bf{x_1}} \right) + \left( {1 - \theta } \right)f\left( {\bf{x_2}} \right)$$那么函数$f\left( \cdot \right)$是凸函数。</p>
+<h3 id="性质*（Properties）">性质*（<em>Properties</em>）</h3><p>一说到凸函数我们第一个想到的例子就是二次函数$y=x^2$，有人可能会疑惑这不是凹函数吗？是的，国内有很长一段时间对于函数的凹/凸的判定是混乱的，我初高中的时候受到的教育也是把$y=x^2$当作凹函数进行讲解的。$y=x^2$的图像直观看上去更像我们日常语境中说的“凹”，或者也有翻译者为了讨巧把convex说成“下凸”。你们这么望文生义是不行的，这么简单粗暴想当然就把它说成凹函数，就像在长安街看见坦克就大喊“占”或者“点”一样。</p>
+<p>当然有数学工作者说后来国内出了个基本法明确的规定了凹凸的定义从此这些混乱才结束。</p>
+<p>所以有人会不禁困惑，凸函数的定义和定义代表的几何意义到底和凸有什么关系？为什么要把满足这种性质的函数称为凸函数？</p>
+<p><img src="https://ooo.0o0.ooo/2016/03/11/56e2c10122976.png" alt="Epigraph:比函数不知道高到哪里去了"></p>
+<p>首先引入<strong>上境图</strong>（<em>Epigraph/Supergraph</em>）的概念：在函数$y=f\left( \cdot \right)$<strong>曲线及其上方</strong>的所有的点构成的集合。对于$n$元函数$y=f\left( \cdot \right)$这个$R^n \to R$的映射，其上境图为<br>$$epi = \{ \left( {\bf{x}},y \right): {\bf{x}} \in R^n,y \in R,y \ge f\left( x \right)\}$$当这个点集是凸集（<em>Convex Set</em>）的时候，对应的函数是凸函数，反之亦然。</p>
+<p>凸集的“凸”是可以从几何上直观理解的，连接点集中的任意两点，线段上的每一点都在该点集内，则为凸集<br><img src="https://ooo.0o0.ooo/2016/03/10/56e19f6c1a9cb.png" alt="四个代表"></p>
+<p>这时我们对凸函数的定义有了更深刻的了解，它的定义不过是要求<em>上境图中的两点连线仍然包含于上境图</em>的一个特例，特别之处在于这两点都在集合的边界。考虑到连续函数的上境图必然是闭集，而验证闭集的凸性时，一般来说，这样的性质只要对于边界上的点成立，那么对于其他点就都成立。</p>
+<p>你们给我弄的这个凸性啊，excited!这样去理解函数的“凸”就不会再出现凹凸定义混乱的情况了，不会听得风就是雨说$y=x^2$是凹函数了。</p>
+<h2 id="一阶条件（First-order_Condition）">一阶条件（<em>First-order Condition</em>）</h2><p>当且仅当对于定义域上任意自变量${\bf{x}}_1$和${\bf{x}}_2$，$y=f\left( \cdot \right)$都满足$$f\left( {\bf{x}_1} \right) \ge f\left( {\bf{x}}_2 \right) + \nabla f\left( {\bf{x}}_2 \right) \cdot \left( {\bf{x}}_1 - {\bf{x}}_1 \right)$$时$y=f\left( \cdot \right)$为凸函数。</p>
+<p>其中梯度向量$\nabla f\left( {\bf{x}} \right) = \left( \frac{\partial f\left( {\bf{x}} \right)}{\partial {x_1}},\frac{\partial f\left( {\bf{x}} \right)}{\partial {x_2}}, \ldots ,\frac{\partial f\left( {\bf{x}} \right)}{\partial {x_n}} \right)$也就是在该点对各个变量求偏导构成的向量。</p>
+<p>应用到简单的一元函数可以看到<br><img src="https://ooo.0o0.ooo/2016/03/11/56e2c3fd5e4b3.png" alt="一阶条件"><br>直观的理解是：凸函数的函数图像必然位于曲线上任意一点的切线的上方</p>
+<h3 id="必要性（Necessity）">必要性（<em>Necessity</em>）</h3><p>本小节将证明凸函数必然具有上述性质。即对于在定义域内可导的凸函数$y=f\left( \cdot \right)$必然有不等式$f\left( {\bf{x}_1} \right) \ge f\left( {\bf{x}}_2 \right) + \nabla f\left( {\bf{x}}_2 \right) \cdot \left( {\bf{x}}_1 - {\bf{x}}_1 \right)$对于任意的${\bf{x}}_1$和${\bf{x}}_2$均成立。</p>
+<p>假设函数$f\left( \cdot \right)$在定义域上是凸函数，那么根据定义有（假设$0 &lt; \theta  \le 1$）：<br>$$\begin{align}<br>f\left( \theta {\bf{x}}_1 + \left(1 - \theta \right) {\bf{x}}_2  \right) &amp; \le \theta f\left( {\bf{x}}_1 \right) + \left(1 - \theta \right)f\left( {\bf{x}}_2 \right) \\<br>f\left( {\bf{x}}_2 + \theta \left( {\bf{x}}_1 - {\bf{x}}_2 \right) \right) &amp;\le f\left( {\bf{x}}_2 \right) + \theta \left( f\left( {\bf{x}}_1 \right) - f\left( {\bf{x}}_2 \right) \right) \\<br>f\left( {\bf{x}}_2 + \theta \left( {\bf{x}}_1 - {\bf{x}}_2 \right) \right) - f\left( {\bf{x}}_2 \right) &amp;\le \theta \left(f\left( {\bf{x}}_1 \right) - f\left({\bf{x}}_2 \right) \right) \\<br>\frac{f\left( {\bf{x}}_2 + \theta \left( {\bf{x}}_1 - {\bf{x}}_2 \right) \right) - f\left( {\bf{x}}_2 \right)}{\theta} &amp;\le f\left( {\bf{x}}_1 \right) - f\left( {\bf{x}}_2 \right) \\<br>f\left( {\bf{x}}_1 \right) &amp; \ge f\left( {\bf{x}}_2 \right) + \frac{f\left({\bf{x}}_2 + \theta \left({\bf{x}}_1- {\bf{x}}_2 \right) \right) - f\left( {\bf{x}}_2 \right)}{\theta }<br>\end{align}$$<br>令$g\left( \theta \right) = f\left( {\bf{x}}_2 + \theta \left( {\bf{x}}_1 - {\bf{x}}_2 \right) \right)$，则$g\left( 0 \right) = f\left({\bf{x}}_2 \right)$，原不等式可以代换为$f\left({\bf{x}}_1 \right) \ge f\left({\bf{x}}_2 \right) + \frac{g\left( \theta  \right) - g\left( 0 \right)}{\theta }$ 当$\theta$趋近于$0$时，有$\mathop{\lim}\limits_{\theta \to 0} \frac{g\left( \theta \right) - g\left( 0 \right)}{\theta } = g’(0)$这一项也就是函数${g\left( \theta \right)}$在$\theta=0$处的导数值，${g\left( \theta  \right)}$ 实际是$f\left( {\bf{x}} \right)$与${\bf{x}} = {\bf{x}}_2 + \theta \left( {\bf{x}}_1 - {\bf{x}}_2 \right)$的复合函数，借助链式法则容易求导得$$\frac{dg}{d\theta } = \left( {\bf{x}}_1 - {\bf{x}}_2 \right)\frac{df\left({\bf{x}}_2 + \theta \left({\bf{x}}_1 - {\bf{x}}_2 \right) \right)}{d{\bf{x}}}$$由于只要求在$\theta=0$处的导数值所以容易得$$\left. \frac{dg}{d\theta} \right|_{\theta  = 0} = \left( {\bf{x}}_1 - {\bf{x}}_2 \right)\frac{df\left( {\bf{x}}_2 \right)}{d{\bf{x}}} = \nabla f\left( {\bf{x}}_2 \right) \cdot \left({\bf{x}}_1 - {\bf{x}}_2 \right)$$<br>代入回不等式即可得到<br>$$f\left( {\bf{x}}_1 \right) \ge f\left( {\bf{x}}_2 \right) + \nabla f\left( {\bf{x}}_2 \right) \cdot \left( {\bf{x}}_1 - {\bf{x}}_2 \right)$$证毕。</p>
+<hr>
+<p>这个推导过程中关键性的一步就是取了极限$\theta  \to 0$，怎样理解这个操作？$\theta {\bf{x}}_1 + \left( 1 - \theta  \right){\bf{x}}_2$表示一个由${\bf{x}}_1$和${\bf{x}}_2$合成的向量</p>
+<p><img src="https://ooo.0o0.ooo/2016/03/12/56e43b8d1f84f.png" alt="一尺向量，日取其半"></p>
+<p>当我们规定$0 \le \theta  \le 1$时，得到的新向量必然落在向量${\bf{x}}_1$和${\bf{x}}_2$终点之间连接成的线段上，也就是图中的虚线位置，而$\theta$的大小决定了新向量的终点更接近${\bf{x}}_1$的终点还是${\bf{x}}_2$的终点，可以把它理解为一种“<strong>权重</strong>”。当$\theta  \to 0$时，我们取的这个新的点无限接近于${\bf{x}}_2$所表示的点。</p>
+<p>从凸函数的性质出发，函数曲线上任意两点连接而成的线段都在函数图像的上方，而考虑到定义域内可导的性质，所在直线的其他部分都在函数图像的下方（否则直接无法与函数相交，而凸性对于整个定义域都成立则不可能存在两个以上的交点）。当所取的图像上的两点无限接近时，也就是$\theta  \to 0$时，直线在函数上方的部分也趋近于$0$，则直线始终位于函数图像的下方，而这条直线可以用朴素（<em>naive</em>）的“<em>切线逼近割线</em>”去理解为函数在${\bf{x}}={\bf{x}}_2$处的切线，由于取点是任意的，一阶条件不等式表达的必要性“<em>凸函数上任意一点的切线永远不高于函数图像</em>”也是与图相合的，函数曲线比任意一点的切线不知道高到哪里去了。</p>
+<h3 id="充分性（Sufficiency）">充分性（<em>Sufficiency</em>）</h3><p>本小节将证明一阶条件的充分性，即通过上述不等式的成立推导出具有这种性质的函数是凸函数。</p>
+<p>对于定义域上任意自变量${\bf{x}}_1$和${\bf{x}}_2$，以及$0 \le \theta  \le 1$，构造一个新变量${\bf{x}} = \theta {\bf{x}}_1 + \left( 1 - \theta  \right){\bf{x}}_2$，由于定义域是凸集，必然有${\bf{x}} \in {\rm{dom}}f$，即合成的新变量${\bf{x}}$也被硬点在定义域内。所以该不等式对于${\bf{x}}$，${\bf{x}}_1$和${\bf{x}}_2$这三个代表都适用，那么有：<br>$$\begin{cases}<br>f\left({\bf{x}}_1 \right) &amp;\ge f\left( {\bf{x}} \right) + \nabla f\left( {\bf{x}} \right)\left( {\bf{x}} - {\bf{x}}_1 \right) \\<br>f\left({\bf{x}}_2 \right) &amp;\ge f\left( {\bf{x}} \right) + \nabla f\left( {\bf{x}} \right)\left( {\bf{x}} - {\bf{x}}_2 \right)<br>\end{cases}$$<br>由于$0 \le \theta  \le 1$，则有$0 \le 1-\theta  \le 1$，分别以$\theta$和$1-\theta$乘以上面两个不等式的两边，不等式方向不变：<br>$$\begin{cases}<br>\theta f\left( {\bf{x}}_1 \right) &amp;\ge \theta f\left( {\bf{x}} \right) + \theta \nabla f\left( {\bf{x}} \right)\left( {\bf{x}} - {\bf{x}}_1 \right) \\<br>\left(1 - \theta \right) f\left( {\bf{x}}_2 \right) &amp;\ge \left( 1 - \theta  \right)f\left( {\bf{x}} \right) + \left( 1 - \theta  \right)\nabla f\left( {\bf{x}} \right)\left( {\bf{x}} - {\bf{x}}_2 \right)<br>\end{cases}$$<br>将这两个不等式两边分别相加得<br>$$\begin{align}<br>\theta f\left({\bf{x}}_1 \right) + \left( 1 - \theta  \right)f\left( {\bf{x}}_2 \right) &amp;\ge f\left( {\bf{x}} \right) + \nabla f\left( {\bf{x}} \right)\left( {\bf{x}} - \left( \theta {\bf{x}}_1 + \left( 1 - \theta  \right){\bf{x}}_2 \right) \right) \\<br>\theta f\left( {\bf{x}}_1 \right) + \left( 1 - \theta \right)f\left( {\bf{x}}_2 \right) &amp;\ge f\left( {\bf{x}} \right)\\<br>\theta f\left( {\bf{x}}_1 \right) + \left( {1 - \theta } \right)f\left({\bf{x}}_2 \right) &amp;\ge f\left( \theta {\bf{x}}_1 + \left( 1 - \theta \right){\bf{x}}_2 \right)<br>\end{align}$$<br>这个不等式恰好是凸函数的定义，至此我们可以说满足一阶条件不等式的可导函数符合凸函数的基本法，是凸函数。证毕。</p>
+<hr>
+<p>这个证明的过程我们可以简化为一个一元函数$y = f\left( x \right)$来说明。根据已知条件，对于一组已知的$x_1$和$x_2$，找到之间任意的一点$x$（这个过程通过调节变量$\theta$的大小），过函数图像上对于的点$p_0$作切线$l$，一阶条件不等式表达的含义即$p_1$和$p_2$必然不在这条切线$l$的下方，更具体来说就是$p_1$比$p_3$，$p_2$比$p_4$不知道高到哪里去了。<br><img src="https://ooo.0o0.ooo/2016/03/15/56e7ead1bf348.png" alt=""><br>而我们在证明中把两个不等式分别乘以不同的系数再相加，这个操作定位了$p’$，这个点不低于$p_0$。两个不等式按一定的“<strong>权重</strong>”相加，由于$\left(p_1,p_2 \right)$(Wallace组)对应的同横坐标的两个端点的纵坐标不小于$\left(p_3,p_4 \right)$(Sharon组)，那么对于分别以两组点连接而成的线段，必然有$\left(p_1,p_2 \right)$始终不低于$\left(p_3,p_4 \right)$，即图中的蓝色虚线一定不在红色实线的下方。那么过点$p$垂直于y轴作直线与蓝色虚线的交点即$p’$一定也不在$p$的下方。</p>
+<h3 id="支持平面*（Supporting_Hyperplane）">支持平面*（<em>Supporting Hyperplane</em>）</h3><blockquote>
+<p>它是凸函数，切平面怎么能不支持它？</p>
+</blockquote>
+<p>相比于定义对于割线的关注，一阶条件把注意力转移到了切线上。一阶条件不等式表达的几何意义在上述证明中我们简化为“<em>函数曲线比切线不知道高到哪里去了</em>”，这表达有时太肤浅了。</p>
+<p>几何界有句老话，叫支持平面定理（<em>Supporting hyperplane theorem</em>）：（非空）凸集边界上的每个点，至少存在一个包含这个点的<strong>支持平面</strong>。</p>
+<p>具体来说，对于一个非空凸集$S \subseteq {R^n}$，对于任意一点${\bf{x}}_0 \in {\rm{bd}}S$或${\bf{x}}_0 \notin S$，一定存在至少一个${\bf{\alpha }} \in R^n$且${\bf{\alpha }} \ne {\bf{0}}$使得：</p>
+<p>$$\mathop\sup\limits_{\bf{x} \in S} {\bf{\alpha }}^T{\bf{x}} \le {\bf{\alpha }}^T{\bf{x}}_0$$</p>
+<p>这个$\bf{\alpha }$是支持平面的法向量，这个不等式的意思就是整个集合的点在$\bf{\alpha }$上的投影都不高于${\bf{x}}_0$在$\bf{\alpha }$上的投影<br><img src="https://ooo.0o0.ooo/2016/03/14/56e6cf7f25aec.png" alt="考虑法向量的进程"></p>
+<p>当然为了更加贴合前面的证明，我们可以取这里的${\bf{\alpha }}$向量的相反向量代替${\bf{\alpha }}$，那么有</p>
+<p>$$\mathop\inf\limits_{\bf{x} \in S} {\bf{\alpha }}^T{\bf{x}} \ge {\bf{\alpha }}^T{\bf{x}}_0$$</p>
+<p>整个集合的点在${\bf{\alpha }}$上的投影都不低于${\bf{x}}_0$在$\bf{\alpha }$上的投影，也就是法向量为$\bf{\alpha }$且过${\bf{x}}_0$的平面$h$即点集$S$的支持平面，$S$始终在$h$的“上”方。</p>
+<p><img src="https://ooo.0o0.ooo/2016/03/14/56e6dd39c5110.png" alt="这只是一张演示切平面的图，我没有任何说它是凸函数的意思"></p>
+<p>支持平面是怎样的平面？这是一个超平面，所以前面的证明中提到的切线也是一个支持平面。对于一元函数来说超平面就是切线，而$n$元函数的支持平面则是$n$维超平面，是函数在该点的<strong>切平面</strong>，梯度向量$\nabla f\left( {\bf{x}} \right)$也就是这个切平面的法向量，集合$S$对应函数的上境图。支持平面定理中存在支持平面与凸集之间也是充要关系，这种关系有兴趣的读者可以自己尝试证明。</p>
+<h2 id="二阶条件（Second-Order_Condition）">二阶条件（<em>Second-Order Condition</em>）</h2><p>当且仅当对于定义域上任意自变量$\bf{x_0}$的Hessian矩阵${\bf{H}}\left( {\bf{x}}_0 \right)$均为半正定矩阵时，函数$y=f\left( \cdot \right)$是凸函数。</p>
+<p>由于之前的证明已经说明了一阶条件和定义间的充要关系，接下来我们的证明将仅仅提供二阶条件与一阶条件间的等价推导，二阶矩阵与定义的关系我完全可以回答一句无可奉告。</p>
+<h3 id="Hessian矩阵（Hessian_Matrix）">Hessian矩阵（<em>Hessian Matrix</em>）</h3><p><em>Hessian矩阵</em>是一个函数的二阶偏导组成的方阵，用以描述一个点附近的曲率。有时我们也把$\bf{x_0}$的Hessian矩阵写为$\nabla ^2 f\left( {\bf{x}}_0 \right)$，可以把它理解为梯度向量在二阶的推广。毕竟梯度向量本身也是<em>Jacobian矩阵</em>的一种特例。</p>
+<p>$f(\bf{x})$的Hessian矩阵第$i$行第$j$个元素为$f(\bf{x})$对第$i$个变量先求导，对第$j$个变量后求导的二阶导数，也就是${\bf{H}}_{ij}=\frac{\partial ^2f\left( {\bf{x}} \right)}{\partial {x_i}\partial {x_j}}$，写成矩阵形式就是：<br>$${\bf{H}} = \left[<br>\begin{array}{*{20}{c}}<br>\frac{\partial ^2 f\left( {\bf{x}} \right)}{\partial x_1^2} &amp; \frac{\partial ^2 f\left( {\bf{x}} \right)}{\partial {x_1} \partial {x_2}} &amp; \cdots &amp;\frac{\partial ^2 f\left( {\bf{x}} \right)}{\partial {x_1}\partial {x_n}} \\<br>\frac{\partial ^2 f\left( {\bf{x}} \right)}{\partial {x_2}\partial {x_1}} &amp; \frac{\partial ^2 f\left( {\bf{x}} \right)}{\partial x_2^2}&amp; \cdots &amp;\frac{\partial ^2 f\left( {\bf{x}} \right)}{\partial {x_2}\partial {x_n}} \\<br> \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\<br>\frac{\partial ^2 f\left( {\bf{x}} \right)}{\partial {x_n}\partial {x_1}} &amp; \frac{\partial ^2 f\left( {\bf{x}} \right)}{\partial {x_n}\partial {x_2}}&amp; \ldots &amp; \frac{\partial ^2 f\left( {\bf{x}} \right)}{\partial x_2^2}<br>\end{array}<br>\right]$$</p>
+<h3 id="必要性（Necessity）-1">必要性（<em>Necessity</em>）</h3><p>本小节将从一阶条件出发，证明凸函数上任意一点对应的Hessian矩阵都是半正定的。</p>
+<p>$f(\bf{x})$在$\bf{x_0}$的二阶<em>Taylor展开式</em>(带<em>Peano余项</em>)为：</p>
+<p>$$<br>f\left({\bf{x}}\right) = f\left( {\bf{x}}_0 \right) + \nabla f\left( {\bf{x}}_0 \right)\left( {\bf{x}} - {\bf{x}}_0 \right) + \frac{1}{2} \left( {\bf{x}} - {\bf{x}}_0 \right)^T {\bf{H}}\left( {\bf{x}}_0 \right) \left({\bf{x}} - {\bf{x}}_0 \right) + o\left( \left({\bf{x}} - {\bf{x}}_0 \right)^T \left( {\bf{x}} - {\bf{x}}_0 \right) \right)<br>$$</p>
+<p>我们对整个等式稍作变换，规定$\Delta {\bf{x}} = t{\bf{d}}$表示增量，其中$\bf{d}$是一个微小的向量，仅仅表示变化的方向，而标量$t$则用以描述变化的步长，则上式可以改写为：<br>$$<br>f\left( {\bf{x}}_0 + t{\bf{d}} \right) = f\left( {\bf{x}}_0 \right) + t\nabla f\left( {\bf{x}}_0 \right){\bf{d}} + \frac{t^2}{2} {\bf{d}}^T {\bf{H}}\left( {\bf{x}}_0 \right) {\bf{d}} + o\left( t^2 \right)<br>$$<br>根据一阶条件有<br>$$f\left( {\bf{x}}_0 + t{\bf{d}} \right) \ge f\left( {\bf{x}}_0 \right) + t\nabla f\left({\bf{x}}_0 \right){\bf{d}}$$<br>那么我们可以得到$$\frac{t^2}{2} {\bf{d}}^T {\bf{H}}\left( {\bf{x}}_0 \right) {\bf{d}} + o\left( t^2 \right) \ge 0$$恒成立，对于任意一个不为0的$t$，不等式两边同除以$t^2$，不等式方向不变：<br>$$\frac{1}{2}{\bf{d}}^T {\bf{H}}\left( {\bf{x}}_0 \right) {\bf{d}} + \frac{o\left(t^2 \right)}{t^2} \ge 0$$<br>注意到一阶条件对于两个变量$x_1$和$x_2$的限定词是“任意”，那么这个关系在取极限$t \to 0$时仍然成立，这是上面的不等式的第二项的极限$\mathop{\lim }\limits_{t \to 0} \frac{o\left(t^2 \right)}{t^2} = 0$，所以一阶条件蕴含的关系就是${\bf{d}}^T {\bf{H}}\left( {\bf{x}}_0 \right) {\bf{d}} \ge 0$对于任意的$\bf{d}$都成立，而这正好是${\bf{H}}\left( {\bf{x}}_0 \right)$为半正定矩阵的充要条件。</p>
+<p>证毕。</p>
+<h3 id="充分性（Sufficiency）-1">充分性（<em>Sufficiency</em>）</h3><p>本小节将从二阶条件出发逆推一阶条件，即证明任意一点的Hessian矩阵半正定时，一阶条件也满足，此时函数为凸函数。</p>
+<p>现在已知在定义域内Hessian矩阵都是半正定的。那么在任意的${\bf{x}}_0$使用带有<em>Lagrange余项</em>的一阶<em>Taylor展开式</em>为$$<br>f\left( {\bf{x}} \right) = f\left( {\bf{x}}_0 \right) + \nabla f\left( {\bf{x}}_0 \right)\left( {\bf{x}} - {\bf{x}}_0 \right) + \frac{1}{2}{\left( {\bf{x}} - {\bf{x}}_0 \right)^T}{\bf{H}}\left( {\bf{\xi }} \right)\left( {\bf{x}} - {\bf{x}}_0 \right)<br>$$其中${\bf{H}}\left( {\bf{\xi }} \right)$为在${\bf{x}} = {\bf{\xi }}$处的Hessian矩阵，其中${\bf{\xi }}$为$\bf{x}$与${\bf{x}}_0$之间的一个值（闭区间）,由于${\bf{H}}\left( {\bf{\xi }} \right)$是半正定的，所以必然有$\frac{1}{2}{\left( {\bf{x}} - {\bf{x}}_0 \right)^T}{\bf{H}}\left( {\bf{\xi }} \right)\left( {\bf{x}} - {\bf{x}}_0 \right) \ge 0$，因此对于任意的在定义域内的${\bf{x}}$和${\bf{x}}_0$都有$$f\left( {\bf{x}} \right) \ge f\left( {\bf{x}}_0 \right) + \nabla f\left( {\bf{x}}_0 \right)\left( {\bf{x}} - {\bf{x}}_0 \right)$$证毕。</p>
+<h3 id="Talyor定理*（Taylor’s_Theorem）">Talyor定理*（<em>Taylor’s Theorem</em>）</h3><p>二阶条件的证明用到了非常重要的数学工具——Talyor展开式，我们知道Talyor展开是用以描述某点附近的近似值，使用一个多项式去逼近原函数。一元函数$y=f\left( x \right)$在点$\left( x_0,f\left( x_0 \right) \right)$处的$n$阶Talyor展开式为$$f\left( x \right) = f\left( x_0 \right) + f’\left( x_0 \right)\left( x - x_0 \right) + \frac{1}{2!}f’’\left( x_0 \right)\left( x - x_0 \right)^2 +  \ldots  + \frac{1}{n!}f^{\left( n \right)}\left( x_0 \right)\left( x - x_0 \right)^n + R_n\left( x - x_0 \right)$$其中$R_n\left( x - x_0 \right)$为余项，表示的是这个估计值与真实值的<strong>偏差</strong>，是一个$\left( x - x_0 \right)^{n + 1}$级的数，我们前面的证明用到了其中的两种形式。</p>
+<p>我们可以看到“必要性”路线（定义$ \Rightarrow $一阶条件$ \Rightarrow $二阶条件）的证明我们一直都在增量趋近于无穷小的极限，所以展开式中使用的是<em>Peano余项</em>以方便我们忽略高阶无穷小的影响。我们知道随着阶数的增加，多项式估计值的准确度也在增加，取$\Delta x \to 0$时必须保证一阶条件的成立，那么微小的二阶增量也必须非负。</p>
+<p>而“充分性”的证明路线（二阶条件$\Rightarrow $一阶条件$\Rightarrow $定义）则使用了<em>Lagrange余项</em>，去找到这个使等式成立的具体的某点附近的二阶导数。我们展开带有<em>Lagrange余项</em>的0阶Taylor展开式：$$f\left( x \right) = f\left( x_0 \right) + f’\left( \xi  \right)\left( x - x_0 \right)$$这个式子明确的告诉我们，<br><img src="https://ooo.0o0.ooo/2016/03/15/56e834c228809.png" alt=""><br>高阶增量的系数就是区间内某个值的高阶导数，图中仅给出了0阶的情况，实际上这也是<em>Lagrange中值定理</em>的应用，可以推广到高阶。不同于“必要性”的宏观推导到微观的思想，“充分性”则是从每个定理成立的局部反推到全局成立，此时<em>Lagrange中值</em>$\xi$就扮演了非常重要的角色。</p>
+<h2 id="后记*（Apply_for_Author）">后记*（<em>Apply for Author</em>）</h2><h3 id="符号标记（Notations）">符号标记（<em>Notations</em>）</h3><p>全文所用的符号和规定都出于我的个人习惯，比如多元函数的参数我使用$\bf{x}$是一个高高的列向量，可能其他的资料里面会使用宽宽的行向量，这时需要注意矩阵计算时一些变量的转置。毕竟你们非常熟悉行向量那一套，那么可以用你们自己的符号习惯再自己整理一下。</p>
+<h3 id="凹函数_（Concave_Function）">凹函数 （<em>Concave Function</em>）</h3><p>是一个与凸函数对偶的概念，定义中的不等号方向改变，把一阶条件的$\ge$换成$\le$，二阶条件中的半正定换成半负定，就是<em>凹函数</em>那一套。</p>
+<h3 id="严格凸函数（Strictly_Convex_Function）">严格凸函数（<em>Strictly Convex Function</em>）</h3><p>类比严格单调函数的定义。在定义中去掉条件的不等号$0 &lt; \theta &lt; 1$，得到的几个结论也是没有等号成立的，对应的Hessian矩阵是<strong>正定</strong>的。</p>
+<h3 id="广义凸函数（Generalized_Convex_Function）">广义凸函数（<em>Generalized Convex Function</em>）</h3><p>我们这么早就假设了函数是可导的，那么不可导的函数也可以是凸函数吗？当然啦。</p>
+<p>我们规定可导只是方便我们推导一阶条件和二阶条件，如果导数不存在那么一阶条件和二阶条件也是不适用，但函数仍然是凸函数，它的上境图依然是凸集，在每个点上依然有支持平面。</p>
+<p>举个简单的例子就是分段函数$$f(x)=\begin{cases}<br>-x &amp; x \le 0 \\<br>2 x &amp; x &gt;0<br>\end{cases}$$<br>当然对于这种函数来说有些不可导的点上的支持平面就不止一个了。<br><img src="https://ooo.0o0.ooo/2016/03/15/56e83fbcd7363.png" alt=""></p>
+<p>为了<strong>完善定义</strong>，我们也可以扩展定义域（要求原定义域为凸集），原定义域上的函数值不变，空间内其他变量对应的函数值为无穷大，此时$f\left( {\theta {x_1} + \left( {1 - \theta } \right){x_2}} \right) \le \theta f\left(x_1 \right) + \left( {1 - \theta } \right)f\left( x_2 \right)$对于整个集合都适用，这个新函数也就是<em>广义凸函数</em>。</p>
+<hr>
+<p>很惭愧，只做了一些微小的工作。</p>
+<h2 id="参考资料和延伸阅读（References&amp;Extensions）">参考资料和延伸阅读（<em>References&amp;Extensions</em>）</h2><p>[1] Boyd S, Vandenberghe L. Convex optimization[M]. Cambridge university press, 2004.<br>[2] Wikipedia: <a href="https://en.wikipedia.org/wiki/Supporting_hyperplane" target="_blank" rel="external">https://en.wikipedia.org/wiki/Supporting_hyperplane</a><br>[3] Wikipedia: <a href="https://en.wikipedia.org/wiki/Taylor%27s_theorem" target="_blank" rel="external">https://en.wikipedia.org/wiki/Taylor%27s_theorem</a><br>[4] <em>MATH2640 Introduction to Optimisation</em>：<a href="http://www1.maths.leeds.ac.uk/~cajones/math2640/notes2.pdf" target="_blank" rel="external">http://www1.maths.leeds.ac.uk/~cajones/math2640/notes2.pdf</a><br>[5] Lecture of Convex functions: <a href="http://www.seas.ucla.edu/~vandenbe/ee236b/lectures/functions.pdf" target="_blank" rel="external">http://www.seas.ucla.edu/~vandenbe/ee236b/lectures/functions.pdf</a><br>[6] Kolter Z. Convex Optimization Overview[J]. 2008. <a href="http://cs229.stanford.edu/section/cs229-cvxopt.pdf" target="_blank" rel="external">http://cs229.stanford.edu/section/cs229-cvxopt.pdf</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/凸优化/">凸优化</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微积分/">微积分</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/线性代数/">线性代数</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-561474648" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -646,108 +777,6 @@ var _hmt = _hmt || [];
       
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/吐槽型自传体/">吐槽型自传体</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/完全非技术类文档/">完全非技术类文档</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/年终总结/">年终总结</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/指点江山/">指点江山</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-323901700" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/12/09/323901700/" class="article-date">
-  	<time datetime="2015-12-09T11:59:01.000Z" itemprop="datePublished">2015-12-09</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/09/323901700/">如何成为一名优雅的地域黑 （一）</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>本文内容仅供娱乐，未满15岁的读者请在家长陪同下阅读。请勿模仿，一切后果作者概不负责</strong></p>
-<h2 id="导语">导语</h2><p>地域矛盾客观存在，堵是堵不住的，封也是封不完的。地域黑也是个雅俗共赏，人民喜闻乐见的活动，比较出名的地域黑聚集地如中华城市吧，高楼迷，西祠城坛，虽然用户水平参差不齐，但不乏让人印象深刻拍案叫绝的地域黑作品。那什么样的地域黑才是坠吼的？地域黑的正确姿势是什么？在各大社交平台喊口号骂街？这个样子显然是不行的会让人很生气。吟诗作对文艺撕逼？naive，你是来玩地域黑还是来搞基当网红的？那么画自制表格作对比总可以了吧？那只是你感觉，不过好歹说到了点子上，得让数据说话，不能无中生有见风是雨，用欧盟出了个报告说某地比其他地方不知道高到哪里去了说服力比一句彭定康说的强的多。</p>
-<p>造假数据到时候报道上出了偏差是要负责的，但是作为统计专业的学生，应该明白怎样选择性处理真数据造成误导性结果，比如说通过一句“支持”可以推导出钦定的意思。现在要学习一个的是，怎样做一些看上去比较正规、漂亮的地图来表现这个数据。</p>
-<h2 id="环境准备">环境准备</h2><h3 id="开发环境">开发环境</h3><p>本文使用<code>R语言</code>完成编程，编译的平台为<code>RStudio</code>(可以任意替换为其他用着顺手的支持R的编译器，听说现在Visual Studio也支持了大家可以去试一试)，需要安装以下封包：<code>ggplot2</code>,<code>maptools</code>,<code>regos</code>，<code>colorspace</code>，<code>RColorBrewer</code>。安装可以通过在编译器的控制台中输入如下命令：</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">install.packages(<span class="string">'packagename'</span>) <span class="comment">#packagename替换为要安装的包名</span></span><br></pre></td></tr></table></figure>
-<h3 id="数据资源">数据资源</h3><ul>
-<li>来自国家基础地理信息系统(<a href="http://nfgis.nsdi.gov.cn)的官方数据" target="_blank" rel="external">http://nfgis.nsdi.gov.cn)的官方数据</a>: <a href="http://cos.name/wp-content/uploads/2014/08/maps_data.7z" target="_blank" rel="external">maps_data</a></li>
-<li>GADM: <a href="http://gadm.org/country" target="_blank" rel="external">http://gadm.org/country</a></li>
-</ul>
-<h2 id="初级绘图">初级绘图</h2><p>这个阶段我们要解决的是怎样画出我国各省的分级，省内各市分级，以及市内各区县的分级。</p>
-<h3 id="各市内区县的分级">各市内区县的分级</h3><p>这里用到的数据是nfgis的官方数据的<code>bou4/BOUNT_poly.shp</code>，<code>.shp</code>文件代表<code>shapefile</code>，而这个文件里面包含的内容是区/县级的行政划分的多边形面图。我们可以用<code>readShapePoly</code>函数打开。</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">library</span>(<span class="string">"maptools"</span>)</span><br><span class="line">alldata=readShapePoly(<span class="string">"E:/maps_data/maps/bou4/BOUNT_poly.shp"</span>)</span><br></pre></td></tr></table></figure>
-<p>那这个文件里读出来放在<code>SpatialPolygonsDataFrame</code>型变量<code>alldata</code>中的是什么？</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">names(alldata)&#10;# [1] &#34;AREA&#34;       &#34;PERIMETER&#34;  &#34;BOUNT_&#34;     &#34;BOUNT_ID&#34;  &#10;# [5] &#34;GBCODE&#34;     &#34;ADCODE99&#34;   &#34;NAME99&#34;     &#34;SH2&#34;       &#10;# [9] &#34;DI2&#34;        &#34;X2&#34;         &#34;CENTROID_Y&#34; &#34;CENTROID_X&#34;</span><br></pre></td></tr></table></figure>
-<p>这里洋文好的人也很多呐。大概就是面积周长，几种编号（其中<code>ADCODE99</code>需要注意），<code>NAME99</code>是中文名(<code>GBK</code>编码)，最值得关注的是最后两项是经纬度坐标。</p>
-<p><code>ADCODE</code>是nfgis定义的6位区域代码，这个代码我们其实很熟悉，就是身份证号的前6位，非常好查，举个例子，<code>32</code>代码江苏省，<code>3210</code>代表扬州市，<code>321023</code>是宝应县。这里以扬州大市为例学习一个，我们需要全扬州的多边形数据，那就找前四位是<code>3210</code>的记录提取出来，再用<code>fortify</code>函数转换为<code>data.frame</code>格式，部分编译器编码格式为<code>UTF-8</code>的还需要把<code>id</code>和<code>group</code>转换为<code>GBK</code>编码：</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yangzhou=alldata[substr(as.character(alldata$ADCODE99), <span class="number">1</span>, <span class="number">4</span>) == <span class="string">"3210"</span>,]</span><br><span class="line">yangzhoudata = fortify(yangzhou, region = <span class="string">'NAME99'</span>)</span><br><span class="line">yangzhoudata= transform(yangzhoudata, id = iconv(id, from = <span class="string">'GBK'</span>), group = iconv(group, from = <span class="string">'GBK'</span>))</span><br></pre></td></tr></table></figure>
-<p>这时候可以看到：</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">names(yangzhoudata)</span><br><span class="line"><span class="comment">#[1] "long"  "lat"   "order" "hole"  "piece" "group" "id"</span></span><br></pre></td></tr></table></figure>
-<p><code>group</code>的数据后面会带编号，而<code>id</code>仅仅是个名字。现在画图需要的数据框已经有了，可以用<code>ggplot2</code>作图了</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">library</span>(<span class="string">"ggplot2"</span>)</span><br><span class="line">yangzhoumap = ggplot(yangzhoudata, aes(x = long, y = lat,group=group,fill=id))+</span><br><span class="line">          geom_polygon(aes(group=group))+</span><br><span class="line">          geom_path(colour = <span class="string">"gray40"</span>,aes(group=group))+</span><br><span class="line">          expand_limits(citydata) + coord_map()</span><br></pre></td></tr></table></figure>
-<p>查看<code>citymap</code>可以看到作图<br><img src="https://ooo.0o0.ooo/2015/12/11/566abf2827a88.png" alt="yangzhou1.png"></p>
-<p>牢记这个<code>group</code>在<code>geom_polygon</code>，<code>geom_path</code>里都必须绑定为它们的参数<code>group</code>，这个对作图的命运有很重大的影响。扬州是内陆地区所以不会出现一个<code>id</code>（区县名)对应多个形状，但是遇到沿海多岛屿的情况报道上就会出现偏差。</p>
-<p>这里肯定会有人不服，为什么画出来那么难看，因为<code>ggplot2</code>默认的配色就那么难看。我们也可以手动换一套配色：</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yangzhoumap+scale_fill_manual(values=colors())</span><br></pre></td></tr></table></figure>
-<p>效果：<br><img src="https://ooo.0o0.ooo/2015/12/10/5669af6485884.png" alt="yangzhou2.png"></p>
-<p>当然配色方案这种事情看个人口味了，各种第三方封包也是可以借鉴一个的，参考<a href="https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/colorPaletteCheatsheet.pdf" target="_blank" rel="external">R Color Cheatsheet</a>能找到很不错的填充主题。</p>
-<p>这里按照个人口味示范一个:</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">library</span>(<span class="string">'RColorBrewer'</span>)</span><br><span class="line">getPalette = colorRampPalette(brewer.pal(<span class="number">9</span>, <span class="string">"Blues"</span>))</span><br><span class="line">yangzhoumap+scale_fill_manual(values=getPalette(<span class="number">6</span>))</span><br></pre></td></tr></table></figure>
-<p>这里用的是一套蓝色深浅渐变，<code>colorRampPalette</code>函数生成一套配色仅仅是为了防止区县数量太多导致<code>RColorBrewer</code>自带配色数量不够无法填充，扬州因为区县少实际上没有这个问题，但不保证其他地区没有。</p>
-<p><img src="https://ooo.0o0.ooo/2015/12/10/5669b1cddb220.png" alt="yangzhou3.png"></p>
-<p>这时候可能又有人不服，图例这种东西太不直观了，最好能把区县名标在地图上。这个Map drawing啊，最痛苦的事就是把地名标到地图上，一不小心文字就标的太多，弄出图了。比如上海有很多沿海或者江中的小岛屿，而它们的都是属于一个地区，但都是独立的形状，所以记录里面会分开记录这些<code>id</code>相同的形状，如果不做处理就标上去，那会导致很不美观的结果。这个时候我们的处理方针就是找到每个区县面积最大的一个多边形，然后记录中心坐标标到地图上。</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">agg=aggregate(AREA ~ NAME99,as.data.frame(city), max)</span><br><span class="line">arealist=merge(agg,as.data.frame(city))</span><br><span class="line">tmp=arealist[,cbind(<span class="number">11</span>,<span class="number">12</span>)]</span><br><span class="line">tmp$id = arealist$NAME99</span><br><span class="line">tmp$group= arealist$NAME99</span><br></pre></td></tr></table></figure>
-<p>tmp包含的数据是这样的(以膜都上海为例）：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">  CENTROID_Y CENTROID_X           id        group</span><br><span class="line"><span class="number">1</span>   <span class="number">31.65070</span>   <span class="number">121.5232</span>       崇明县       崇明县</span><br><span class="line"><span class="number">2</span>   <span class="number">30.91598</span>   <span class="number">121.5498</span>       奉贤县       奉贤县</span><br><span class="line"><span class="number">3</span>   <span class="number">31.35312</span>   <span class="number">121.2513</span>       嘉定区       嘉定区</span><br><span class="line"><span class="number">4</span>   <span class="number">30.83337</span>   <span class="number">121.2313</span>       金山区       金山区</span><br><span class="line"><span class="number">5</span>   <span class="number">31.10343</span>   <span class="number">121.4149</span>       闵行区       闵行区</span><br><span class="line"><span class="number">6</span>   <span class="number">31.02362</span>   <span class="number">121.7360</span>       南汇县       南汇县</span><br><span class="line"><span class="number">7</span>   <span class="number">31.12699</span>   <span class="number">121.0832</span>       青浦县       青浦县</span><br><span class="line"><span class="number">8</span>   <span class="number">31.23097</span>   <span class="number">121.6361</span> 上海市市辖区 上海市市辖区</span><br><span class="line"><span class="number">9</span>   <span class="number">31.01199</span>   <span class="number">121.2129</span>       松江区       松江区</span><br></pre></td></tr></table></figure></p>
-<p>标注到地图上需要调用<code>geom_text</code>增加一个图层：<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">modumap=modumap+geom_text(aes(x = CENTROID_X,y = CENTROID_Y,label = id), data = tmp)</span><br></pre></td></tr></table></figure></p>
-<p>效果:</p>
-<p><img src="https://ooo.0o0.ooo/2015/12/10/5669b4fd075ed.png" alt="shanghai1.png"></p>
-<p>当然有人嫌坐标、坐标轴、网格线碍事，只想要保留一个图形。那也很好办，加一个主题去掉这些多余的东西就行。</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">modumap=modumap++theme(axis.line=element_blank(),axis.text.x=element_blank(),</span><br><span class="line">                                                 axis.text.y=element_blank(),axis.ticks=element_blank(),</span><br><span class="line">                                                 axis.title.x=element_blank(),</span><br><span class="line">                                                 axis.title.y=element_blank(),</span><br><span class="line">                                                 panel.background=element_blank(),panel.border=element_blank(),panel.grid.major=element_blank(),</span><br><span class="line">                                                 panel.grid.minor=element_blank(),plot.background=element_blank())</span><br></pre></td></tr></table></figure>
-<p><img src="https://ooo.0o0.ooo/2015/12/11/566abf28271c1.png" alt="shanghai2.png"></p>
-<p>以上操作可以封装一个函数：<br><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">citydrawing&lt;-<span class="keyword">function</span>(num,alldata,len=<span class="literal">TRUE</span>)&#123;</span><br><span class="line">  city=alldata[substr(as.character(alldata$ADCODE99), <span class="number">1</span>, <span class="number">4</span>) == as.character(num),]</span><br><span class="line">  citydata = fortify(city, region = <span class="string">'NAME99'</span>)</span><br><span class="line">  citydata= transform(citydata, id = iconv(id, from = <span class="string">'GBK'</span>), group = iconv(group, from = <span class="string">'GBK'</span>))</span><br><span class="line">  agg=aggregate(AREA ~ NAME99,as.data.frame(city), max)</span><br><span class="line">  arealist=merge(agg,as.data.frame(city))</span><br><span class="line">  tmp=arealist[,cbind(<span class="number">11</span>,<span class="number">12</span>)]</span><br><span class="line">  tmp$id = arealist$NAME99</span><br><span class="line">  tmp$group= arealist$NAME99</span><br><span class="line">  getPalette = colorRampPalette(brewer.pal(<span class="number">9</span>, <span class="string">"Blues"</span>))</span><br><span class="line">  citymap = ggplot(citydata, aes(x = long, y = lat,group=group,fill=id))+</span><br><span class="line">        geom_polygon(aes(group=group))+</span><br><span class="line">        geom_path(colour = <span class="string">"gray40"</span>,aes(group=group))+</span><br><span class="line">     expand_limits(citydata) + coord_map()+theme(axis.line=element_blank(),axis.text.x=element_blank(),</span><br><span class="line">                                                 axis.text.y=element_blank(),axis.ticks=element_blank(),</span><br><span class="line">                                                 axis.title.x=element_blank(),</span><br><span class="line">                                                 axis.title.y=element_blank(),</span><br><span class="line">                                                 panel.background=element_blank(),panel.border=element_blank(),panel.grid.major=element_blank(),</span><br><span class="line">                                                 panel.grid.minor=element_blank(),plot.background=element_blank())</span><br><span class="line">  <span class="keyword">if</span>(len==<span class="literal">TRUE</span>)</span><br><span class="line">  &#123;</span><br><span class="line">    citymap=citymap+scale_fill_manual(values=getPalette(nrow(tmp)))</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">  &#123;</span><br><span class="line">  citymap=citymap+geom_text(aes(x = CENTROID_X,y = CENTROID_Y,label = id), family = <span class="string">"times"</span>, data = tmp)+scale_fill_manual(values=getPalette(nrow(tmp)),guide=<span class="literal">FALSE</span>)</span><br><span class="line">  &#125;</span><br><span class="line"><span class="keyword">return</span>(citymap)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
-<p><code>num</code>为区域的四位代码，<code>alldata</code>是数据源（SpatialPolygonsDataFrame格式），<code>len</code>若置为<code>TRUE</code>则显示图例，若置为<code>FALSE</code>则直接在地图上标注地名。</p>
-<p>把这些操作封装成了<code>citydrawing</code>有一个好，配合<code>lapply</code>函数连续作图，跑的比谁都快。</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">number=<span class="number">2301</span>:<span class="number">2311</span></span><br><span class="line">graphs=lapply(number,FUN =citydrawing,alldata,<span class="literal">FALSE</span>)</span><br></pre></td></tr></table></figure>
-<p>黑龙江的哪个城市我没去过？你们很熟悉东北那一套。</p>
-<p>这时候还可以借用<code>knitr</code>写一个报告（<code>knitr</code>会在后续的文章中详细介绍），把这些地图都画出来，可能会得到几百个教授的一致通过。</p>
-<p><img src="https://ooo.0o0.ooo/2015/12/11/566af66d642e2.png" alt="Rmd.png"><br><img src="https://ooo.0o0.ooo/2015/12/11/566af66d753f9.png" alt="Report1.png"><br><img src="https://ooo.0o0.ooo/2015/12/11/566af66d6664a.png" alt="Report2.png"></p>
-<h2 id="未完待续">未完待续</h2><p>初级教程就先写到这里，感谢大家的关注，本文将随时更新，更多教程将陆续编写。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/R/">R</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/一本正经胡说八道/">一本正经胡说八道</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/可视化/">可视化</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/地域黑/">地域黑</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/统计学/">统计学</a></li></ul>
 	</div>
 
       
