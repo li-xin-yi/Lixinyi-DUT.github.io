@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script type="text/javascript">
+    var host = "www.yangzhou301.com";
+    if ((host == window.location.host) && (window.location.protocol != "https:"))
+        window.location.protocol = "https";
+</script>
   <meta charset="utf-8">
   
   <title>如何理解“方差越大信息量就越多”？ | 扬州计划</title>
@@ -10,8 +15,8 @@
 但是如何理解，“方差越大，信息量就越多”？
 或者，我们应该如何理解“信息量”这个词？在某一个特征中，系统的混乱程度？值的大小？多少？
 
-原问题地址：http://www.zhihu.com/question/36481348
-回答前面几位答主答的非常好非常专">
+原问题地址：https://www.zhihu.com/question/36481348
+回答前面几位答主答的非常好非常">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何理解“方差越大信息量就越多”？">
 <meta property="og:url" content="https://www.yangzhou301.com/2015/11/24/223064350/index.html">
@@ -21,10 +26,10 @@
 但是如何理解，“方差越大，信息量就越多”？
 或者，我们应该如何理解“信息量”这个词？在某一个特征中，系统的混乱程度？值的大小？多少？
 
-原问题地址：http://www.zhihu.com/question/36481348
-回答前面几位答主答的非常好非常专">
+原问题地址：https://www.zhihu.com/question/36481348
+回答前面几位答主答的非常好非常">
 <meta property="og:image" content="https://ooo.0o0.ooo/2015/11/23/56533181d370d.png">
-<meta property="og:updated_time" content="2015-12-04T07:19:53.576Z">
+<meta property="og:updated_time" content="2016-03-16T16:29:33.680Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何理解“方差越大信息量就越多”？">
 <meta name="twitter:description" content="问题描述
@@ -32,8 +37,8 @@
 但是如何理解，“方差越大，信息量就越多”？
 或者，我们应该如何理解“信息量”这个词？在某一个特征中，系统的混乱程度？值的大小？多少？
 
-原问题地址：http://www.zhihu.com/question/36481348
-回答前面几位答主答的非常好非常专">
+原问题地址：https://www.zhihu.com/question/36481348
+回答前面几位答主答的非常好非常">
   
     <link rel="alternative" href="/atom.xml" title="扬州计划" type="application/atom+xml">
   
@@ -154,11 +159,11 @@ var _hmt = _hmt || [];
 				<section class="switch-part switch-part3">
 					<div id="js-friends">
 					
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="/www.xinhuanet.com/newscenter/ldrbdzj/jzm1999/guonei.htm">长者活动报道专集</a>
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.xinhuanet.com/newscenter/ldrbdzj/jzm1999/guonei.htm">长者活动报道专集</a>
 			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="/yangzhou.qeejoo.com/c-14958493.html">扬州第四建筑301工程队招工</a>
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://yangzhou.qeejoo.com/c-14958493.html">扬州第四建筑301工程队招工</a>
 			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="/gabyy77.qianyan.biz">续江科技</a>
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://gabyy77.qianyan.biz">续江科技</a>
 			        
 			        </div>
 				</section>
@@ -261,7 +266,7 @@ var _hmt = _hmt || [];
 <p>但是如何理解，“方差越大，信息量就越多”？</p>
 <p>或者，我们应该如何理解“信息量”这个词？在某一个特征中，系统的混乱程度？值的大小？多少？</p>
 </blockquote>
-<p>原问题地址：<a href="http://www.zhihu.com/question/36481348" target="_blank" rel="external">http://www.zhihu.com/question/36481348</a></p>
+<p>原问题地址：<a href="https://www.zhihu.com/question/36481348" target="_blank" rel="external">https://www.zhihu.com/question/36481348</a></p>
 <h2 id="回答">回答</h2><p>前面几位答主答的非常好非常专业，但是不太接地气，过于阳春白雪了，我来下里巴人一下，以我作为一个学识浅薄的门外汉的角度没什么干货的浅谈一下。</p>
 <p>题主问的很明确，为什么方差和信息量是正相关的？题主非常熟悉方差那一套理论，那么现在的疑问就是信息量的定义是什么？通过什么方法去量化信息量？</p>
 <p>以非专业的角度来说，我们直观感受什么叫信息量大？比如我今天看了一集电视剧，和昨天看的那一集一样是40分钟，下载下来大小也是一样的，但是大呼“卧槽，今天这集信息量好大，脑子转不过来了”是什么意思？这是我们日常语境的信息量，也就是事物给我们传递的信息的数量。比如今天我们要竞选特首，一共有3位候选人，如果完全按照基本法去产生，也就是说选举委员会的投票完全随机，那么这3位候选人当选的概率均等，服从均匀分布（也就是方差最大的一种情况），那么民众都是非常期待看到这场竞选的直播的，因为之前谁也不知道谁会当选，而看完以后就能获得“究竟谁能当选”这个信息；然而竞选开始之前，欧盟出了个报告说其中某位先生是钦定的，这场竞选中他赢的概率是100%（此时方差为0），那么基本上就没人想看竞选了，因为这场竞选只是走个形式并没有传递出任何其他信息。</p>
@@ -274,7 +279,7 @@ var _hmt = _hmt || [];
 <p>信息量的定义可以追溯到Hartley（没错，就是那个有噪信道编码定理<code>Shannon-Hartley Theorem</code>的那个Hartley）提出如果一个信源以相等的概率从包含<code>S</code>个符号的有限集中选择<code>N</code>个传输符号进行传输，那么信息量就是<br>${H_0} = {\log_{10}}{S^N} = N{\log_{10}}S$（最早底数还是取的<code>10</code>，但是后来我们使用和讨论二元信道的情况更多，所以规定底数为<code>2</code>），这也是后来我们经常在各类书籍中看到的信息熵定义$H(X) =  - \sum\limits_{x \in X} {p(x) \cdot \log p(x)}$的一种特殊情况。很显然信息熵可以用来度量信息的不确定度，我们假设无噪声的情况下，信源发送的信息X是从一个有限集里面随机挑选的，然后X再经过信道传输给接收方，接收方得到信息X，<strong>这个过程正是破除了X的不确定性。</strong>如果一个信源只能从<code>{0,1}</code>中选择一个发给对方，<strong>那我接收这个信号得到的信息量就是X的不确定度，</strong>如果信源的字典只有一个<code>{1}</code>的话，这个信源就是信息量为0的，反正不接收我都能猜的对要传送的是什么，如果还是刚才的情况<code>{0,1}</code>但不是均匀分布，而是取0的概率为90%，那么信息量也比均匀分布坍缩不少，因为我们已经了解到很大可能性是0，而接收只是破除了10%的疑义。所以，从感性上来说，<strong>随机变量的不确定度是可以用来度量随机变量的信息量</strong>。</p>
 <p>那么剩下的问题是信息熵和（协）方差有什么关系？方差和信息熵是否正相关？</p>
 <p>那么我先说一下我的结论：“方差越大信息量就越多”这个断言是极具<strong>误导性</strong>的。若是没有任何应用的前提下单单谈这句话，是十分<strong>没有意义</strong>的。</p>
-<p>正如 <a href="http://www.zhihu.com/people/lei-tian-qi-10" target="_blank" rel="external">@雷天琪</a> 的回答解释的非常直观，深入而浅出。因为在主成分分析（PCA）方法中，我们确实是把方差作为衡量信息量的指标，在我们的感性理解中，方差越大说明数据越具有多样性，相关性也就越强（参考协方差的定义）。</p>
+<p>正如 <a href="https://www.zhihu.com/people/lei-tian-qi-10" target="_blank" rel="external">@雷天琪</a> 的回答解释的非常直观，深入而浅出。因为在主成分分析（PCA）方法中，我们确实是把方差作为衡量信息量的指标，在我们的感性理解中，方差越大说明数据越具有多样性，相关性也就越强（参考协方差的定义）。</p>
 <p>然而，（协）方差度量的是数据分布的离散度（diversity，也称多样性），对于统计样本和随机变量都如是。而衡量信息量所用的信息熵则是用来度量不确定程度（物理上的熵表示混乱程度，实际这个混乱度的意义还是和Shannon熵的不确定意义一致）。在信息论体系下，解压也好传输也好降维也好，导致的信息损失（information loss）也是使用互信息量的差值表示。在这里，一个很明显的差异可以被发现：对于有量纲的样本数据，（协）方差是个<strong>有量纲</strong>的量，而信息熵，甚至包括建立在熵度量基础上的一系列度量（相对熵，条件熵，互信息量）都是<strong>无量纲</strong>的（这个说法也不严谨，可以认为熵的量纲取决于对数的底数）。那么这个差异也可以说明一个非常大的问题：方差的指取决于随机变量本身的取值，而信息熵和互信息量等量的取值<strong>仅仅与随机变量的分布有关，与随机变量本身的具体取值无关</strong>。</p>
 <p>那么这两个具有很大的相似度的两个量哪个更适合用来表示信息量？</p>
 <p>举个十分极端的例子，对于两个独立的离散随机变量$X_1$, ${X _2}$它们的取值可以有具体意义（比如天气预报预测未来一个月下雨的天数，可以从天气晴朗的0到30任意取整数值），也可以没有任何数学意义（如特首选举中当选的候选人编号）</p>

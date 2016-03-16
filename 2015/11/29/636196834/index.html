@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script type="text/javascript">
+    var host = "www.yangzhou301.com";
+    if ((host == window.location.host) && (window.location.protocol != "https:"))
+        window.location.protocol = "https";
+</script>
   <meta charset="utf-8">
   
   <title>信息论与机器学习的关系？ | 扬州计划</title>
@@ -17,7 +22,7 @@
 <meta property="og:image" content="https://ooo.0o0.ooo/2015/12/05/5662d2afbffc6.png">
 <meta property="og:image" content="https://ooo.0o0.ooo/2015/12/05/5662d2b007c37.png">
 <meta property="og:image" content="https://ooo.0o0.ooo/2015/12/05/5662d4405465c.png">
-<meta property="og:updated_time" content="2015-12-05T14:31:42.002Z">
+<meta property="og:updated_time" content="2016-03-16T16:28:46.808Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="信息论与机器学习的关系？">
 <meta name="twitter:description" content="原问题地址：http://www.zhihu.com/question/37349649
@@ -142,11 +147,11 @@ var _hmt = _hmt || [];
 				<section class="switch-part switch-part3">
 					<div id="js-friends">
 					
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="/www.xinhuanet.com/newscenter/ldrbdzj/jzm1999/guonei.htm">长者活动报道专集</a>
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.xinhuanet.com/newscenter/ldrbdzj/jzm1999/guonei.htm">长者活动报道专集</a>
 			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="/yangzhou.qeejoo.com/c-14958493.html">扬州第四建筑301工程队招工</a>
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://yangzhou.qeejoo.com/c-14958493.html">扬州第四建筑301工程队招工</a>
 			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="/gabyy77.qianyan.biz">续江科技</a>
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://gabyy77.qianyan.biz">续江科技</a>
 			        
 			        </div>
 				</section>
@@ -245,7 +250,7 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>原问题地址：<a href="http://www.zhihu.com/question/37349649" target="_blank" rel="external">http://www.zhihu.com/question/37349649</a></p>
-<h2 id="结论">结论</h2><p>信息论与机器学习同为涉及计算机科学和应用数学等学科的分支领域，这两门交叉学科在起源和应用上有很多相似之处。信息论的理论体系相对成熟一些。机器学习这些年比较受欢迎，理论和应用的扩充发展速度远远更快且看不到饱和的趋势。两个方向互有交叉，但主要还是机器学习中借用信息论的方法以此拓展理论研究和应用场景，比较典型的就是借鉴信息理论创造和改进学习算法（主要是分类问题），甚至衍生出了一个新方向，信息理论学习，详细介绍和研究近况可以看这里：<a href="http://cnel.ufl.edu/research/ITL.php" target="_blank" rel="external">Information Theoretic Learning (ITL) research</a></p>
+<h2 id="结论">结论</h2><p>信息论与机器学习同为涉及计算机科学和应用数学等学科的分支领域，这两门交叉学科在起源和应用上有很多相似之处。信息论的理论体系相对成熟一些。机器学习这些年比较受欢迎，理论和应用的扩充发展速度远远更快且看不到饱和的趋势。两个方向互有交叉，但主要还是机器学习中借用信息论的方法以此拓展理论研究和应用场景，比较典型的就是借鉴信息理论创造和改进学习算法（主要是分类问题），甚至衍生出了一个新方向，信息理论学习，详细介绍和研究近况可以看这里：<a href="https://cnel.ufl.edu/research/ITL.php" target="_blank" rel="external">Information Theoretic Learning (ITL) research</a></p>
 <h2 id="说明">说明</h2><p>机器学习可以根据数学原理分为两种，一种基于经验公式（错误率、边界、代价、风险、实用性、分类边缘），还有一种则是基于信息理论。</p>
 <p>信息论中的一些度量也可以作为学习算法的度量。Watanabe也提出过“<strong>学习就是一个熵减的过程</strong>”，学习的过程也就是使信息的不确定度下降的过程。Bayesian理论也扎根于信息和优化的概念中。比起传统的经验公式为基础的机器学习，以信息理论为基础的机器学习也拥有无可比拟的优势。当少数类的样本数量接近0时，Bayesian分类器对少数类的分类趋向于完全的错误。而以互信息为学习准则的分类器则能够保护少数类，并根据各类样本数量比例自动平衡错误型和拒绝型。</p>
 <p>有目标随机变量$T$和预测结果随机变量$Y$</p>
