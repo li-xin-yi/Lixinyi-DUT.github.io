@@ -23,8 +23,8 @@
 
 原问题地址：https://www.zhihu.com/question/36481348
 回答前面几位答主答的非常好非常">
-<meta property="og:image" content="https://ooo.0o0.ooo/2015/11/23/56533181d370d.png">
-<meta property="og:updated_time" content="2016-03-16T16:29:33.680Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/223064350/1.png">
+<meta property="og:updated_time" content="2016-03-17T15:14:44.757Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何理解“方差越大信息量就越多”？">
 <meta name="twitter:description" content="问题描述
@@ -341,7 +341,7 @@ var _hmt = _hmt || [];
 <p>不妨想一下PCA降维的目的，就是为了<strong>降噪</strong>。除去和结果关系不大的特征，保留最具相关性的特征。但是这些数据是以什么概率分布产生的，我们并不知道，这里的信息熵就没有什么太大意义了，不能开上帝视角找到最大信息熵的方向，PCA方法本来就是用来“揣测”和“创造”数据之间的规律。至于我们怎样区分出什么是噪声，什么是主成分，就是出于这种揣测的思路找到离散程度最高的方向，而离散程度低的方向更有可能是由于噪声的干扰表现出同一性，或者反过来说就是因为太同一所以没什么分析价值。因此我们把注意力放在离散程度高的成分上，因为它的多样性可以帮助我们分析数据间潜在的关系。</p>
 <p>那么从信号传输的角度看，分解协方差矩阵找到特征值最大的方向（也就是方差最大的方向）是否真正保留了信息论意义上的最大信息量？</p>
 <p>假设有这样一个信道：</p>
-<p><img src="https://ooo.0o0.ooo/2015/11/23/56533181d370d.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/223064350/1.png" alt=""></p>
 <p>信源信号（输入）为向量$\bf{x}$，传输过程中的噪声为向量$\bf{z}$，最后得到的信号（输出）为$\bf{y}=\bf{x}+\bf{z}$。<br>那么考虑以下情况：</p>
 <ol>
 <li>$\bf{x}$服从Gaussian分布，$\bf{z}$也服从Gaussian分布且其协方差矩阵与恒等矩阵成比例（也就是$\bf{z}$向量各个维度<code>i.i.d</code>的情况）。我们定义PCA降为后的结果为${\bf{r}} = {\bf{w}}_l^{\bf{T}}{\bf{y}}$($\bf{w}$是新空间的基向量，$l$是新空间的维数），那么此时PCA确实最大化了互信息量$I({\bf{r}};{\bf{x}})$.</li>

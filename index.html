@@ -242,31 +242,31 @@ var _hmt = _hmt || [];
 </blockquote>
 <h3 id="定义（Definition）">定义（<em>Definition</em>）</h3><p>对于一元函数$y=f\left( \cdot \right)$来说，函数为凸的定义是:</p>
 <p>对于定义域内两个任意的自变量$x_1$和$x_2$，且有任意$0 \le \theta \le 1$，如果函数$f\left( \cdot \right)$满足$$f\left( {\theta {x_1} + \left( {1 - \theta } \right){x_2}} \right) \le \theta f\left(x_1 \right) + \left( {1 - \theta } \right)f\left( x_2 \right)$$那么函数$f\left( \cdot \right)$是凸函数。</p>
-<p><img src="https://ooo.0o0.ooo/2016/03/10/56e13c531e869.png" alt="凸函数的基本法"></p>
+<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/826442654/1.png" alt="凸函数的基本法"></p>
 <p>我们可以理解为连接函数图像两点构成的线段始终在函数曲线上方。</p>
 <p>把这个定义推广到多元函数：多变量函数可以把自变量写成一个向量${\bf{x}} = {\left[x_1,x_2, \ldots ,x_n\right]}^T$，同理对于定义域的任意两个自变量${\bf{x}}_1$和${\bf{x}}_2$，以及任意$0 \le \theta \le 1$，如果函数$f\left( \cdot \right)$满足$$f\left( {\theta {\bf{x_1}} + \left( {1 - \theta } \right){\bf{x_2}}} \right) \le \theta f\left( {\bf{x_1}} \right) + \left( {1 - \theta } \right)f\left( {\bf{x_2}} \right)$$那么函数$f\left( \cdot \right)$是凸函数。</p>
 <h3 id="性质*（Properties）">性质*（<em>Properties</em>）</h3><p>一说到凸函数我们第一个想到的例子就是二次函数$y=x^2$，有人可能会疑惑这不是凹函数吗？是的，国内有很长一段时间对于函数的凹/凸的判定是混乱的，我初高中的时候受到的教育也是把$y=x^2$当作凹函数进行讲解的。$y=x^2$的图像直观看上去更像我们日常语境中说的“凹”，或者也有翻译者为了讨巧把convex说成“下凸”。你们这么望文生义是不行的，这么简单粗暴想当然就把它说成凹函数，就像在长安街看见坦克就大喊“占”或者“点”一样。</p>
 <p>当然有数学工作者说后来国内出了个基本法明确的规定了凹凸的定义从此这些混乱才结束。</p>
 <p>所以有人会不禁困惑，凸函数的定义和定义代表的几何意义到底和凸有什么关系？为什么要把满足这种性质的函数称为凸函数？</p>
-<p><img src="https://ooo.0o0.ooo/2016/03/11/56e2c10122976.png" alt="Epigraph:比函数不知道高到哪里去了"></p>
+<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/826442654/2.png" alt="Epigraph:比函数不知道高到哪里去了"></p>
 <p>首先引入<strong>上境图</strong>（<em>Epigraph/Supergraph</em>）的概念：在函数$y=f\left( \cdot \right)$<strong>曲线及其上方</strong>的所有的点构成的集合。对于$n$元函数$y=f\left( \cdot \right)$这个$R^n \to R$的映射，其上境图为<br>$$epi = \{ \left( {\bf{x}},y \right): {\bf{x}} \in R^n,y \in R,y \ge f\left( x \right)\}$$当这个点集是凸集（<em>Convex Set</em>）的时候，对应的函数是凸函数，反之亦然。</p>
-<p>凸集的“凸”是可以从几何上直观理解的，连接点集中的任意两点，线段上的每一点都在该点集内，则为凸集<br><img src="https://ooo.0o0.ooo/2016/03/10/56e19f6c1a9cb.png" alt="四个代表"></p>
+<p>凸集的“凸”是可以从几何上直观理解的，连接点集中的任意两点，线段上的每一点都在该点集内，则为凸集<br><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/826442654/3.png" alt="四个代表"></p>
 <p>这时我们对凸函数的定义有了更深刻的了解，它的定义不过是要求<em>上境图中的两点连线仍然包含于上境图</em>的一个特例，特别之处在于这两点都在集合的边界。考虑到连续函数的上境图必然是闭集，而验证闭集的凸性时，一般来说，这样的性质只要对于边界上的点成立，那么对于其他点就都成立。</p>
 <p>你们给我弄的这个凸性啊，excited!这样去理解函数的“凸”就不会再出现凹凸定义混乱的情况了，不会听得风就是雨说$y=x^2$是凹函数了。</p>
 <h2 id="一阶条件（First-order_Condition）">一阶条件（<em>First-order Condition</em>）</h2><p>当且仅当对于定义域上任意自变量${\bf{x}}_1$和${\bf{x}}_2$，$y=f\left( \cdot \right)$都满足$$f\left( {\bf{x}_1} \right) \ge f\left( {\bf{x}}_2 \right) + \nabla f\left( {\bf{x}}_2 \right) \cdot \left( {\bf{x}}_1 - {\bf{x}}_1 \right)$$时$y=f\left( \cdot \right)$为凸函数。</p>
 <p>其中梯度向量$\nabla f\left( {\bf{x}} \right) = \left( \frac{\partial f\left( {\bf{x}} \right)}{\partial {x_1}},\frac{\partial f\left( {\bf{x}} \right)}{\partial {x_2}}, \ldots ,\frac{\partial f\left( {\bf{x}} \right)}{\partial {x_n}} \right)$也就是在该点对各个变量求偏导构成的向量。</p>
-<p>应用到简单的一元函数可以看到<br><img src="https://ooo.0o0.ooo/2016/03/11/56e2c3fd5e4b3.png" alt="一阶条件"><br>直观的理解是：凸函数的函数图像必然位于曲线上任意一点的切线的上方</p>
+<p>应用到简单的一元函数可以看到<br><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/826442654/4.png" alt="一阶条件"><br>直观的理解是：凸函数的函数图像必然位于曲线上任意一点的切线的上方</p>
 <h3 id="必要性（Necessity）">必要性（<em>Necessity</em>）</h3><p>本小节将证明凸函数必然具有上述性质。即对于在定义域内可导的凸函数$y=f\left( \cdot \right)$必然有不等式$f\left( {\bf{x}_1} \right) \ge f\left( {\bf{x}}_2 \right) + \nabla f\left( {\bf{x}}_2 \right) \cdot \left( {\bf{x}}_1 - {\bf{x}}_1 \right)$对于任意的${\bf{x}}_1$和${\bf{x}}_2$均成立。</p>
 <p>假设函数$f\left( \cdot \right)$在定义域上是凸函数，那么根据定义有（假设$0 &lt; \theta  \le 1$）：<br>$$\begin{align}<br>f\left( \theta {\bf{x}}_1 + \left(1 - \theta \right) {\bf{x}}_2  \right) &amp; \le \theta f\left( {\bf{x}}_1 \right) + \left(1 - \theta \right)f\left( {\bf{x}}_2 \right) \\<br>f\left( {\bf{x}}_2 + \theta \left( {\bf{x}}_1 - {\bf{x}}_2 \right) \right) &amp;\le f\left( {\bf{x}}_2 \right) + \theta \left( f\left( {\bf{x}}_1 \right) - f\left( {\bf{x}}_2 \right) \right) \\<br>f\left( {\bf{x}}_2 + \theta \left( {\bf{x}}_1 - {\bf{x}}_2 \right) \right) - f\left( {\bf{x}}_2 \right) &amp;\le \theta \left(f\left( {\bf{x}}_1 \right) - f\left({\bf{x}}_2 \right) \right) \\<br>\frac{f\left( {\bf{x}}_2 + \theta \left( {\bf{x}}_1 - {\bf{x}}_2 \right) \right) - f\left( {\bf{x}}_2 \right)}{\theta} &amp;\le f\left( {\bf{x}}_1 \right) - f\left( {\bf{x}}_2 \right) \\<br>f\left( {\bf{x}}_1 \right) &amp; \ge f\left( {\bf{x}}_2 \right) + \frac{f\left({\bf{x}}_2 + \theta \left({\bf{x}}_1- {\bf{x}}_2 \right) \right) - f\left( {\bf{x}}_2 \right)}{\theta }<br>\end{align}$$<br>令$g\left( \theta \right) = f\left( {\bf{x}}_2 + \theta \left( {\bf{x}}_1 - {\bf{x}}_2 \right) \right)$，则$g\left( 0 \right) = f\left({\bf{x}}_2 \right)$，原不等式可以代换为$f\left({\bf{x}}_1 \right) \ge f\left({\bf{x}}_2 \right) + \frac{g\left( \theta  \right) - g\left( 0 \right)}{\theta }$ 当$\theta$趋近于$0$时，有$\mathop{\lim}\limits_{\theta \to 0} \frac{g\left( \theta \right) - g\left( 0 \right)}{\theta } = g’(0)$这一项也就是函数${g\left( \theta \right)}$在$\theta=0$处的导数值，${g\left( \theta  \right)}$ 实际是$f\left( {\bf{x}} \right)$与${\bf{x}} = {\bf{x}}_2 + \theta \left( {\bf{x}}_1 - {\bf{x}}_2 \right)$的复合函数，借助链式法则容易求导得$$\frac{dg}{d\theta } = \left( {\bf{x}}_1 - {\bf{x}}_2 \right)\frac{df\left({\bf{x}}_2 + \theta \left({\bf{x}}_1 - {\bf{x}}_2 \right) \right)}{d{\bf{x}}}$$由于只要求在$\theta=0$处的导数值所以容易得$$\left. \frac{dg}{d\theta} \right|_{\theta  = 0} = \left( {\bf{x}}_1 - {\bf{x}}_2 \right)\frac{df\left( {\bf{x}}_2 \right)}{d{\bf{x}}} = \nabla f\left( {\bf{x}}_2 \right) \cdot \left({\bf{x}}_1 - {\bf{x}}_2 \right)$$<br>代入回不等式即可得到<br>$$f\left( {\bf{x}}_1 \right) \ge f\left( {\bf{x}}_2 \right) + \nabla f\left( {\bf{x}}_2 \right) \cdot \left( {\bf{x}}_1 - {\bf{x}}_2 \right)$$证毕。</p>
 <hr>
 <p>这个推导过程中关键性的一步就是取了极限$\theta  \to 0$，怎样理解这个操作？$\theta {\bf{x}}_1 + \left( 1 - \theta  \right){\bf{x}}_2$表示一个由${\bf{x}}_1$和${\bf{x}}_2$合成的向量</p>
-<p><img src="https://ooo.0o0.ooo/2016/03/12/56e43b8d1f84f.png" alt="一尺向量，日取其半"></p>
+<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/826442654/5.png" alt="一尺向量，日取其半"></p>
 <p>当我们规定$0 \le \theta  \le 1$时，得到的新向量必然落在向量${\bf{x}}_1$和${\bf{x}}_2$终点之间连接成的线段上，也就是图中的虚线位置，而$\theta$的大小决定了新向量的终点更接近${\bf{x}}_1$的终点还是${\bf{x}}_2$的终点，可以把它理解为一种“<strong>权重</strong>”。当$\theta  \to 0$时，我们取的这个新的点无限接近于${\bf{x}}_2$所表示的点。</p>
 <p>从凸函数的性质出发，函数曲线上任意两点连接而成的线段都在函数图像的上方，而考虑到定义域内可导的性质，所在直线的其他部分都在函数图像的下方（否则直接无法与函数相交，而凸性对于整个定义域都成立则不可能存在两个以上的交点）。当所取的图像上的两点无限接近时，也就是$\theta  \to 0$时，直线在函数上方的部分也趋近于$0$，则直线始终位于函数图像的下方，而这条直线可以用朴素（<em>naive</em>）的“<em>切线逼近割线</em>”去理解为函数在${\bf{x}}={\bf{x}}_2$处的切线，由于取点是任意的，一阶条件不等式表达的必要性“<em>凸函数上任意一点的切线永远不高于函数图像</em>”也是与图相合的，函数曲线比任意一点的切线不知道高到哪里去了。</p>
 <h3 id="充分性（Sufficiency）">充分性（<em>Sufficiency</em>）</h3><p>本小节将证明一阶条件的充分性，即通过上述不等式的成立推导出具有这种性质的函数是凸函数。</p>
 <p>对于定义域上任意自变量${\bf{x}}_1$和${\bf{x}}_2$，以及$0 \le \theta  \le 1$，构造一个新变量${\bf{x}} = \theta {\bf{x}}_1 + \left( 1 - \theta  \right){\bf{x}}_2$，由于定义域是凸集，必然有${\bf{x}} \in {\rm{dom}}f$，即合成的新变量${\bf{x}}$也被硬点在定义域内。所以该不等式对于${\bf{x}}$，${\bf{x}}_1$和${\bf{x}}_2$这三个代表都适用，那么有：<br>$$\begin{cases}<br>f\left({\bf{x}}_1 \right) &amp;\ge f\left( {\bf{x}} \right) + \nabla f\left( {\bf{x}} \right)\left( {\bf{x}} - {\bf{x}}_1 \right) \\<br>f\left({\bf{x}}_2 \right) &amp;\ge f\left( {\bf{x}} \right) + \nabla f\left( {\bf{x}} \right)\left( {\bf{x}} - {\bf{x}}_2 \right)<br>\end{cases}$$<br>由于$0 \le \theta  \le 1$，则有$0 \le 1-\theta  \le 1$，分别以$\theta$和$1-\theta$乘以上面两个不等式的两边，不等式方向不变：<br>$$\begin{cases}<br>\theta f\left( {\bf{x}}_1 \right) &amp;\ge \theta f\left( {\bf{x}} \right) + \theta \nabla f\left( {\bf{x}} \right)\left( {\bf{x}} - {\bf{x}}_1 \right) \\<br>\left(1 - \theta \right) f\left( {\bf{x}}_2 \right) &amp;\ge \left( 1 - \theta  \right)f\left( {\bf{x}} \right) + \left( 1 - \theta  \right)\nabla f\left( {\bf{x}} \right)\left( {\bf{x}} - {\bf{x}}_2 \right)<br>\end{cases}$$<br>将这两个不等式两边分别相加得<br>$$\begin{align}<br>\theta f\left({\bf{x}}_1 \right) + \left( 1 - \theta  \right)f\left( {\bf{x}}_2 \right) &amp;\ge f\left( {\bf{x}} \right) + \nabla f\left( {\bf{x}} \right)\left( {\bf{x}} - \left( \theta {\bf{x}}_1 + \left( 1 - \theta  \right){\bf{x}}_2 \right) \right) \\<br>\theta f\left( {\bf{x}}_1 \right) + \left( 1 - \theta \right)f\left( {\bf{x}}_2 \right) &amp;\ge f\left( {\bf{x}} \right)\\<br>\theta f\left( {\bf{x}}_1 \right) + \left( {1 - \theta } \right)f\left({\bf{x}}_2 \right) &amp;\ge f\left( \theta {\bf{x}}_1 + \left( 1 - \theta \right){\bf{x}}_2 \right)<br>\end{align}$$<br>这个不等式恰好是凸函数的定义，至此我们可以说满足一阶条件不等式的可导函数符合凸函数的基本法，是凸函数。证毕。</p>
 <hr>
-<p>这个证明的过程我们可以简化为一个一元函数$y = f\left( x \right)$来说明。根据已知条件，对于一组已知的$x_1$和$x_2$，找到之间任意的一点$x$（这个过程通过调节变量$\theta$的大小），过函数图像上对于的点$p_0$作切线$l$，一阶条件不等式表达的含义即$p_1$和$p_2$必然不在这条切线$l$的下方，更具体来说就是$p_1$比$p_3$，$p_2$比$p_4$不知道高到哪里去了。<br><img src="https://ooo.0o0.ooo/2016/03/15/56e7ead1bf348.png" alt=""><br>而我们在证明中把两个不等式分别乘以不同的系数再相加，这个操作定位了$p’$，这个点不低于$p_0$。两个不等式按一定的“<strong>权重</strong>”相加，由于$\left(p_1,p_2 \right)$(Wallace组)对应的同横坐标的两个端点的纵坐标不小于$\left(p_3,p_4 \right)$(Sharon组)，那么对于分别以两组点连接而成的线段，必然有$\left(p_1,p_2 \right)$始终不低于$\left(p_3,p_4 \right)$，即图中的蓝色虚线一定不在红色实线的下方。那么过点$p$垂直于y轴作直线与蓝色虚线的交点即$p’$一定也不在$p$的下方。</p>
+<p>这个证明的过程我们可以简化为一个一元函数$y = f\left( x \right)$来说明。根据已知条件，对于一组已知的$x_1$和$x_2$，找到之间任意的一点$x$（这个过程通过调节变量$\theta$的大小），过函数图像上对于的点$p_0$作切线$l$，一阶条件不等式表达的含义即$p_1$和$p_2$必然不在这条切线$l$的下方，更具体来说就是$p_1$比$p_3$，$p_2$比$p_4$不知道高到哪里去了。<br><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/826442654/6.png" alt=""><br>而我们在证明中把两个不等式分别乘以不同的系数再相加，这个操作定位了$p’$，这个点不低于$p_0$。两个不等式按一定的“<strong>权重</strong>”相加，由于$\left(p_1,p_2 \right)$(Wallace组)对应的同横坐标的两个端点的纵坐标不小于$\left(p_3,p_4 \right)$(Sharon组)，那么对于分别以两组点连接而成的线段，必然有$\left(p_1,p_2 \right)$始终不低于$\left(p_3,p_4 \right)$，即图中的蓝色虚线一定不在红色实线的下方。那么过点$p$垂直于y轴作直线与蓝色虚线的交点即$p’$一定也不在$p$的下方。</p>
 <h3 id="支持平面*（Supporting_Hyperplane）">支持平面*（<em>Supporting Hyperplane</em>）</h3><blockquote>
 <p>它是凸函数，切平面怎么能不支持它？</p>
 </blockquote>
@@ -274,11 +274,11 @@ var _hmt = _hmt || [];
 <p>几何界有句老话，叫支持平面定理（<em>Supporting hyperplane theorem</em>）：（非空）凸集边界上的每个点，至少存在一个包含这个点的<strong>支持平面</strong>。</p>
 <p>具体来说，对于一个非空凸集$S \subseteq {R^n}$，对于任意一点${\bf{x}}_0 \in {\rm{bd}}S$或${\bf{x}}_0 \notin S$，一定存在至少一个${\bf{\alpha }} \in R^n$且${\bf{\alpha }} \ne {\bf{0}}$使得：</p>
 <p>$$\mathop\sup\limits_{\bf{x} \in S} {\bf{\alpha }}^T{\bf{x}} \le {\bf{\alpha }}^T{\bf{x}}_0$$</p>
-<p>这个$\bf{\alpha }$是支持平面的法向量，这个不等式的意思就是整个集合的点在$\bf{\alpha }$上的投影都不高于${\bf{x}}_0$在$\bf{\alpha }$上的投影<br><img src="https://ooo.0o0.ooo/2016/03/14/56e6cf7f25aec.png" alt="考虑法向量的进程"></p>
+<p>这个$\bf{\alpha }$是支持平面的法向量，这个不等式的意思就是整个集合的点在$\bf{\alpha }$上的投影都不高于${\bf{x}}_0$在$\bf{\alpha }$上的投影<br><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/826442654/7.png" alt="考虑法向量的进程"></p>
 <p>当然为了更加贴合前面的证明，我们可以取这里的${\bf{\alpha }}$向量的相反向量代替${\bf{\alpha }}$，那么有</p>
 <p>$$\mathop\inf\limits_{\bf{x} \in S} {\bf{\alpha }}^T{\bf{x}} \ge {\bf{\alpha }}^T{\bf{x}}_0$$</p>
 <p>整个集合的点在${\bf{\alpha }}$上的投影都不低于${\bf{x}}_0$在$\bf{\alpha }$上的投影，也就是法向量为$\bf{\alpha }$且过${\bf{x}}_0$的平面$h$即点集$S$的支持平面，$S$始终在$h$的“上”方。</p>
-<p><img src="https://ooo.0o0.ooo/2016/03/14/56e6dd39c5110.png" alt="这只是一张演示切平面的图，我没有任何说它是凸函数的意思"></p>
+<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/826442654/8.png" alt="这只是一张演示切平面的图，我没有任何说它是凸函数的意思"></p>
 <p>支持平面是怎样的平面？这是一个超平面，所以前面的证明中提到的切线也是一个支持平面。对于一元函数来说超平面就是切线，而$n$元函数的支持平面则是$n$维超平面，是函数在该点的<strong>切平面</strong>，梯度向量$\nabla f\left( {\bf{x}} \right)$也就是这个切平面的法向量，集合$S$对应函数的上境图。支持平面定理中存在支持平面与凸集之间也是充要关系，这种关系有兴趣的读者可以自己尝试证明。</p>
 <h2 id="二阶条件（Second-Order_Condition）">二阶条件（<em>Second-Order Condition</em>）</h2><p>当且仅当对于定义域上任意自变量$\bf{x_0}$的Hessian矩阵${\bf{H}}\left( {\bf{x}}_0 \right)$均为半正定矩阵时，函数$y=f\left( \cdot \right)$是凸函数。</p>
 <p>由于之前的证明已经说明了一阶条件和定义间的充要关系，接下来我们的证明将仅仅提供二阶条件与一阶条件间的等价推导，二阶矩阵与定义的关系我完全可以回答一句无可奉告。</p>
@@ -293,13 +293,13 @@ var _hmt = _hmt || [];
 <p>现在已知在定义域内Hessian矩阵都是半正定的。那么在任意的${\bf{x}}_0$使用带有<em>Lagrange余项</em>的一阶<em>Taylor展开式</em>为$$<br>f\left( {\bf{x}} \right) = f\left( {\bf{x}}_0 \right) + \nabla f\left( {\bf{x}}_0 \right)\left( {\bf{x}} - {\bf{x}}_0 \right) + \frac{1}{2}{\left( {\bf{x}} - {\bf{x}}_0 \right)^T}{\bf{H}}\left( {\bf{\xi }} \right)\left( {\bf{x}} - {\bf{x}}_0 \right)<br>$$其中${\bf{H}}\left( {\bf{\xi }} \right)$为在${\bf{x}} = {\bf{\xi }}$处的Hessian矩阵，其中${\bf{\xi }}$为$\bf{x}$与${\bf{x}}_0$之间的一个值（闭区间）,由于${\bf{H}}\left( {\bf{\xi }} \right)$是半正定的，所以必然有$\frac{1}{2}{\left( {\bf{x}} - {\bf{x}}_0 \right)^T}{\bf{H}}\left( {\bf{\xi }} \right)\left( {\bf{x}} - {\bf{x}}_0 \right) \ge 0$，因此对于任意的在定义域内的${\bf{x}}$和${\bf{x}}_0$都有$$f\left( {\bf{x}} \right) \ge f\left( {\bf{x}}_0 \right) + \nabla f\left( {\bf{x}}_0 \right)\left( {\bf{x}} - {\bf{x}}_0 \right)$$证毕。</p>
 <h3 id="Talyor定理*（Taylor’s_Theorem）">Talyor定理*（<em>Taylor’s Theorem</em>）</h3><p>二阶条件的证明用到了非常重要的数学工具——Talyor展开式，我们知道Talyor展开是用以描述某点附近的近似值，使用一个多项式去逼近原函数。一元函数$y=f\left( x \right)$在点$\left( x_0,f\left( x_0 \right) \right)$处的$n$阶Talyor展开式为$$f\left( x \right) = f\left( x_0 \right) + f’\left( x_0 \right)\left( x - x_0 \right) + \frac{1}{2!}f’’\left( x_0 \right)\left( x - x_0 \right)^2 +  \ldots  + \frac{1}{n!}f^{\left( n \right)}\left( x_0 \right)\left( x - x_0 \right)^n + R_n\left( x - x_0 \right)$$其中$R_n\left( x - x_0 \right)$为余项，表示的是这个估计值与真实值的<strong>偏差</strong>，是一个$\left( x - x_0 \right)^{n + 1}$级的数，我们前面的证明用到了其中的两种形式。</p>
 <p>我们可以看到“必要性”路线（定义$ \Rightarrow $一阶条件$ \Rightarrow $二阶条件）的证明我们一直都在增量趋近于无穷小的极限，所以展开式中使用的是<em>Peano余项</em>以方便我们忽略高阶无穷小的影响。我们知道随着阶数的增加，多项式估计值的准确度也在增加，取$\Delta x \to 0$时必须保证一阶条件的成立，那么微小的二阶增量也必须非负。</p>
-<p>而“充分性”的证明路线（二阶条件$\Rightarrow $一阶条件$\Rightarrow $定义）则使用了<em>Lagrange余项</em>，去找到这个使等式成立的具体的某点附近的二阶导数。我们展开带有<em>Lagrange余项</em>的0阶Taylor展开式：$$f\left( x \right) = f\left( x_0 \right) + f’\left( \xi  \right)\left( x - x_0 \right)$$这个式子明确的告诉我们，<br><img src="https://ooo.0o0.ooo/2016/03/15/56e834c228809.png" alt=""><br>高阶增量的系数就是区间内某个值的高阶导数，图中仅给出了0阶的情况，实际上这也是<em>Lagrange中值定理</em>的应用，可以推广到高阶。不同于“必要性”的宏观推导到微观的思想，“充分性”则是从每个定理成立的局部反推到全局成立，此时<em>Lagrange中值</em>$\xi$就扮演了非常重要的角色。</p>
+<p>而“充分性”的证明路线（二阶条件$\Rightarrow $一阶条件$\Rightarrow $定义）则使用了<em>Lagrange余项</em>，去找到这个使等式成立的具体的某点附近的二阶导数。我们展开带有<em>Lagrange余项</em>的0阶Taylor展开式：$$f\left( x \right) = f\left( x_0 \right) + f’\left( \xi  \right)\left( x - x_0 \right)$$这个式子明确的告诉我们，<br><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/826442654/9.png" alt=""><br>高阶增量的系数就是区间内某个值的高阶导数，图中仅给出了0阶的情况，实际上这也是<em>Lagrange中值定理</em>的应用，可以推广到高阶。不同于“必要性”的宏观推导到微观的思想，“充分性”则是从每个定理成立的局部反推到全局成立，此时<em>Lagrange中值</em>$\xi$就扮演了非常重要的角色。</p>
 <h2 id="后记*（Apply_for_Author）">后记*（<em>Apply for Author</em>）</h2><h3 id="符号标记（Notations）">符号标记（<em>Notations</em>）</h3><p>全文所用的符号和规定都出于我的个人习惯，比如多元函数的参数我使用$\bf{x}$是一个高高的列向量，可能其他的资料里面会使用宽宽的行向量，这时需要注意矩阵计算时一些变量的转置。毕竟你们非常熟悉行向量那一套，那么可以用你们自己的符号习惯再自己整理一下。</p>
 <h3 id="凹函数_（Concave_Function）">凹函数 （<em>Concave Function</em>）</h3><p>是一个与凸函数对偶的概念，定义中的不等号方向改变，把一阶条件的$\ge$换成$\le$，二阶条件中的半正定换成半负定，就是<em>凹函数</em>那一套。</p>
 <h3 id="严格凸函数（Strictly_Convex_Function）">严格凸函数（<em>Strictly Convex Function</em>）</h3><p>类比严格单调函数的定义。在定义中去掉条件的不等号$0 &lt; \theta &lt; 1$，得到的几个结论也是没有等号成立的，对应的Hessian矩阵是<strong>正定</strong>的。</p>
 <h3 id="广义凸函数（Generalized_Convex_Function）">广义凸函数（<em>Generalized Convex Function</em>）</h3><p>我们这么早就假设了函数是可导的，那么不可导的函数也可以是凸函数吗？当然啦。</p>
 <p>我们规定可导只是方便我们推导一阶条件和二阶条件，如果导数不存在那么一阶条件和二阶条件也是不适用，但函数仍然是凸函数，它的上境图依然是凸集，在每个点上依然有支持平面。</p>
-<p>举个简单的例子就是分段函数$$f(x)=\begin{cases}<br>-x &amp; x \le 0 \\<br>2 x &amp; x &gt;0<br>\end{cases}$$<br>当然对于这种函数来说有些不可导的点上的支持平面就不止一个了。<br><img src="https://ooo.0o0.ooo/2016/03/15/56e83fbcd7363.png" alt=""></p>
+<p>举个简单的例子就是分段函数$$f(x)=\begin{cases}<br>-x &amp; x \le 0 \\<br>2 x &amp; x &gt;0<br>\end{cases}$$<br>当然对于这种函数来说有些不可导的点上的支持平面就不止一个了。<br><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/826442654/10.png" alt=""></p>
 <p>为了<strong>完善定义</strong>，我们也可以扩展定义域（要求原定义域为凸集），原定义域上的函数值不变，空间内其他变量对应的函数值为无穷大，此时$f\left( {\theta {x_1} + \left( {1 - \theta } \right){x_2}} \right) \le \theta f\left(x_1 \right) + \left( {1 - \theta } \right)f\left( x_2 \right)$对于整个集合都适用，这个新函数也就是<em>广义凸函数</em>。</p>
 <hr>
 <p>很惭愧，只做了一些微小的工作。</p>
@@ -369,7 +369,7 @@ var _hmt = _hmt || [];
 </ul>
 <p>SMO不断执行这两个步骤直至收敛。</p>
 <p>因为有约束$\sum\limits_{i = 1}^n {\alpha_i y_i}=0$存在，实际上$\alpha_i$和$\alpha_j$的关系也可以确定。${\alpha_i}{y_i} + {\alpha_j}{y_j} = C$这两个参数的和或者差是一个常数。</p>
-<p><img src="https://pic1.zhimg.com/071f3351b3eee2db40fea3ba944f9d7c_b.png" alt="linear relationship"></p>
+<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/561474648/1.png" alt="linear relationship"></p>
 <p>所以虽然宣传上说是选择了一对$({\alpha_i},{\alpha_j})$，但还是选择了其中一个，将另一个写作关于它的表达式代入目标函数求解。</p>
 <h2 id="为什么SMO跑的那么快，比提出之前的算法不知道高到哪里去了？">为什么SMO跑的那么快，比提出之前的算法不知道高到哪里去了？</h2><p>正如上面提到的，在固定其他参数以后，这就是一个<strong>单变量</strong>二次规划问题，仅有的约束也是这个变量${\alpha _i} \ge 0$，显然有闭式解。不必再调用数值优化算法。</p>
 <p>KKT条件是对偶问题最优解的<strong>必要条件</strong>：<br>$$<br>\begin{cases}<br>\alpha _i \ge 0 &amp; \\<br>y_i f\left( {\bf{x}}_i \right) - 1 \ge 0 &amp; \\<br>\alpha _i \left( y_i f\left( {\bf{x}}_i \right) - 1 \right) = 0 &amp;<br>\end{cases}<br>$$</p>
@@ -480,12 +480,12 @@ var _hmt = _hmt || [];
 </ul>
 <p>但是说起来突然把这么多好东西塞给一个三流大学的即将毕业的学渣兼码渣简直暴殄天物，所以我要写出来给更多年轻的有潜力的学生看，不要浪费大好的学生时光啊。</p>
 <h2 id="申请过程">申请过程</h2><p>作为一个野鸡大学的学生，edu邮箱一直不认。也是欲哭无泪。实际上cn结尾的邮箱都有很大可能遇到这个问题。</p>
-<p><img src="https://ooo.0o0.ooo/2016/01/25/56a659d965826.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/546608189/1.png" alt=""></p>
 <p>前后历时1年17次。</p>
 <p>所以正确的申请姿势应该是主动发邮件给发拒信的邮箱，怒斥他们一番，告诉他们中国内地的高校的邮箱就是这个样子。当然也可以闷声上传自己的学生证/成绩单，一定更要注意证件上必须有<strong>日期</strong>。然后这个姿势对了大概10天后我还在火车上的时候他们就给我offer了</p>
 <p><img src="http://ww4.sinaimg.cn/mw1024/005U1mWQjw1ezvn6qa2syj30g00qo0vv.jpg" alt=""></p>
 <p>还有一个不怎么地道的方法就是自己买个edu域名然后用它的邮箱去申请，据说是秒回，我也要了个邮箱玩玩，当然没有正式用来申请只是觉得这个可以代表我的信仰。（顺便暴力求交往，作为一只猥琐的码农独自在最大的同性恋交往平台好寂寞，哪位朋友陪我一起用小五的情侣头像那最好了，划掉）</p>
-<p><img src="https://ooo.0o0.ooo/2016/01/25/56a65b35e9fb3.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/546608189/2.png" alt=""></p>
 <p>祝大家申请愉快！</p>
 <p>Have an octotastic day!</p>
 
@@ -544,7 +544,7 @@ var _hmt = _hmt || [];
       
         <p>原回答地址：<a href="https://www.zhihu.com/question/39324847/answer/82082794" target="_blank" rel="external">https://www.zhihu.com/question/39324847/answer/82082794</a></p>
 <p>要想理解<strong>可靠数据传输</strong>（<em>Reliable Data Transfer</em>），那么不妨结合与其相对的概念——<strong>不可靠数据传输</strong>进行理解。</p>
-<h2 id="1-_什么是可靠数据传输服务？什么是可靠数据传输协议？">1. 什么是可靠数据传输服务？什么是可靠数据传输协议？</h2><p><img src="https://ooo.0o0.ooo/2016/01/22/56a24adcadb55.png" alt="通信"><br>比如我们要实现这样的一组通信，发送方通过一个网络协议给接收方发送一些数据分组，接收方有可能接收到了全部数据，也可能因为各种原因只接收到了部分数据分组或者根本没有收到任何数据分组。即使收到了全部的数据分组，但可能这些分组是有序的（或者说可以通过一些操作恢复为发送时的顺序）可以得到完整的消息（<em>message</em>)，也有可能是无序的，无法恢复出完整的信息。即使数据包是完整的、有序的，有可能在某些地方因为信道有噪声或者其他缘故出现一些差错，导致数据上出了偏差。</p>
+<h2 id="1-_什么是可靠数据传输服务？什么是可靠数据传输协议？">1. 什么是可靠数据传输服务？什么是可靠数据传输协议？</h2><p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/162593157/1.png" alt="通信"><br>比如我们要实现这样的一组通信，发送方通过一个网络协议给接收方发送一些数据分组，接收方有可能接收到了全部数据，也可能因为各种原因只接收到了部分数据分组或者根本没有收到任何数据分组。即使收到了全部的数据分组，但可能这些分组是有序的（或者说可以通过一些操作恢复为发送时的顺序）可以得到完整的消息（<em>message</em>)，也有可能是无序的，无法恢复出完整的信息。即使数据包是完整的、有序的，有可能在某些地方因为信道有噪声或者其他缘故出现一些差错，导致数据上出了偏差。</p>
 <p>协议要保证的不仅仅是发送方可以发数据，同时也会对接收方将接收到怎样的数据做出一定的保证，这才是完整的通信。</p>
 <blockquote>
 <p>Thus, to support these applications, something has to be done to <strong>guarantee</strong> that the data sent by one end of the application is delivered <strong>correctly</strong> and <strong>completely</strong> to the other end of the application. If a protocol provides such a guaranteed data delivery service, it is said to provide reliable data transfer.</p>
@@ -616,11 +616,12 @@ var _hmt = _hmt || [];
 </tbody>
 </table>
 <p>还是沿用上面的类比，传输层协议就像记者一样，每个记者的技能点不一样，一般情况下我们当然会偏爱知识水平高、立场客观真实的西方记者，所以他的出勤会比较多比较著名。那么香港记者经验不足太肤浅、年轻不足以报道全部内容，她就一无是处吗？不是的，她就像UDP，不存在任何拥塞控制而且轻量简单（<em>simple</em>），跑的比谁都快，善于弄大新闻，对于实时性很高的新闻事件让她去也很合适。</p>
-<p><img src="https://ooo.0o0.ooo/2016/01/22/56a24d21cca90.png" alt="应用层各协议依赖的传输层协议"></p>
+<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/162593157/2.png" alt="应用层各协议依赖的传输层协议"></p>
 <p>因此应用层上的每个协议都会根据需求选择与之对应的传输层协议。</p>
 <h2 id="3-_怎样实现可靠数据传输？">3. 怎样实现可靠数据传输？</h2><p>对于底层信道完全可靠的情况，只需要调用跟着基本法来，接到上层调用就做一系列操作（打包之类的）把数据发给下层，接收方对应层协议收到下层的调用就将数据做些操作然后发给上层协议，其他的就不需要考虑了。</p>
 <p>我们已经在<code>2.1</code>提到，IP是不可靠的，但是可以依靠上层的协议（如TCP）使这个使用IP协议的通信变得可靠，这就好比记者在采访现场引导出了一些不符合积极向上的个人形象的言辞，但是没关系，上层还有编辑和其他审核人员，他们的专业技能可以保证把通讯稿写的符合基本法，那么宣传上就不会出现偏差。</p>
 <p>现在要解决的问题就是怎样在不可靠的网络层协议之上实现可靠的传输层协议。这里以在IP上实现的TCP为例。</p>
+<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/162593157/3.png" alt=""></p>
 <h3 id="3-1_差错检测">3.1 差错检测</h3><p>包括奇偶校验、校验和、CRC等方法判断收到的数据分组是否损坏，如果不能校正那就丢弃分组。</p>
 <h3 id="3-2_ACK确认">3.2 ACK确认</h3><p>这是在不可靠底层信道上加入的一种反馈机制，由接收方发送确认消息。发送方发送数据，接收方接收到了以后发了<code>ACK</code>表示“我已经收到了，可以继续发了”，就像发了一个“支持XXXX吗？”对方回答“吼啊”你才可以继续提问，如果你问的那么热情对方一句话也不说，这就不好了，虽然不排除无可奉告的可能，但是也不能再继续问下去了，这个模式就是停止等待（<em>stop-and-wait</em>）协议的思想，只有得到肯定的确认才能继续发送数据。除了肯定确认<code>ACK</code>表示确认收到以外，还有否定确认<code>NAK</code>，用来表示某个数据没有收到，比如滑动窗口协议中用的就是<code>NAK</code>，意思就是“没听说过”。</p>
 <p>发送方收到了接收方发来的<code>ACK/NAK</code>后自己也要判断的，然后再把接收方丢失的数据分组（无论是在信道上丢失的还是因为出了偏差所以主动丢弃的）重传一遍。</p>
@@ -741,7 +742,7 @@ var _hmt = _hmt || [];
 <h3 id="漫威神坑">漫威神坑</h3><p>今年也算彻底入了漫威坑了，去电影院看了复联2和蚁人，神盾局也追完了，卡特特工也是，漫威影业的早期作品也补的差不多了，就连福克斯的叉人都补了，至于漫画，把大事件都补完了，为了追快银姐弟的剧情还把早期的生肉也看了一遍，甚至已经开始用漫威的梗膜蛤了，不行，我有毒。</p>
 <p>不过更新速度也是不给力，正在策划等闲下来的时候开始自己着手做汉化。</p>
 <h3 id="Coursera">Coursera</h3><p>以前我也陆陆续续看过一些网易公开课的视频，但说真的，我现在推荐大家还是去<code>Coursera</code>或者<code>edx</code>去看一手原版的公开课，质量非常高，因为互动反馈的环节做的非常棒，而且资源也更加丰富一些。iOS用户还可以试用一下<code>iTunes U</code>相对更加自由灵活一些。当然我没有说任何网易公开课不好的意思，看个人需求或许你会觉得更加适合，反正学习这种事本来就是很自由的（然而怎么学都是学渣所以还是不自由的）。当然可能一开始会觉得英文环境不适应，但实际上对于受了那么多语言教育的本科生来说语言根本不是问题，到了后期反而觉得回来中文环境很不适应。</p>
-<p><img src="https://ooo.0o0.ooo/2016/01/05/568bd0b720c0a.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/202910084/1.png" alt=""></p>
 <p>因为这些课程的时间几乎都和学校的课冲突，而且还有难度不低的作业，所以导致整个大三学年我的精神压力很大，甚至想过如果连这些都不能兼顾好，我还有什么能力继续学下去，不如退学算了，而且作业难度每周递进，但是最后几周在校也有考试，我现在也记不清当时为什么那么压抑了，不过过去了一切都会好起来的。</p>
 <p>最推荐的是机器学习技法，中文授课，不过课件和作业都是英文的，每周都有编程题，课程结构也特别好。</p>
 <p>然后是JHU的几门数据学科的专项课程，我也是在那时入门R语言的，发现确实是个非常不错的数据分析工具。而且每个月都开，他们为了网课还在GitHub上建立了一个主页，有很多为该课程设计的工具。最主要是这个系列的课程为期四周，每个月都开，时间比较灵活。</p>
@@ -750,7 +751,7 @@ var _hmt = _hmt || [];
 <li><a href="https://www.coursera.org/learn/machinelearningwithbigdata" target="_blank" rel="external">Machine Learning With Big Data</a></li>
 <li><a href="https://www.coursera.org/course/crypto2" target="_blank" rel="external">Cryptography II</a></li>
 </ul>
-<h2 id="紧闭的恋之瞳">紧闭的恋之瞳</h2><p><img src="https://ooo.0o0.ooo/2016/01/05/568be64e35a69.jpg" alt="GitHub头像出处"></p>
+<h2 id="紧闭的恋之瞳">紧闭的恋之瞳</h2><p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/202910084/2.jpg" alt="GitHub头像出处"></p>
 <blockquote>
 <p>那样虽然非常方便，但看起来却十分的凄凉。但是，现在的她却没有那能够感受到凄凉的心灵。<br>在目的地山上的神社偶然遇到的人类。与那未知的人类的相遇给她的心境带来了小小的变化。<br>她想，竟然还有这么有趣的生物存在啊，她想要更多的了解关于眼前这个生物的事情。这个时候她第一次，对于自己闭上第三只眼的事感到了后悔。</p>
 </blockquote>

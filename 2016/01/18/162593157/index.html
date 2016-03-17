@@ -15,9 +15,10 @@
 <meta property="og:description" content="原回答地址：https://www.zhihu.com/question/39324847/answer/82082794
 要想理解可靠数据传输（Reliable Data Transfer），那么不妨结合与其相对的概念——不可靠数据传输进行理解。
 1. 什么是可靠数据传输服务？什么是可靠数据传输协议？比如我们要实现这样的一组通信，发送方通过一个网络协议给接收方发送一些数据分组，接收方有可能接收到">
-<meta property="og:image" content="https://ooo.0o0.ooo/2016/01/22/56a24adcadb55.png">
-<meta property="og:image" content="https://ooo.0o0.ooo/2016/01/22/56a24d21cca90.png">
-<meta property="og:updated_time" content="2016-01-23T17:55:25.126Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/162593157/1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/162593157/2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/162593157/3.png">
+<meta property="og:updated_time" content="2016-03-17T15:13:20.603Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="怎么有效理解可靠数据传输？">
 <meta name="twitter:description" content="原回答地址：https://www.zhihu.com/question/39324847/answer/82082794
@@ -247,7 +248,7 @@ var _hmt = _hmt || [];
       
         <p>原回答地址：<a href="https://www.zhihu.com/question/39324847/answer/82082794" target="_blank" rel="external">https://www.zhihu.com/question/39324847/answer/82082794</a></p>
 <p>要想理解<strong>可靠数据传输</strong>（<em>Reliable Data Transfer</em>），那么不妨结合与其相对的概念——<strong>不可靠数据传输</strong>进行理解。</p>
-<h2 id="1-_什么是可靠数据传输服务？什么是可靠数据传输协议？">1. 什么是可靠数据传输服务？什么是可靠数据传输协议？</h2><p><img src="https://ooo.0o0.ooo/2016/01/22/56a24adcadb55.png" alt="通信"><br>比如我们要实现这样的一组通信，发送方通过一个网络协议给接收方发送一些数据分组，接收方有可能接收到了全部数据，也可能因为各种原因只接收到了部分数据分组或者根本没有收到任何数据分组。即使收到了全部的数据分组，但可能这些分组是有序的（或者说可以通过一些操作恢复为发送时的顺序）可以得到完整的消息（<em>message</em>)，也有可能是无序的，无法恢复出完整的信息。即使数据包是完整的、有序的，有可能在某些地方因为信道有噪声或者其他缘故出现一些差错，导致数据上出了偏差。</p>
+<h2 id="1-_什么是可靠数据传输服务？什么是可靠数据传输协议？">1. 什么是可靠数据传输服务？什么是可靠数据传输协议？</h2><p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/162593157/1.png" alt="通信"><br>比如我们要实现这样的一组通信，发送方通过一个网络协议给接收方发送一些数据分组，接收方有可能接收到了全部数据，也可能因为各种原因只接收到了部分数据分组或者根本没有收到任何数据分组。即使收到了全部的数据分组，但可能这些分组是有序的（或者说可以通过一些操作恢复为发送时的顺序）可以得到完整的消息（<em>message</em>)，也有可能是无序的，无法恢复出完整的信息。即使数据包是完整的、有序的，有可能在某些地方因为信道有噪声或者其他缘故出现一些差错，导致数据上出了偏差。</p>
 <p>协议要保证的不仅仅是发送方可以发数据，同时也会对接收方将接收到怎样的数据做出一定的保证，这才是完整的通信。</p>
 <blockquote>
 <p>Thus, to support these applications, something has to be done to <strong>guarantee</strong> that the data sent by one end of the application is delivered <strong>correctly</strong> and <strong>completely</strong> to the other end of the application. If a protocol provides such a guaranteed data delivery service, it is said to provide reliable data transfer.</p>
@@ -319,11 +320,12 @@ var _hmt = _hmt || [];
 </tbody>
 </table>
 <p>还是沿用上面的类比，传输层协议就像记者一样，每个记者的技能点不一样，一般情况下我们当然会偏爱知识水平高、立场客观真实的西方记者，所以他的出勤会比较多比较著名。那么香港记者经验不足太肤浅、年轻不足以报道全部内容，她就一无是处吗？不是的，她就像UDP，不存在任何拥塞控制而且轻量简单（<em>simple</em>），跑的比谁都快，善于弄大新闻，对于实时性很高的新闻事件让她去也很合适。</p>
-<p><img src="https://ooo.0o0.ooo/2016/01/22/56a24d21cca90.png" alt="应用层各协议依赖的传输层协议"></p>
+<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/162593157/2.png" alt="应用层各协议依赖的传输层协议"></p>
 <p>因此应用层上的每个协议都会根据需求选择与之对应的传输层协议。</p>
 <h2 id="3-_怎样实现可靠数据传输？">3. 怎样实现可靠数据传输？</h2><p>对于底层信道完全可靠的情况，只需要调用跟着基本法来，接到上层调用就做一系列操作（打包之类的）把数据发给下层，接收方对应层协议收到下层的调用就将数据做些操作然后发给上层协议，其他的就不需要考虑了。</p>
 <p>我们已经在<code>2.1</code>提到，IP是不可靠的，但是可以依靠上层的协议（如TCP）使这个使用IP协议的通信变得可靠，这就好比记者在采访现场引导出了一些不符合积极向上的个人形象的言辞，但是没关系，上层还有编辑和其他审核人员，他们的专业技能可以保证把通讯稿写的符合基本法，那么宣传上就不会出现偏差。</p>
 <p>现在要解决的问题就是怎样在不可靠的网络层协议之上实现可靠的传输层协议。这里以在IP上实现的TCP为例。</p>
+<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/162593157/3.png" alt=""></p>
 <h3 id="3-1_差错检测">3.1 差错检测</h3><p>包括奇偶校验、校验和、CRC等方法判断收到的数据分组是否损坏，如果不能校正那就丢弃分组。</p>
 <h3 id="3-2_ACK确认">3.2 ACK确认</h3><p>这是在不可靠底层信道上加入的一种反馈机制，由接收方发送确认消息。发送方发送数据，接收方接收到了以后发了<code>ACK</code>表示“我已经收到了，可以继续发了”，就像发了一个“支持XXXX吗？”对方回答“吼啊”你才可以继续提问，如果你问的那么热情对方一句话也不说，这就不好了，虽然不排除无可奉告的可能，但是也不能再继续问下去了，这个模式就是停止等待（<em>stop-and-wait</em>）协议的思想，只有得到肯定的确认才能继续发送数据。除了肯定确认<code>ACK</code>表示确认收到以外，还有否定确认<code>NAK</code>，用来表示某个数据没有收到，比如滑动窗口协议中用的就是<code>NAK</code>，意思就是“没听说过”。</p>
 <p>发送方收到了接收方发来的<code>ACK/NAK</code>后自己也要判断的，然后再把接收方丢失的数据分组（无论是在信道上丢失的还是因为出了偏差所以主动丢弃的）重传一遍。</p>
