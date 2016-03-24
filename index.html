@@ -239,6 +239,7 @@ var _hmt = _hmt || [];
 <h2 id="设置DNS">设置DNS</h2><p>填写完前面两步，将要求你更改域名的DNS设置。增加一条A记录和一条TXT记录。</p>
 <p>比如我使用的是<a href="https://www.dnspod.cn/" target="_blank" rel="external">DNSPOD</a>，其他如NameCheap应该也是同理。</p>
 <p>比如我的二级域名是<code>www.yangzhou301.com</code>那么删除主机记录为<code>www</code>，<code>@</code>和<code>*</code>的dns记录（A和<strong>CNAME</strong>），再重新按照提示增加两条指向<code>103.203.90.2</code>的A记录，主机记录分别为<code>www</code>和<code>@</code>，另外根据网站给出的值增加一条TXT记录（这一项按照域名生成，每个人的不同）</p>
+<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/862978151/1.png" alt=""></p>
 <h2 id="开启1-Click_Encryption">开启1-Click Encryption</h2><p>上面的三步完成之后可以进入<em>Dashboard</em>，此时<code>kloudsec</code>将检查你的dns是否设置正确，如果没有问题了，会给你发提醒以及往注册邮箱发邮件。当提示为<code>0 issue</code>时点击左侧的<code>PROTECTION</code>后点击启用<code>SSL Encryption</code>，选择自己的需要部署证书的域名，<code>Automatically redirect</code>和<code>Automatically rewrite assets</code>选项都启用，再开启<code>1-Click Encryption</code>。在dns设置正确的情况下，可以去<code>website settings</code>检查SSL证书部署进度，一般不到一小时就可以在你的网站启用<code>https</code>了。</p>
 <h2 id="修改resource">修改resource</h2><p>当然这段时间也别闲着，检查一下博客中引用的各种资源的地址，比如<code>md</code>格式中的图片和链接的url地址，将<code>http://</code>改为<code>https://</code>或者<code>//</code>，主题的<code>_config.yml</code>中的头像链接。如果引用了不支持<code>https</code>的资源，那么浏览器上的<code>https</code>是灰色的，无法开启小绿锁。</p>
 <p>另外可能各个主题引用的资源不太一样，我只以我使用的<code>Yilia</code>为例讲一下需要注意的地方（在主题归档下）：</p>
