@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>RIP毒性逆转：弄个大新闻把失效路由批判一番 | 扬州计划</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="原回答（RIP协议中，解决路由自环的毒性逆转思想是什么? - [已重置] 的回答）写于去南京考TOEFL前夜，由于时间仓促很多地方没来得及完善，后来也不了了之,想修改的时候发现这个号已经被知乎封了很久了，我也不打算再回知乎做任何输出了，所以回扬州计划整理顺便重写一下这个问题。
+本文将从毒性逆转入手，介绍RIP协议中解决失效路由信息及其引发的自环回路问题的几个方法的思想。
+距离向量（DV）协议距离向">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RIP毒性逆转：弄个大新闻把失效路由批判一番">
+<meta property="og:url" content="https://www.yangzhou301.com/2016/01/22/605176933/index.html">
+<meta property="og:site_name" content="扬州计划">
+<meta property="og:description" content="原回答（RIP协议中，解决路由自环的毒性逆转思想是什么? - [已重置] 的回答）写于去南京考TOEFL前夜，由于时间仓促很多地方没来得及完善，后来也不了了之,想修改的时候发现这个号已经被知乎封了很久了，我也不打算再回知乎做任何输出了，所以回扬州计划整理顺便重写一下这个问题。
+本文将从毒性逆转入手，介绍RIP协议中解决失效路由信息及其引发的自环回路问题的几个方法的思想。
+距离向量（DV）协议距离向">
+<meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/605176933/1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/605176933/2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/605176933/3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/605176933/9.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/605176933/4.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/605176933/5.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/605176933/6.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/605176933/7.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/605176933/8.png">
+<meta property="og:updated_time" content="2016-04-06T16:55:13.570Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RIP毒性逆转：弄个大新闻把失效路由批判一番">
+<meta name="twitter:description" content="原回答（RIP协议中，解决路由自环的毒性逆转思想是什么? - [已重置] 的回答）写于去南京考TOEFL前夜，由于时间仓促很多地方没来得及完善，后来也不了了之,想修改的时候发现这个号已经被知乎封了很久了，我也不打算再回知乎做任何输出了，所以回扬州计划整理顺便重写一下这个问题。
+本文将从毒性逆转入手，介绍RIP协议中解决失效路由信息及其引发的自环回路问题的几个方法的思想。
+距离向量（DV）协议距离向">
+  
+    <link rel="alternative" href="/atom.xml" title="扬州计划" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+<script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?d2cb9fed997ae5b72b192b281d404ff3";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Xinyi Li</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">湾里乡乡立技校在读本科生//蛤德曼的妖怪少女</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/Lixinyi-DUT" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="https://weibo.com/LxySeptember" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/project-fuzhou" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="mailto:ExcitedLxy@yangzhou301.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/GitHub/" style="font-size: 13.33px;">GitHub</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/MGC301/" style="font-size: 10px;">MGC301</a> <a href="/tags/R/" style="font-size: 10px;">R</a> <a href="/tags/RIP协议/" style="font-size: 10px;">RIP协议</a> <a href="/tags/SSL/" style="font-size: 10px;">SSL</a> <a href="/tags/TCP-IP/" style="font-size: 13.33px;">TCP/IP</a> <a href="/tags/Wolfram/" style="font-size: 10px;">Wolfram</a> <a href="/tags/一本正经胡说八道/" style="font-size: 16.67px;">一本正经胡说八道</a> <a href="/tags/信息论/" style="font-size: 13.33px;">信息论</a> <a href="/tags/偶像组合/" style="font-size: 10px;">偶像组合</a> <a href="/tags/凸优化/" style="font-size: 13.33px;">凸优化</a> <a href="/tags/可视化/" style="font-size: 10px;">可视化</a> <a href="/tags/吐槽型自传体/" style="font-size: 10px;">吐槽型自传体</a> <a href="/tags/地域黑/" style="font-size: 10px;">地域黑</a> <a href="/tags/完全非技术类文档/" style="font-size: 13.33px;">完全非技术类文档</a> <a href="/tags/密码学/" style="font-size: 10px;">密码学</a> <a href="/tags/年终总结/" style="font-size: 10px;">年终总结</a> <a href="/tags/微积分/" style="font-size: 10px;">微积分</a> <a href="/tags/指点江山/" style="font-size: 10px;">指点江山</a> <a href="/tags/机器学习/" style="font-size: 16.67px;">机器学习</a> <a href="/tags/知乎/" style="font-size: 20px;">知乎</a> <a href="/tags/线性代数/" style="font-size: 10px;">线性代数</a> <a href="/tags/统计学/" style="font-size: 10px;">统计学</a> <a href="/tags/网络安全/" style="font-size: 10px;">网络安全</a> <a href="/tags/营销软文/" style="font-size: 13.33px;">营销软文</a> <a href="/tags/计算机网络/" style="font-size: 13.33px;">计算机网络</a> <a href="/tags/资源/" style="font-size: 10px;">资源</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.xinhuanet.com/newscenter/ldrbdzj/jzm1999/guonei.htm">长者活动报道专集</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://yangzhou.qeejoo.com/c-14958493.html">扬州第四建筑301工程队招工</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://gabyy77.qianyan.biz">续江科技</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">沧浪之水清兮，可以濯吾英。沧浪之水浊兮，亦可赛艇！欢迎直接来软院找我谈笑风生，联系方式见微博！</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Xinyi Li</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/avatar.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Xinyi Li</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">湾里乡乡立技校在读本科生//蛤德曼的妖怪少女</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Lixinyi-DUT" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="https://weibo.com/LxySeptember" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/project-fuzhou" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="mailto:ExcitedLxy@yangzhou301.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-605176933" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/01/22/605176933/" class="article-date">
+  	<time datetime="2016-01-21T16:00:00.000Z" itemprop="datePublished">2016-01-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      RIP毒性逆转：弄个大新闻把失效路由批判一番
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RIP协议/">RIP协议</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TCP-IP/">TCP/IP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机网络/">计算机网络</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>原回答（<a href="https://www.zhihu.com/question/39319653/answer/82747224" target="_blank" rel="external">RIP协议中，解决路由自环的毒性逆转思想是什么? - [已重置] 的回答</a>）<del>写于去南京考TOEFL前夜，由于时间仓促很多地方没来得及完善，后来也不了了之,</del>想修改的时候发现这个号已经被知乎封了很久了，我也不打算再回知乎做任何输出了，所以回扬州计划整理顺便重写一下这个问题。</p>
+<p>本文将从毒性逆转入手，介绍RIP协议中解决失效路由信息及其引发的自环回路问题的几个方法的思想。</p>
+<h2 id="距离向量（DV）协议">距离向量（<strong>DV</strong>）协议</h2><p>距离向量路由协议（<em>Distance-Vector Routing Protocol</em>, <strong>DV</strong>）与连接状态路由协议（<em>Link-State routing protocol</em>, <strong>LS</strong>）是两种主要的域内路由协议，其中路由信息协议（<em>Routing Information Protocol</em>, <strong>RIP</strong>）是一种典型的DV协议。</p>
+<p>无法理解距离向量算法的学习者大多是在对<strong>向量</strong>（<em>vector</em>）这个概念的理解上出现了偏差，这里的向量不能按我们在数学/物理上学习到的空间上有几何意义的矢量去理解，我们应该把它类比为统计学中<code>n</code>个特征构造而成的<code>n</code>维向量，实际就是以这个节点为源节点，到其他节点的距离构成的一个<code>1*n</code>的表格。这个概念更接近于我们在数据结构中学习到的向量（实际就是封装好的数组，参见<code>STL</code>的<code>vector</code>容器）。</p>
+<p>DV路由算法的核心思想是每个节点都要接收其邻节点发来的距离向量，然后用<code>Bellman-Ford</code>方法根据收到其他节点的距离向量对自己的距离向量进行松弛（<em>relax</em>）更新。</p>
+<p>我们以下图的网络结构为例，演示使用<code>Bellman-Ford</code>方法得到各个路由距离向量的过程：</p>
+<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/605176933/1.png" alt=""></p>
+<p>邻接矩阵如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">A</th>
+<th style="text-align:left">B</th>
+<th style="text-align:left">C</th>
+<th style="text-align:left">D</th>
+<th>E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">A</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">3</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:left">B</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left">2</td>
+<td style="text-align:left"></td>
+<td>4</td>
+</tr>
+<tr>
+<td style="text-align:left">C</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">2</td>
+<td style="text-align:left">-</td>
+<td style="text-align:left"></td>
+<td>5</td>
+</tr>
+<tr>
+<td style="text-align:left">D</td>
+<td style="text-align:left">3</td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left">-</td>
+<td>6</td>
+</tr>
+<tr>
+<td style="text-align:left">E</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">4</td>
+<td style="text-align:left">5</td>
+<td style="text-align:left">6</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>这里的代价以跳数计算，范围是1-15,16即为无穷大$\infty$。我们假设网络是静止的，这样我们跑一轮<code>Bellman-Ford</code>就可以得到向量表了。</p>
+<p>我们对距离向量表进行如下的初始化：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">A</th>
+<th style="text-align:left">B</th>
+<th style="text-align:left">C</th>
+<th style="text-align:left">D</th>
+<th>E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">A</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">$\infty$</td>
+<td style="text-align:left">3</td>
+<td>$\infty$</td>
+</tr>
+<tr>
+<td style="text-align:left">B</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">2</td>
+<td style="text-align:left">$\infty$</td>
+<td>4</td>
+</tr>
+<tr>
+<td style="text-align:left">C</td>
+<td style="text-align:left">$\infty$</td>
+<td style="text-align:left">2</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">$\infty$</td>
+<td>5</td>
+</tr>
+<tr>
+<td style="text-align:left">D</td>
+<td style="text-align:left">3</td>
+<td style="text-align:left">$\infty$</td>
+<td style="text-align:left">$\infty$</td>
+<td style="text-align:left">0</td>
+<td>6</td>
+</tr>
+<tr>
+<td style="text-align:left">E</td>
+<td style="text-align:left">$\infty$</td>
+<td style="text-align:left">4</td>
+<td style="text-align:left">5</td>
+<td style="text-align:left">6</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>每个节点将自己的路由信息（距离向量/路由表）发送给直接相邻的节点，比如A发给B的距离向量：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">A</th>
+<th style="text-align:left">B</th>
+<th style="text-align:left">C</th>
+<th style="text-align:left">D</th>
+<th>E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">A</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">$\infty$</td>
+<td style="text-align:left">3</td>
+<td>$\infty$</td>
+</tr>
+</tbody>
+</table>
+<p>B得到了这个消息对自己的距离向量进行更新，因为其中有<br>$$\infty  = d(B,D) &gt; d(B,A) + d(A,D) = 4$$<br>所以更新B到D的距离$d(B,D)$为$d(B,A) + d(A,D)$也就是3，到达目的路由D的下一个节点为A，这就是<strong>松弛操作</strong>。更新距离向量为</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">A</th>
+<th style="text-align:left">B</th>
+<th style="text-align:left">C</th>
+<th style="text-align:left">D</th>
+<th>E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">B</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">2</td>
+<td style="text-align:left">4</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<p>并在更新完毕后向所有邻接节点发送新的路由信息，引发其他路由对自己的路由信息的不断更新，直至全局收敛。当然这里的做法和原始的<code>Bellman-Ford</code>算法还是有些不同的，<code>Bellman-Ford</code>算法是对于图中的各个顶点遍历一次寻找以其为中继能松弛哪些边。</p>
+<p>得到距离向量表：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">A</th>
+<th style="text-align:left">B</th>
+<th style="text-align:left">C</th>
+<th style="text-align:left">D</th>
+<th>E</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">A</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">3</td>
+<td style="text-align:left">3</td>
+<td>5</td>
+</tr>
+<tr>
+<td style="text-align:left">B</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">2</td>
+<td style="text-align:left">4</td>
+<td>4</td>
+</tr>
+<tr>
+<td style="text-align:left">C</td>
+<td style="text-align:left">3</td>
+<td style="text-align:left">2</td>
+<td style="text-align:left">0</td>
+<td style="text-align:left">6</td>
+<td>5</td>
+</tr>
+<tr>
+<td style="text-align:left">D</td>
+<td style="text-align:left">3</td>
+<td style="text-align:left">4</td>
+<td style="text-align:left">6</td>
+<td style="text-align:left">0</td>
+<td>6</td>
+</tr>
+<tr>
+<td style="text-align:left">E</td>
+<td style="text-align:left">5</td>
+<td style="text-align:left">4</td>
+<td style="text-align:left">5</td>
+<td style="text-align:left">6</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>每行就是各个路由对应的距离向量。</p>
+<p>当然真实的网络情况不可能是静止的，节点间的连通情况、代价随时会发生变化。这时就可以看出DV的特征了。不同于LS算法的地方在于DV算法是分布式的，每个节点可以<strong>异步</strong>的完成该节点距离向量和路由表的更新，然后再把距离向量发给邻节点，再由其他节点完成它们各自的更新，由于算法的迭代性，即使不知道全局网络的连通情况，每个节点也可以收到消息以后自己判断一下，听见风就是雨地更新路由表，静态网络中很快可以收敛。动态网络中，一旦某个节点的连通情况发生变化（代价变化，连通情况变化），就立即向邻节点发送新的距离向量，然后再进入这个迭代过程，直到每个节点都无可奉告了网络又进入静止状态。</p>
+<h2 id="毒性逆转（Poison_Reverse）">毒性逆转（<em>Poison Reverse</em>）</h2><p>正是因为DV的<strong>异步</strong>和<strong>分布式</strong>的<strong>动态</strong>特性，使得路由毒化（<em>Route poisoning</em>）技术可以处理解决某个节点突然失效的问题。这个方法解决的问题是<em>count-to-infinity</em>的情况</p>
+<h3 id="路由毒化（Route_poisoning）">路由毒化（<em>Route poisoning</em>）</h3><p>当协议探查到失效路由的时候，网络中所有的路由都收到一份邻接路由发来的报告“有人会干预路径的选择”，然后把到这个失效路由的距离置为无穷大（$\infty$）,也就是说这个路由是“无法到达的”。</p>
+<h3 id="count-to-infinity">count-to-infinity</h3><p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/605176933/2.png" alt=""></p>
+<ol>
+<li>一开始$N$（可以把一个子图/网段看成节点/路由简化处理）到$R_1$的代价（跳数）是1，与之间仅有一跳的距离，所以$R_2$到$N$的代价是2，下一跳指向$R_1$</li>
+<li>此时$R_1$与$N$的连接<strong>发生故障</strong></li>
+<li>$R_1$发现到$N$的连接失效，将自己关于$N$的路由信息<strong>毒化</strong>，更新设置距离向量中到$N$网段的距离为<code>16</code>（因为<code>RIP</code>协议中的<code>TTL</code>最大是<code>15</code>，图论上的意义就是代价被续成了无穷大）</li>
+<li>$R_1$在自己更新完成后，把毒化的路由信息（距离向量）发给与其邻接的路由$R_2$，意义就是“$N$网段怎么走我现在无可奉告了”，那么也会同样把自己关于$N$网段的路由信息毒化，设置为<code>16</code>。</li>
+</ol>
+<hr>
+<p>如果$R_1$在$N$失效后未及时毒化相关的路由信息，那么$R_2$会发送它的路由表使$R_1$更新到N的下一跳是$R_2$，出现回路（<em>Loop</em>），此后这两个路由会一直交换信息增加距离向量至<code>16</code>。这个情景有点像平静的夏夜，池塘里一只青蛙骤然鸣叫，就会有无数只青蛙用更大的声音去响应它，原来带头的那只青蛙用音量比它们不知道高到哪里去的“呱呱”声再作出回应，不久整个池塘就是蛙声一片了。</p>
+<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/605176933/3.png" alt=""></p>
+<p>这时路由自身也知道它到N的路径不可预料，所以这个回路就被破除了。这就是毒性逆转技术解决回路问题的思想。</p>
+<hr>
+<p>图中所以权边（除了CD之间）的代价都为1，CD间连接的代价为10<br><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/605176933/9.png" alt=""></p>
+<p>那么目的路由（图中的<code>destination</code>表示的节点）的初始距离向量和路由表如下</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">下一跳</th>
+<th style="text-align:left">距离</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">D</td>
+<td style="text-align:left">D</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">B</td>
+<td style="text-align:left">D</td>
+<td style="text-align:left">2</td>
+</tr>
+<tr>
+<td style="text-align:left">C</td>
+<td style="text-align:left">B</td>
+<td style="text-align:left">3</td>
+</tr>
+<tr>
+<td style="text-align:left">A</td>
+<td style="text-align:left">B</td>
+<td style="text-align:left">3</td>
+</tr>
+</tbody>
+</table>
+<p>现在B与D的连接失效了，那么路由表就会进入如下如下迭代更新的过程<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">D: dir, <span class="number">1</span> dir, <span class="number">1</span> dir, <span class="number">1</span> dir, <span class="number">1</span>  ... dir, <span class="number">1</span> dir, <span class="number">1</span></span><br><span class="line">B: unreach C, <span class="number">4</span> C, <span class="number">5</span> C,<span class="number">6</span>            C,<span class="number">11</span>  C, <span class="number">12</span></span><br><span class="line">C: B, <span class="number">3</span> A, <span class="number">4</span> A, <span class="number">5</span> A, <span class="number">6</span>              A,<span class="number">11</span> D, <span class="number">11</span></span><br><span class="line">A: B, <span class="number">3</span> C, <span class="number">4</span> C, <span class="number">5</span> C, <span class="number">6</span>              C,<span class="number">11</span> C, <span class="number">12</span></span><br></pre></td></tr></table></figure></p>
+<p>整个过程跑的很慢，依赖于路由B的路径经过了AC之间的持续循环才有能更新到真实值，这对于大新闻的传播很不利。</p>
+<h2 id="水平分割（Split_Horizon）">水平分割（<em>Split Horizon</em>）</h2><p>水平分割简单来说就是禁止路由向得到消息的接口再发送回原来的路由信息。</p>
+<blockquote>
+<p>得到消息本身也是要判断，路由一律不得再往回发消息，这对于避免路由回路间“互相欺骗”的命运也是很重要的</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/605176933/4.png" alt=""></p>
+<ul>
+<li>$R_2$不会告诉$R_1$它到网段$N$该怎么走，因为它关于$N$的信息正是从$R_1$这里习得的</li>
+<li>$R_1$给$R_2$发了一个报告，说是到$N$网段的信息发生了变化，$R_2$根据这个报告调整了自己的路由表</li>
+</ul>
+<p>水平分割保证了消息的<strong>单向性</strong>，保证一个有序的结构，正如年轻人只能听长者传授人生经验而不能反之。</p>
+<p>当然为保证水平分割的实现，整个网络中的所有路由<strong>必须</strong>都支持RIP协议。</p>
+<h3 id="水平分割+毒性逆转（Split_Horizon_+_Poison_Reverse）">水平分割+毒性逆转（<em>Split Horizon</em> + <em>Poison Reverse</em>）</h3><p>这是在水平分割上的一个改进，为了更快破圈增加了毒性逆转，相应的协议开销也有所增加。</p>
+<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/605176933/5.png" alt=""></p>
+<ul>
+<li>$R_2$在没得到$R_1$关于$N$的失效报告时总是想弄个大新闻告诉$R_1$一个坏消息:$N$网段不可达</li>
+<li>$R_1$得到消息以后自己判断了一下发现确实是的，于是再把确认不可达的消息发给$R_2$</li>
+</ul>
+<hr>
+<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/605176933/6.png" alt=""></p>
+<p>这个毒性逆转毕竟too simple，你明白我的意思吧，面对3个及以上节点的非简单回路，单纯的毒性逆转就不起作用了。但是你们改来改去毕竟太年轻，甚至天真，水平分割和毒性逆转对于这种包含两个以上节点的回路还是束手无策。</p>
+<p>究其原因，是因为RIP协议中要求路由协议更新信息必须根据定时器的基本法去产生，必须在<strong>固定时间间隔</strong>发送更新消息，这样它们收到的更新请求可能是矛盾的，时延的存在使得信息存在偏差，因此将形成回路。那么解决的方案当然是改变这种僵化的基本法，打破必须按照一定的全局时间来发送更新请求或者更新路由的思路。</p>
+<h2 id="触发更新（Triggered_Update）">触发更新（<em>Triggered Update</em>）</h2><p>这个方法要求一旦路由失效，更新消息<strong>立刻</strong>发出，即使并没有轮到它发送常规的定时更新信息，“坏消息”一经触发，跑的比香港记者还快，那么就来不及形成回路了。</p>
+<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/605176933/7.png" alt=""></p>
+<h2 id="Hold_Down">Hold Down</h2><p>不知道怎么翻译这个方法，似乎台湾那边把它说成“冷静”，考虑到这里洋文好的人多的很呢，就不强行中文命名了。</p>
+<p>当一个路由被移除（失效）时，有一段时间内关于这个路由的所有更新信息都无效，其他路由不会接收这些信息也不会对此作出相应的调整，这给所有路由一个机会去移除关于这个路由的信息。</p>
+<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/605176933/8.png" alt=""></p>
+<ul>
+<li>在一段时间内，$R_1$忽略所有从$R_2$发来的关于$N$的路由信息</li>
+<li>最终，$R_1$给$R_2$发送了$N$的路由信息</li>
+</ul>
+<p>这个方法并没有写在RIP协议的RFC[2]中，但是CISCO自行实现了此方法。</p>
+<h2 id="参考资料和延伸阅读">参考资料和延伸阅读</h2><p>[1] Kurose, James F. Computer Networking: A Top-Down Approach Featuring the Internet, 3/E. <em>Pearson Education India</em>, 2005.<br>[2] Malkin, G. “RFC 2453: Rip version 2.” <em>Request for Comments</em> 2453 (1998).<br>[3] Wikipedia: <a href="https://en.wikipedia.org/wiki/Split_horizon_route_advertisement" target="_blank" rel="external">https://en.wikipedia.org/wiki/Split_horizon_route_advertisement</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/01/25/546608189/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          你们给我搞的这个Student Developer Pack啊，excited！
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/01/18/162593157/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">怎么有效理解可靠数据传输？</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="https://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="https://dn-gitseassl.qbox.me/jiathis/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+<section id="comments">
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'wwwyangzhou301com'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Xinyi Li
+    	</div>
+      	<div class="footer-right">
+      		<a href="https://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true
+	}
+</script>
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
