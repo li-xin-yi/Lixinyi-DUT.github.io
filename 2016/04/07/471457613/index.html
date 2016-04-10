@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>计网课堂测试题解 | 扬州计划</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="4.5课序号01和02的班级进行了一次课堂测试，2个班级各自考了2题，本文给出课序号02的班级使用的试题的题解。
+
+
+客户端A和服务器端B进行了TCP通信。初始序列号都为0。连接建立后，A以500B的传输单元向B传输5kB的数据。其中第二个数据单元丢失，并重传了2次；B向A发送10kB的数据（传输单元也为500B），数据和ACK都没有丢失。所有的数据传输完毕后，TCP连接关闭（其中A先发起关闭）。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计网课堂测试题解">
+<meta property="og:url" content="https://www.yangzhou301.com/2016/04/07/471457613/index.html">
+<meta property="og:site_name" content="扬州计划">
+<meta property="og:description" content="4.5课序号01和02的班级进行了一次课堂测试，2个班级各自考了2题，本文给出课序号02的班级使用的试题的题解。
+
+
+客户端A和服务器端B进行了TCP通信。初始序列号都为0。连接建立后，A以500B的传输单元向B传输5kB的数据。其中第二个数据单元丢失，并重传了2次；B向A发送10kB的数据（传输单元也为500B），数据和ACK都没有丢失。所有的数据传输完毕后，TCP连接关闭（其中A先发起关闭）。">
+<meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/471457613/1.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/471457613/2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/471457613/3.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/471457613/4.png">
+<meta property="og:updated_time" content="2016-04-10T12:06:50.127Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计网课堂测试题解">
+<meta name="twitter:description" content="4.5课序号01和02的班级进行了一次课堂测试，2个班级各自考了2题，本文给出课序号02的班级使用的试题的题解。
+
+
+客户端A和服务器端B进行了TCP通信。初始序列号都为0。连接建立后，A以500B的传输单元向B传输5kB的数据。其中第二个数据单元丢失，并重传了2次；B向A发送10kB的数据（传输单元也为500B），数据和ACK都没有丢失。所有的数据传输完毕后，TCP连接关闭（其中A先发起关闭）。">
+  
+    <link rel="alternative" href="/atom.xml" title="扬州计划" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+<script type="text/javascript">
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?d2cb9fed997ae5b72b192b281d404ff3";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Xinyi Li</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">湾里乡乡立技校在读本科生//蛤德曼的妖怪少女</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/Lixinyi-DUT" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="https://weibo.com/LxySeptember" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/project-fuzhou" title="zhihu">zhihu</a>
+					        
+								<a class="mail" target="_blank" href="mailto:ExcitedLxy@yangzhou301.com" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/GitHub/" style="font-size: 13.33px;">GitHub</a> <a href="/tags/HTTPS/" style="font-size: 10px;">HTTPS</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/MGC301/" style="font-size: 10px;">MGC301</a> <a href="/tags/R/" style="font-size: 10px;">R</a> <a href="/tags/RIP协议/" style="font-size: 10px;">RIP协议</a> <a href="/tags/SSL/" style="font-size: 10px;">SSL</a> <a href="/tags/TCP-IP/" style="font-size: 16.67px;">TCP/IP</a> <a href="/tags/Wolfram/" style="font-size: 10px;">Wolfram</a> <a href="/tags/一本正经胡说八道/" style="font-size: 16.67px;">一本正经胡说八道</a> <a href="/tags/信息论/" style="font-size: 13.33px;">信息论</a> <a href="/tags/偶像组合/" style="font-size: 10px;">偶像组合</a> <a href="/tags/凸优化/" style="font-size: 13.33px;">凸优化</a> <a href="/tags/可视化/" style="font-size: 10px;">可视化</a> <a href="/tags/吐槽型自传体/" style="font-size: 10px;">吐槽型自传体</a> <a href="/tags/地域黑/" style="font-size: 10px;">地域黑</a> <a href="/tags/完全非技术类文档/" style="font-size: 13.33px;">完全非技术类文档</a> <a href="/tags/密码学/" style="font-size: 10px;">密码学</a> <a href="/tags/年终总结/" style="font-size: 10px;">年终总结</a> <a href="/tags/微积分/" style="font-size: 10px;">微积分</a> <a href="/tags/指点江山/" style="font-size: 10px;">指点江山</a> <a href="/tags/机器学习/" style="font-size: 16.67px;">机器学习</a> <a href="/tags/知乎/" style="font-size: 20px;">知乎</a> <a href="/tags/线性代数/" style="font-size: 10px;">线性代数</a> <a href="/tags/统计学/" style="font-size: 10px;">统计学</a> <a href="/tags/网络安全/" style="font-size: 10px;">网络安全</a> <a href="/tags/营销软文/" style="font-size: 13.33px;">营销软文</a> <a href="/tags/计算机网络/" style="font-size: 16.67px;">计算机网络</a> <a href="/tags/资源/" style="font-size: 10px;">资源</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.xinhuanet.com/newscenter/ldrbdzj/jzm1999/guonei.htm">长者活动报道专集</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://yangzhou.qeejoo.com/c-14958493.html">扬州第四建筑301工程队招工</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://gabyy77.qianyan.biz">续江科技</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">沧浪之水清兮，可以濯吾英。沧浪之水浊兮，亦可赛艇！欢迎直接来软院找我谈笑风生，联系方式见微博！</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Xinyi Li</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/avatar.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Xinyi Li</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">湾里乡乡立技校在读本科生//蛤德曼的妖怪少女</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/Lixinyi-DUT" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="https://weibo.com/LxySeptember" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/project-fuzhou" title="zhihu">zhihu</a>
+			        
+						<a class="mail" target="_blank" href="mailto:ExcitedLxy@yangzhou301.com" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-471457613" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/07/471457613/" class="article-date">
+  	<time datetime="2016-04-07T06:18:01.000Z" itemprop="datePublished">2016-04-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      计网课堂测试题解
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TCP-IP/">TCP/IP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机网络/">计算机网络</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>4.5课序号01和02的班级进行了一次课堂测试，2个班级各自考了2题，本文给出课序号02的班级使用的试题的题解。</p>
+<hr>
+<blockquote>
+<p>客户端A和服务器端B进行了TCP通信。<strong>初始序列号都为0</strong>。连接建立后，A以500B的传输单元向B传输<code>5kB</code>的数据。其中第二个数据单元丢失，并重传了2次；B向A发送<code>10kB</code>的数据（传输单元也为500B），数据和ACK都没有丢失。所有的数据传输完毕后，TCP连接关闭（其中A先发起关闭）。</p>
+<ol>
+<li>画出TCP连接建立的过程（连接建立过程中没有丢包）；</li>
+<li>画出关闭TCP连接的完整过程。</li>
+</ol>
+<p>要求标出必要的标识位、序列号、确认号等。</p>
+</blockquote>
+<h3 id="连接建立过程">连接建立过程</h3><p>首先来看TCP三次握手建立连接的过程：</p>
+<ol>
+<li>客户端A给服务器B发送一个<code>SYN</code><strong>请求</strong>给服务器B要求<strong>建立连接</strong>，生成一个随机数作为初始序列号<code>seq</code>=<code>X</code>，</li>
+<li>服务器B收到请求，回应<code>SYN</code>-<code>ACK</code>表示<strong>服务器B能接收到客户端的数据且允许建立连接</strong>,其中<code>ack</code>=<code>X+1</code>，这个确认号表示接收到了序列号为<code>X</code>的分片，请求发送下一个分片。而这个<code>SYN</code>-<code>ACK</code>消息本身的序列号由B随机生成<code>seq</code>=<code>Y</code></li>
+<li>客户端A收到<code>SYN</code>-<code>ACK</code>，回应一个<code>ACK</code>给服务器B表示<strong>客户端能接收到服务器的数且允许建立连接</strong>，<code>seq</code>=<code>X+1</code>（也就是B发送的<code>ack</code>），并表示接下来希望接收的服务器发来的数据为<code>ack</code>=<code>Y+1</code></li>
+</ol>
+<p>因为题目中已经声明了初始序列号都为<code>0</code>，所以我们把<code>X</code>和<code>Y</code>都置为<code>0</code>就可以画出如下的连接过程：</p>
+<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/471457613/1.png" alt="建立连接"></p>
+<h3 id="数据传输过程">数据传输过程</h3><p>因为在最后一个<code>ACK</code>消息中没有发送任何数据，所以A向B发送数据的<code>seq</code>自上一个B的<code>ack</code>开始，也就是<code>1</code>，那么连接建立以后发送的第一个数据单元应该是<br><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/471457613/2.png" alt="建立连接发送第一个分片"></p>
+<p>接下来的传输过程存在（包括但不限于）以下可能性</p>
+<ul>
+<li><em>停止等待</em>  B立即回复一个<code>ACK</code>其确认号<code>ack</code>=<code>501</code>,A得到<code>ACK</code>后才传输第二个数据单元，发生丢包后由于A没有收到<code>ACK</code>（超时）,会将上一个发送的分片重传至收到<code>ACK</code>为止</li>
+<li><em>回退N步</em> B立即回复一个<code>ACK</code>其确认号<code>ack</code>=<code>501</code>，但A不必等待收到<code>ACK</code>才能传输第二个单元，发生丢包时，如果A收到最大的<code>ack</code>与已发送的最大<code>seq</code>超过一定大小，则确认发生丢包，从丢失的分片开始全部重传。</li>
+<li><em>选择重传</em> 与<em>回退N步</em>类似，不同的地方在于发送方窗口已满时发现某个分片仍缺少则仅重传该分片而不必重传之后的分片。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/471457613/3.png" alt="这里给出一种可能的情况（选择重传）作为参考"></p>
+<p>但无论已哪种形式确认数据和重传，重传的分片序列号<code>seq</code>必然与原分片<strong>相同</strong>（数据当然也相同），可靠数据传输的原则要求收到的分片必须<strong>有序</strong>，<code>seq</code>编号的增加要按照可靠数据传输的基本法去产生。</p>
+<p>只有当上一个分片传输了数据（包括<code>SYN</code>和<code>FIN</code>也算在内），且不是重传的情况下，下一个分片的<code>seq</code>才可以增加。</p>
+<p>因此在A向B发送完<code>5kB</code>数据后（无论中途是否丢包如何分片），A的<code>seq</code>增加了<code>5k</code>，而B的<code>seq</code>还是<code>1</code>，同理，B向A传输完<code>10kB</code>数据后，B的<code>seq</code>增加了<code>10k</code>,而A的<code>seq</code>还是原来的<code>5k+1</code>。理解这一点，对于接下来关闭连接过程中双方的序号确认的命运影响也是很大的。</p>
+<h3 id="连接关闭过程">连接关闭过程</h3><p>除开前面对可靠数据传输理解不深导致关闭连接时的初始序列号出现偏差，四次挥手本身没太大难点。由于建立的TCP连接是双向的，关闭连接需要对称的两次请求和应答。</p>
+<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/471457613/4.png" alt="四次握手关闭连接"></p>
+<ol>
+<li>客户端A向服务器B发送一个<code>FIN</code>请求关闭连接</li>
+<li>服务器B接收到请求后回应一个<code>ACK</code>表示允许关闭连接，至此A$\to$B的连接已经关闭，A不能再向B发送数据，这是半关闭（<em>half-closed</em>）状态</li>
+<li>服务器B向客户端A发送一个<code>FIN</code>请求关闭连接</li>
+<li>客户端A接收到请求后回应一个<code>ACK</code>表示允许关闭连接，至此连接关闭</li>
+</ol>
+<p>这题的难度不是很大，如果是对TCP连接建立和关闭的流程不熟悉那么可以熟读教材3.5.6小节，如果对<code>ack</code>和<code>seq</code>的理解苦手可以参考<a href="http://blog.csdn.net/a19881029/article/details/38091243" target="_blank" rel="external">这篇博客</a>。</p>
+<hr>
+<blockquote>
+<p>某路由器路由表如下表所示，现在收到5个分组，其目的IP地址分别为：</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">目的IP地址</th>
+<th style="text-align:left">子网掩码</th>
+<th style="text-align:left">下一跳路由器</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">128.96.39.0</td>
+<td style="text-align:left">255.255.255.128</td>
+<td style="text-align:left">接口0</td>
+</tr>
+<tr>
+<td style="text-align:left">128.96.39.128</td>
+<td style="text-align:left">255.255.255.128</td>
+<td style="text-align:left">接口1</td>
+</tr>
+<tr>
+<td style="text-align:left">128.96.40.0</td>
+<td style="text-align:left">255.255.255.128</td>
+<td style="text-align:left">$R_2$</td>
+</tr>
+<tr>
+<td style="text-align:left">192.4.153.0</td>
+<td style="text-align:left">255.255.255.192</td>
+<td style="text-align:left">$R_3$</td>
+</tr>
+<tr>
+<td style="text-align:left">默认</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">$R_4$</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<ol>
+<li>128.96.39.10    </li>
+<li>128.96.40.12</li>
+<li>128.96.40.151</li>
+<li>192.4.153.17</li>
+<li>192.4.153.90</li>
+</ol>
+<p>分别计算并写出下一跳路由器。</p>
+</blockquote>
+<p>解题思路很简单，把题目中的IP地址和路由表中各项的子网掩码作<strong>与运算</strong>，得到的结果与哪个目的IP地址一致，就是对应的下一跳路由。</p>
+<p>这题的子网掩码还真的不算太丧病，<code>128</code>是<code>10000000</code>,<code>192</code>是<code>11000000</code>，与运算只要看最后6位或者7位就可以。</p>
+<p>与<code>255.255.255.128</code>作与运算结果</p>
+<table>
+<thead>
+<tr>
+<th>IP地址</th>
+<th>运算结果</th>
+<th style="text-align:left"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>128.96.39.10</td>
+<td>128.96.39.0</td>
+<td style="text-align:left">接口0</td>
+</tr>
+<tr>
+<td>128.96.40.12</td>
+<td>128.96.40.0</td>
+<td style="text-align:left">$R_2$</td>
+</tr>
+<tr>
+<td>128.96.40.151</td>
+<td>128.96.40.128</td>
+<td style="text-align:left">与<code>255.255.255.192</code>的运算结果为128.96.40.128不在目的IP地址表中，所以走缺省路由$R_4$</td>
+</tr>
+<tr>
+<td>192.4.153.17</td>
+<td>192.4.153.0</td>
+<td style="text-align:left">与<code>255.255.255.192</code>的运算结果为192.4.153.0，下一跳$R_3$</td>
+</tr>
+<tr>
+<td>192.4.153.90</td>
+<td>192.4.153.0</td>
+<td style="text-align:left">与<code>255.255.255.192</code>的运算结果为192.4.153.64不在目的IP地址表中，所以走缺省路由$R_4$</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/03/22/862978151/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">它是HTTPS协议，我们怎能不支持它？</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="https://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="https://dn-gitseassl.qbox.me/jiathis/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+<section id="comments">
+  <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'wwwyangzhou301com'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Xinyi Li
+    	</div>
+      	<div class="footer-right">
+      		<a href="https://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true
+	}
+</script>
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
