@@ -228,8 +228,7 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>4.5课序号01和02的班级进行了一次课堂测试，2个班级各自考了2题，本文给出课序号02的班级使用的试题的题解。</p>
-<hr>
-<blockquote>
+<h2 id="02-1">02-1</h2><blockquote>
 <p>客户端A和服务器端B进行了TCP通信。<strong>初始序列号都为0</strong>。连接建立后，A以500B的传输单元向B传输<code>5kB</code>的数据。其中第二个数据单元丢失，并重传了2次；B向A发送<code>10kB</code>的数据（传输单元也为500B），数据和ACK都没有丢失。所有的数据传输完毕后，TCP连接关闭（其中A先发起关闭）。</p>
 <ol>
 <li>画出TCP连接建立的过程（连接建立过程中没有丢包）；</li>
@@ -265,10 +264,8 @@ var _hmt = _hmt || [];
 <li>客户端A接收到请求后回应一个<code>ACK</code>表示允许关闭连接，至此连接关闭</li>
 </ol>
 <p>这题的难度不是很大，如果是对TCP连接建立和关闭的流程不熟悉那么可以熟读教材3.5.6小节，如果对<code>ack</code>和<code>seq</code>的理解苦手可以参考<a href="http://blog.csdn.net/a19881029/article/details/38091243" target="_blank" rel="external">这篇博客</a>。</p>
-<hr>
-<blockquote>
+<h2 id="02-2">02-2</h2><blockquote>
 <p>某路由器路由表如下表所示，现在收到5个分组，其目的IP地址分别为：</p>
-</blockquote>
 <table>
 <thead>
 <tr>
@@ -305,7 +302,6 @@ var _hmt = _hmt || [];
 </tr>
 </tbody>
 </table>
-<blockquote>
 <ol>
 <li>128.96.39.10    </li>
 <li>128.96.40.12</li>
@@ -354,6 +350,163 @@ var _hmt = _hmt || [];
 </tr>
 </tbody>
 </table>
+<h2 id="01-1">01-1</h2><blockquote>
+<p>一个TCP的首部字节数据见下表所示，回答下列问题：<br><del>（为了方便读题所以我重新排了一下变成了一行8bit的数据）</del></p>
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据</td>
+<td>0d</td>
+<td>28</td>
+<td>00</td>
+<td>15</td>
+<td>00</td>
+<td>5f</td>
+<td>a9</td>
+<td>06</td>
+</tr>
+<tr>
+<td>编号</td>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+<td>12</td>
+<td>13</td>
+<td>14</td>
+<td>15</td>
+<td>16</td>
+</tr>
+<tr>
+<td>数据</td>
+<td>00</td>
+<td>00</td>
+<td>00</td>
+<td>00</td>
+<td>70</td>
+<td>02</td>
+<td>40</td>
+<td>00</td>
+</tr>
+<tr>
+<td>编号</td>
+<td>17</td>
+<td>18</td>
+<td>19</td>
+<td>20</td>
+</tr>
+<tr>
+<td>数据</td>
+<td>C0</td>
+<td>29</td>
+<td>00</td>
+<td>00</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>源端口号是多少？目的端口号是多少？</li>
+<li>发送的序列号是多少？确认号是多少？</li>
+<li>TCP首部的长度是多少？</li>
+<li>这是一个使用什么协议的TCP连接？（<strong>提示</strong>：观察端口号）该TCP连接的状态是什么？</li>
+</ol>
+</blockquote>
+<p>熟悉TCP报文结构即可了解上面每一位数据代表的意义<br><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/471457613/5.png" alt="TCP报文结构"></p>
+<p>当然也可以看<a href="https://en.wikipedia.org/wiki/Transmission_Control_Protocol#TCP_segment_structure" target="_blank" rel="external">这里给出</a>的和题目中一致的以B为单位编号的TCP首部结构</p>
+<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/471457613/6.png" alt="TCP首部"><br><em>注意题中给出的编号以1开始计数，而非图中从0开始计数</em></p>
+<hr>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>编号</th>
+<th>十六进制数值(HEX)</th>
+<th>十进制数值(DEC)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>源端口号（<em>Source port #</em>）</td>
+<td>1-2</td>
+<td>0d28</td>
+<td>3368</td>
+</tr>
+<tr>
+<td>目的端口号（<em>Dest port #</em>）</td>
+<td>3-4</td>
+<td>0015</td>
+<td>21</td>
+</tr>
+<tr>
+<td>序列号（<em>Sequence number</em>）</td>
+<td>5-8</td>
+<td>005fa906</td>
+<td>6269190</td>
+</tr>
+<tr>
+<td>确认号（<em>Acknowledgment number</em>）</td>
+<td>9-12</td>
+<td>00000000</td>
+<td>0</td>
+</tr>
+<tr>
+<td>首部长度（<em>Header length</em>）</td>
+<td>13前4位</td>
+<td>7</td>
+<td>7</td>
+</tr>
+</tbody>
+</table>
+<p>首部长度（<em>Header length</em>）这个字段也称为数据偏移长度（<em>Data offset</em>）表示数据从第几位开始，也就是首部的长度，单位是<strong>32bit字</strong>，也就是说这个首部的长度是<code>7*4=28</code>B或者<code>7*32=228</code>bit</p>
+<hr>
+<blockquote>
+<p>这是一个使用什么协议的TCP连接？（<strong>提示</strong>：观察端口号）该TCP连接的状态是什么？</p>
+</blockquote>
+<p>目的端口号为<code>21</code>，可以得知这是FTP连接。</p>
+<p>通过上面的观察我们发现<code>ack</code>确认号是0，再进一步观察<code>SYN</code>,<code>ACK</code>和<code>FIN</code>标志位：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>编号</th>
+<th>十六进制数值(HEX)</th>
+<th>十进制数值(DEC)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ACK</td>
+<td>14第4位</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>SYN</td>
+<td>14第7位</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>FIN</td>
+<td>14第8位</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>这个消息并没有<code>ACK</code>和<code>FIN</code>信息，只是一条<code>SYN</code>消息，且<code>ack</code>=0说明对方还没有传送数据。因此，这是TCP三次握手建立连接中的第一条消息。这个TCP连接还在建立状态。</p>
 
       
     </div>
