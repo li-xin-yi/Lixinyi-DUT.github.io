@@ -21,7 +21,9 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/471457613/4.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/471457613/5.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/471457613/6.png">
-<meta property="og:updated_time" content="2016-04-10T15:42:55.548Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/471457613/7.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/471457613/8.png">
+<meta property="og:updated_time" content="2016-04-11T15:00:21.715Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计网课堂测试题解">
 <meta name="twitter:description" content="4.5课序号01和02的班级进行了一次课堂测试，2个班级各自考了2题，本文给出课序号02的班级使用的试题的题解。
@@ -529,6 +531,41 @@ var _hmt = _hmt || [];
 </tbody>
 </table>
 <p>这个消息并没有<code>ACK</code>和<code>FIN</code>信息，只是一条<code>SYN</code>消息，且<code>ack</code>=0说明对方还没有传送数据。因此，这是TCP三次握手建立连接中的第一条消息。这个TCP连接还在建立状态。</p>
+<h2 id="01-2">01-2</h2><blockquote>
+<p>一个自治系统有5个局域网，如下图所示。LAN2至LAN5上的主机数分别是91、150、3和15，该自治系统分配到的IP地址块为<code>30.138.118/23</code>，试给出每个局域网的地址块。（<strong>提示</strong>：路由器（包括边界路由器）也需占用一个IP地址）<br><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/471457613/7.png" alt="原图"><br><del>（原图因为排版问题在上课的时候投影效果不佳，导致大家的理解上可能出现了偏差这个样子是不行的所以我又重新用鸭嘴笔画了一个）</del><br><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/471457613/8.png" alt="engineering drawing"></p>
+</blockquote>
+<p>待分配的地址段一共有9位，也就是512个。对于这样的网络分配方案可以有很多种，只要言之有理即可，当然啦，也得考虑历史的行程，原则上遇到这种问题我们首先考虑的是主机数较多的局域网，就像要填满一个瓶子，像放体积大的石子，再放小石子，最后用沙子填满间隙。</p>
+<p>接下来就要考虑分配的地址块大小了，假设某个局域网主机数为$x$，与其相连的路由数为$y$，为了不浪费资源，那么主机号的位数$n$必须满足要求$$2^{n-1} \le x+y &lt; 2^n$$</p>
+<h3 id="一种可行的分配方案">一种可行的分配方案</h3><p>对于LAN3来说，有150台主机和一个路由器，需要8位的主机地址。网络地址则是剩下的24位，我们可以取IP地址的第24位为0，将<code>30.138.118.0/24</code>分配给LAN3</p>
+<p>对于LAN2来说，有91台主机和一个路由器，需要7位的主机地址。网络地址则是剩下的25位，我们可以取IP地址的第24位为1，第25位为0，将<code>30.138.119.0/25</code>分配给LAN2</p>
+<p>同理LAN5有15台主机和一个路由器，需要5位主机地址，剩下27位为网络地址，取24,25,26,27位为1110,将<code>30.138.118.192/29</code>分配给LAN5</p>
+<p>接下来我们来看LAN1，有三个路由，而且作为自治域至少要有一个边界路由与其他自治域相连，所有至少需要4个IP，取3位作为主机地址，IP地址的第24,25,26,27,28,29位可以取111101，分配地址段<code>30.138.119.232/29</code></p>
+<p>LAN4有3台主机和一个路由同理使用3位主机地址，第24,25,26,27,28,29位可以取111110，分配地址段<code>30.138.119.240/29</code></p>
+<h2 id="01-3_*">01-3 *</h2><p>因为时间问题所以这题并没有作为试题在课上放出来，不过有兴趣的同学可以自己做做试试看。</p>
+<blockquote>
+<p>将以下IPv6地址用零压缩方法写成简洁形式。</p>
+<ol>
+<li>0000:0000:0F53:6382:AB00:67DB:BB27:7332</li>
+<li>0000:0000:0000:0000:0000:0000:004D:ABCD</li>
+<li>0000:0000:0000:AF36:7328:000A:87AA:0398</li>
+<li>2819:00AF:0000:0000:0000:0035:0CB2:B271</li>
+</ol>
+</blockquote>
+<h3 id="零压缩">零压缩</h3><p>IPv6地址每个冒号分隔的部分称为<strong>位段</strong>，比如<code>0000</code>:<code>0000</code>:<code>0F53</code>:<code>6382</code>:<code>AB00</code>:<code>67DB</code>:<code>BB27</code>:<code>7332</code>每个灰色的块里都是一个位段，一共8个位段。</p>
+<p>前导零压缩的基本法是：</p>
+<ul>
+<li>如果一个位段为0000，那么可以用0进行代替。</li>
+<li>IPv6每段地址前端的0可以省略，中间和后端则不可以。</li>
+<li>几个连续的位段为0，可以用<code>：：</code>代替这些0。</li>
+<li><code>：：</code>在IPv6中只能出现一次。</li>
+</ul>
+<p>好像并没有什么需要注意的难点，那就直接放答案了</p>
+<ul>
+<li>::F53:6382:AB00:67DB:BB27:7332</li>
+<li>::4D:ABCD</li>
+<li>::AF36:7328:A:87AA:398</li>
+<li>2819:AF::35:CB2:B271</li>
+</ul>
 
       
     </div>
