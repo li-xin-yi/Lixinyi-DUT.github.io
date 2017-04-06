@@ -21,7 +21,7 @@
 和董先生相见不到3分钟，我就认定他是香港地区的特首了
 
 这样带有硬点意味的话语在恋爱关系中非常常见，但很少会真的在见第一面的时候就脱口而出，一如闯入春晚现场紧紧握住歌唱家的手，这样的勇气非常人所及，但也只能当回想起“我的经历就是……”的时候才敢说这样的话，所以，人们一开始都是怎样确定应该认定哪个人作为自己的">
-<meta property="og:updated_time" content="2017-04-05T08:38:17.049Z">
+<meta property="og:updated_time" content="2017-04-05T12:25:21.536Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="（施工现场）和你相见不到40分钟，我就认定你是我的妻子了">
 <meta name="twitter:description" content="失踪人口回归，很高兴在新的一年里本站又和大家见面，祝大家春节玉快，豁家欢络，万四如意。
@@ -99,12 +99,12 @@ var _hmt = _hmt || [];
 					<div class="tips-arrow"></div>
 					<ul class="tips-inner">
 						<li>菜单</li>
-						<li>Тэги</li>
+						<li>標籤</li>
 						
 						<li>友情链接</li>
 						
 						
-						<li>О сайте</li>
+						<li>關於</li>
 						
 					</ul>
 				</div>
@@ -284,6 +284,16 @@ var _hmt = _hmt || [];
 <p>假设有数量相等都为$n$的男女相亲者参与一个大型相亲活动，男性参与者集合为${\bf{M}}  = \{ m_1,m_2, \ldots ,m_n\}$，相似地，女性参与者写为集合${\bf{W}}  = \{ w_1,w_2, \ldots ,w_n\}$，显然有$\left| {\bf{M}} \right| = \left|{\bf{W}} \right| = n$</p>
 <p>对于<strong>每个</strong>参与这场活动的参与者，对于所有的异性们都会有一个明确的<strong>排序</strong>。比如3号女士（$w_3$）通过观察和交流对${\bf{M}}$集合的所有男士按照喜爱程度可以给出一个偏序覆盖，如$m_1&gt;m_2&gt;\ldots &gt;m_n$，也就是说如果1号男士和2号男士同时表示有事找大哥，当她需要过河的时候，一定会选择让1号男士来推她。为了方便讨论，同时我们暂时假设这里所有的排序都是<strong>严格</strong>的，即不存在同时对两位异性好感度完全相同的情况。</p>
 <h3 id="稳定婚姻">稳定婚姻</h3><p>有人认为SMP模型丝毫不浪漫，甚至说是婚恋中的黑暗森林模型，但笔者我认为这是一派胡言，给SMP泼脏水。虽然把排序这种实际上暗搓搓进行的东西摆到台面上有点残酷，但整个问题的假设还是非常光明磊落的，没有白色相簿2的犹豫不决，没有虎扑步行街的<code>\textcolor[rgb]{0,1,0}{当然是选择原谅她了}</code>，算法运行一次，所有人进入稳定婚姻，买定离手，所有人都接受这个匹配，没有寝取文学出现的余地，相比于现实已经非常干净了。</p>
+<p>如何定义这个神奇的稳定婚姻/匹配状态呢？</p>
+<p>假设有一对新人$\left( {m,w} \right)$进入了婚姻关系，在怎样的情况下其中会存在一个人，也就是$m$或$w$会出轨？</p>
+<p>我们假设这个要出轨的人是$m$，并存在另一对夫妻$\left( m’,w’ \right)$将成为ntr受害者，在异性恋婚恋的背景下，可能与$m$发生不伦恋情的显然是$w’$，但这种不伦不是一定发生，发生需要两个条件：</p>
+<ul>
+<li>比起$m$现在的配偶$w$，$m$更喜欢$w’$</li>
+<li>比起$w’$现在的配偶$m’$，$w’$更喜欢$m$</li>
+</ul>
+<p>概括一下，有妇之夫$m$和有夫之妇$w’$都看自己的原配不如看对方顺眼，他们就会背叛自己原来的家庭，发生婚外情，这时包含$\left( {m,w} \right)$和$\left( m’,w’ \right)$的匹配结果就是<strong>不稳定</strong>的。</p>
+<p>反之，如果婚姻中双方都没有这样的出轨目标，那么这个婚姻就是稳定的。</p>
+<p>至此，我们定义稳定匹配为<strong>不存在</strong>任意一对未配对的异性<strong>偏爱对方</strong>都<strong>胜于自己现在的配偶</strong>的匹配方案。</p>
 <div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">Gale, David, and Lloyd S. Shapley. &quot;<a href="http://opim.wharton.upenn.edu/~sok/papers/g/gale-shapley-1962.pdf">College admissions and the stability of marriage.</a>&quot; <em>The American Mathematical Monthly</em> 69, no. 1 (1962): 9-15.</span><a href="#fnref:1" rev="footnote"> ↩</a></li></ol></div></div>
       
     </div>
@@ -323,10 +333,12 @@ var _hmt = _hmt || [];
 
 
 
-
+<!-- 
 <section id="comments">
+
+
   <div id="disqus_thread"></div>
-    <script type="text/javascript">
+  <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
     var disqus_shortname = 'wwwyangzhou301com'; // required: replace example with your forum shortname
 
@@ -339,7 +351,27 @@ var _hmt = _hmt || [];
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </section>
+ -->
 
+
+
+<section id="comments">
+<div id="container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: 'Lixinyi-DUT',
+  repo: 'Lixinyi-DUT.github.io',
+  oauth: {
+    client_id: '622d8cae448817ca0993',
+    client_secret: '529ebe9fda1c25d278f1f9136b1f3c078eed6c4c',
+  },
+})
+gitment.render('container')
+</script>
+</section>
+ -->
 </div>
       <footer id="footer">
   <div class="outer">

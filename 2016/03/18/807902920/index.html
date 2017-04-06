@@ -88,12 +88,12 @@ var _hmt = _hmt || [];
 					<div class="tips-arrow"></div>
 					<ul class="tips-inner">
 						<li>菜单</li>
-						<li>Тэги</li>
+						<li>標籤</li>
 						
 						<li>友情链接</li>
 						
 						
-						<li>О сайте</li>
+						<li>關於</li>
 						
 					</ul>
 				</div>
@@ -370,10 +370,12 @@ var _hmt = _hmt || [];
 
 
 
-
+<!-- 
 <section id="comments">
+
+
   <div id="disqus_thread"></div>
-    <script type="text/javascript">
+  <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
     var disqus_shortname = 'wwwyangzhou301com'; // required: replace example with your forum shortname
 
@@ -386,7 +388,27 @@ var _hmt = _hmt || [];
   </script>
   <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </section>
+ -->
 
+
+
+<section id="comments">
+<div id="container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: 'Lixinyi-DUT',
+  repo: 'Lixinyi-DUT.github.io',
+  oauth: {
+    client_id: '622d8cae448817ca0993',
+    client_secret: '529ebe9fda1c25d278f1f9136b1f3c078eed6c4c',
+  },
+})
+gitment.render('container')
+</script>
+</section>
+ -->
 </div>
       <footer id="footer">
   <div class="outer">
