@@ -658,11 +658,13 @@ const myTheme = {
     container.className = 'gitment-container gitment-root-container'
 
      // your custom component
-    container.appendChild(instance.renderSomething(state, instance))
+
 
     container.appendChild(instance.renderHeader(state, instance))
-    container.appendChild(instance.renderEditor(state, instance))
     container.appendChild(instance.renderComments(state, instance))
+    container.appendChild(instance.renderSomething(state, instance))
+    container.appendChild(instance.renderEditor(state, instance))
+
     container.appendChild(instance.renderFooter(state, instance))
     return container
   },
@@ -684,7 +686,7 @@ const gitment = new Gitment({
     client_secret: '529ebe9fda1c25d278f1f9136b1f3c078eed6c4c',
   },
 })
-gitment.render('document.body')
+gitment.render('comments')
 </script>
 </section>
 
