@@ -384,7 +384,10 @@ const myTheme = {
   renderSomething(state, instance) {
     const container = document.createElement('div')
     if (state.user.login) {
-      container.innerText = `${state.user.login}，您已经是大脑升级了, 快来说句创话吧！`
+      container.innerText = `文明的${state.user.login}，您的大脑已经升级了，，， 快来说句创话吧！`
+    }
+    else {
+      container.innerText = `野蛮的游客，，，请登陆Github进行评论`
     }
     return container
   }
