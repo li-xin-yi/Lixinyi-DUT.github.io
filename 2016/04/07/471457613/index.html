@@ -681,7 +681,33 @@ var _hmt = _hmt || [];
 <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
 <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
+
+const myTheme = {
+  render(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'gitment-container gitment-root-container'
+
+     // your custom component
+    container.appendChild(instance.renderSomething(state, instance))
+
+    container.appendChild(instance.renderHeader(state, instance))
+    container.appendChild(instance.renderEditor(state, instance))
+    container.appendChild(instance.renderComments(state, instance))
+    container.appendChild(instance.renderFooter(state, instance))
+    return container
+  },
+  renderSomething(state, instance) {
+    const container = document.createElement('div')
+    if (state.user.login) {
+      container.innerText = `${state.user.login}，您已经是大脑升级了, 快来说句创话吧！`
+    }
+    return container
+  }
+}
+
 const gitment = new Gitment({
+  theme: myTheme,
   owner: 'Lixinyi-DUT',
   repo: 'Lixinyi-DUT.github.io',
   oauth: {
@@ -689,7 +715,7 @@ const gitment = new Gitment({
     client_secret: '529ebe9fda1c25d278f1f9136b1f3c078eed6c4c',
   },
 })
-gitment.render('comments')
+gitment.render('document.body')
 </script>
 </section>
 
