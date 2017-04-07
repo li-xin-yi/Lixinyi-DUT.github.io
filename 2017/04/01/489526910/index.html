@@ -21,7 +21,7 @@
 和董先生相见不到3分钟，我就认定他是香港地区的特首了
 
 这样带有硬点意味的话语在恋爱关系中非常常见，但很少会真的在见第一面的时候就脱口而出，一如闯入春晚现场紧紧握住歌唱家的手，这样的勇气非常人所及，但也只能当回想起“我的经历就是……”的时候才敢说这样的话，所以，人们一开始都是怎样确定应该认定哪个人作为自己的">
-<meta property="og:updated_time" content="2017-04-06T08:20:21.203Z">
+<meta property="og:updated_time" content="2017-04-07T13:02:12.467Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="（施工现场）和你相见不到40分钟，我就认定你是我的妻子了">
 <meta name="twitter:description" content="失踪人口回归，很高兴在新的一年里本站又和大家见面，祝大家春节玉快，豁家欢络，万四如意。
@@ -295,8 +295,15 @@ var _hmt = _hmt || [];
 <p>反之，如果婚姻中双方都没有这样的出轨目标，那么这个婚姻就是稳定的。</p>
 <p>至此，我们定义稳定匹配为<strong>不存在</strong>任意一对<em>未配对</em>的异性<strong>偏爱对方</strong>都<strong>胜于自己现在的配偶</strong>的匹配方案。</p>
 <h3 id="目标">目标</h3><p>对于$\left| {\bf{M}} \right| = \left|{\bf{W}} \right| = n$设定下男女数量对等的配对方案，显然无论按照什么方法配对总能保证每个人有且只有一个配偶，不会留下“剩男”或者“剩女”，这也是配对本身的要求，问题预设了来相亲的肯定不是不婚主义者而是无论如何必须保证让自己脱单的单身焦虑者，但在这些方案中唯一能采纳的只有保证不会滋生寝取文学的稳定匹配方案。</p>
-<p>为了让问题更加生活化，去思考这个问题的我们可以站在这个大型相亲活动的上帝视角来解决问题。这里假设我和读者们都是该相亲活动的举办方，</p>
-<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">Gale, David, and Lloyd S. Shapley. &quot;<a href="http://opim.wharton.upenn.edu/~sok/papers/g/gale-shapley-1962.pdf">College admissions and the stability of marriage.</a>&quot; <em>The American Mathematical Monthly</em> 69, no. 1 (1962): 9-15.</span><a href="#fnref:1" rev="footnote"> ↩</a></li></ol></div></div>
+<p>为了让问题更加生活化，去思考这个问题的我们可以站在这个大型相亲活动的上帝视角来解决问题。这里假设我和读者们都是该相亲活动的举办方，给这$n$男$n$女安排一次集中会面，从而得到每个参与者心目中的对所有异性的好感度排名。</p>
+<p>做媒是不包含售后服务的，因此算法只会运行一次将所有的男女生成一对一的配对。假设我们这些媒人举办这样的活动是怀着某种崇高的理想，宁拆十座庙不愿意见到任何一对夫妻分手，那就需要给出一个让$2n$位参与者都愿意乖乖守在自己的婚姻中的配对方案，即使这个方案本身几乎一定不能让参与者满意自己的婚姻。</p>
+<p>参与活动的人以什么样的指标评价异性不是我们可以干涉的问题，我们能做的只是根据$2n$位参与者每个人各自对$n$位异性的好感排序硬点出$n$对异性建立关系，并且保证所有配对的人中不会有任何一个人同时具有出轨的野心和能力。</p>
+<p>所以总结一下，现在面对这样一个问题，我们要求喂给算法这样的输入，并要求得到这样的输出：</p>
+<ul>
+<li>输入：两个元素数量为$n$的两个集合中每个元素对于另一个集合成员的排序</li>
+<li>输出：给出$n$对双方分别来自这两个配对的配对，每个元素仅在所有配对中出现一次，不存在任意两个未配对的元素同时认为对方优于现在和他们配对的元素。</li>
+</ul>
+<h3 id="Gale-Shapley算法">Gale-Shapley算法</h3><div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">Gale, David, and Lloyd S. Shapley. &quot;<a href="http://opim.wharton.upenn.edu/~sok/papers/g/gale-shapley-1962.pdf">College admissions and the stability of marriage.</a>&quot; <em>The American Mathematical Monthly</em> 69, no. 1 (1962): 9-15.</span><a href="#fnref:1" rev="footnote"> ↩</a></li></ol></div></div>
       
     </div>
     
