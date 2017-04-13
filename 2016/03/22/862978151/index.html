@@ -5,27 +5,26 @@
   
   <title>它是HTTPS协议，我们怎能不支持它？ | 扬州计划</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="扬州计划已全站启用https，看着越来越多的博客都开始启用https，我也跟风部署了SSL证书。本文将详细讲述用Hexo生成部署在GitHub Pages且使用自定义域名重定向的博客如何开启全站https
-超文本安全传输协议（HTTPS）也称HTTP Over SSL/TLS,实现原理是在HTTP的基础上再实现SSL(TLS与SSL类似以下不再赘述)那一套的封装，所以HTTPS比起HTTP有一个好">
+  <meta name="description" content="扬州计划已全站启用https，看着越来越多的博客都开始启用https，我也跟风部署了SSL证书。本文将详细讲述用Hexo生成部署在GitHub Pages且使用自定义域名重定向的博客如何开启全站https 超文本安全传输协议（HTTPS）也称HTTP Over SSL/TLS,实现原理是在HTTP的基础上再实现SSL(TLS与SSL类似以下不再赘述)那一套的封装，所以HTTPS比起HTTP有一个好">
+<meta name="keywords" content="营销软文,GitHub,HTTPS,SSL,Hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="它是HTTPS协议，我们怎能不支持它？">
 <meta property="og:url" content="https://www.yangzhou301.com/2016/03/22/862978151/index.html">
 <meta property="og:site_name" content="扬州计划">
-<meta property="og:description" content="扬州计划已全站启用https，看着越来越多的博客都开始启用https，我也跟风部署了SSL证书。本文将详细讲述用Hexo生成部署在GitHub Pages且使用自定义域名重定向的博客如何开启全站https
-超文本安全传输协议（HTTPS）也称HTTP Over SSL/TLS,实现原理是在HTTP的基础上再实现SSL(TLS与SSL类似以下不再赘述)那一套的封装，所以HTTPS比起HTTP有一个好">
+<meta property="og:description" content="扬州计划已全站启用https，看着越来越多的博客都开始启用https，我也跟风部署了SSL证书。本文将详细讲述用Hexo生成部署在GitHub Pages且使用自定义域名重定向的博客如何开启全站https 超文本安全传输协议（HTTPS）也称HTTP Over SSL/TLS,实现原理是在HTTP的基础上再实现SSL(TLS与SSL类似以下不再赘述)那一套的封装，所以HTTPS比起HTTP有一个好">
 <meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/862978151/1.png">
 <meta property="og:updated_time" content="2016-03-24T14:20:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="它是HTTPS协议，我们怎能不支持它？">
-<meta name="twitter:description" content="扬州计划已全站启用https，看着越来越多的博客都开始启用https，我也跟风部署了SSL证书。本文将详细讲述用Hexo生成部署在GitHub Pages且使用自定义域名重定向的博客如何开启全站https
-超文本安全传输协议（HTTPS）也称HTTP Over SSL/TLS,实现原理是在HTTP的基础上再实现SSL(TLS与SSL类似以下不再赘述)那一套的封装，所以HTTPS比起HTTP有一个好">
+<meta name="twitter:description" content="扬州计划已全站启用https，看着越来越多的博客都开始启用https，我也跟风部署了SSL证书。本文将详细讲述用Hexo生成部署在GitHub Pages且使用自定义域名重定向的博客如何开启全站https 超文本安全传输协议（HTTPS）也称HTTP Over SSL/TLS,实现原理是在HTTP的基础上再实现SSL(TLS与SSL类似以下不再赘述)那一套的封装，所以HTTPS比起HTTP有一个好">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/862978151/1.png">
   
     <link rel="alternative" href="/atom.xml" title="扬州计划" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.ico">
   
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
   
 <script type="text/javascript">
 var _hmt = _hmt || [];
@@ -87,13 +86,13 @@ var _hmt = _hmt || [];
 				<div class="tips-box hide">
 					<div class="tips-arrow"></div>
 					<ul class="tips-inner">
-						<li>菜单</li>
-						<li>標籤</li>
+						<li>Menu</li>
+						<li>Tags</li>
 						
-						<li>友情链接</li>
+						<li>Links</li>
 						
 						
-						<li>關於</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -282,15 +281,15 @@ var _hmt = _hmt || [];
 <li><code>mathjax.ejs</code> 影响数学公式渲染，不作修改将无法编译解析<code>TeX</code>代码</li>
 </ul>
 <p><code>after-footer.ejs</code>第19行：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%- js(<span class="string">'http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min'</span>) %&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;%- js(<span class="string">'http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min'</span>) %&gt;</div></pre></td></tr></table></figure>
 <p>改为</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%- js(<span class="string">'https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min'</span>) %&gt;</span><br></pre></td></tr></table></figure>
-<p><code>mathjax.ejs</code>第18行<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;%- js(<span class="string">'https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min'</span>) %&gt;</div></pre></td></tr></table></figure>
+<p><code>mathjax.ejs</code>第18行<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"</span>&gt;</div></pre></td></tr></table></figure></p>
 <p>改为</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"</span>&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"</span>&gt;</div></pre></td></tr></table></figure>
 <h3 id="社会化分享">社会化分享</h3><p>我的主题使用的<code>JiaThis</code>支持<code>https</code>，但是需要稍作改动</p>
-<p><code>themes\yilia\layout\_partial\post\share.ejs</code>第12行<code>uid=</code>后面的内容为开发者申请项目的标识号，修改的时候用自己的就行<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"http://v3.jiathis.com/code/jia.js?uid=xxxx"</span> charset=<span class="string">"utf-8"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
-<p>改为<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"https://dn-gitseassl.qbox.me/jiathis/code/jia.js?uid=1405949716054953"</span> charset=<span class="string">"utf-8"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<p><code>themes\yilia\layout\_partial\post\share.ejs</code>第12行<code>uid=</code>后面的内容为开发者申请项目的标识号，修改的时候用自己的就行<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"http://v3.jiathis.com/code/jia.js?uid=xxxx"</span> charset=<span class="string">"utf-8"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
+<p>改为<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"https://dn-gitseassl.qbox.me/jiathis/code/jia.js?uid=1405949716054953"</span> charset=<span class="string">"utf-8"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
 <h3 id="社会化评论">社会化评论</h3><p>原来使用的多说评论的头像和表情不支持<code>https</code>，我们可以通过反向代理重新获取图片地址，这里为了提供一个最快捷且免费的方案就不折腾了，停用多说启用<a href="https://disqus.com/">disqus</a>，在项目的<code>_config.yml</code>中添加一条<code>disqus_shortname:</code>后面跟上申请到的项目的名字，比如我的是<code>wwwyangzhou301com</code></p>
 <h2 id="参考资料">参考资料</h2><p>[1]  <a href="https://blog.kloudsec.com/how-to-setup-github-custom-domain-with-https/">How to publish an encrypted website on Github Pages</a></p>
 
@@ -302,18 +301,18 @@ var _hmt = _hmt || [];
     
 <nav id="article-nav">
   
-    <a href="/2016/04/07/471457613/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/03/18/807902920/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          计网课堂测试题解
+          我念了两句诗，然后就主动离开了知乎
         
       </div>
     </a>
   
   
-    <a href="/2016/03/18/807902920/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">我念了两句诗，然后就主动离开了知乎</div>
+    <a href="/2016/04/07/471457613/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">计网课堂测试题解</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -426,7 +425,7 @@ gitment.render('comments')
 </footer>
     </div>
     
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
 
 
 <script>
@@ -442,8 +441,8 @@ gitment.render('comments')
 		open_in_new: true
 	}
 </script>
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
-<script src="/js/main.js" type="text/javascript"></script>
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
 
 
 

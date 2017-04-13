@@ -20,7 +20,7 @@
   
     <link rel="icon" href="/favicon.ico">
   
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
   
 <script type="text/javascript">
 var _hmt = _hmt || [];
@@ -82,13 +82,13 @@ var _hmt = _hmt || [];
 				<div class="tips-box hide">
 					<div class="tips-arrow"></div>
 					<ul class="tips-inner">
-						<li>菜单</li>
-						<li>標籤</li>
+						<li>Menu</li>
+						<li>Tags</li>
 						
-						<li>友情链接</li>
+						<li>Links</li>
 						
 						
-						<li>關於</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -846,7 +846,7 @@ var _hmt = _hmt || [];
 </tr>
 </tbody>
 </table>
-<p>现在B与D的连接失效了，那么路由表就会进入如下如下迭代更新的过程<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">D: dir, <span class="number">1</span> dir, <span class="number">1</span> dir, <span class="number">1</span> dir, <span class="number">1</span>  ... dir, <span class="number">1</span> dir, <span class="number">1</span></span><br><span class="line">B: unreach C, <span class="number">4</span> C, <span class="number">5</span> C,<span class="number">6</span>            C,<span class="number">11</span>  C, <span class="number">12</span></span><br><span class="line">C: B, <span class="number">3</span> A, <span class="number">4</span> A, <span class="number">5</span> A, <span class="number">6</span>              A,<span class="number">11</span> D, <span class="number">11</span></span><br><span class="line">A: B, <span class="number">3</span> C, <span class="number">4</span> C, <span class="number">5</span> C, <span class="number">6</span>              C,<span class="number">11</span> C, <span class="number">12</span></span><br></pre></td></tr></table></figure></p>
+<p>现在B与D的连接失效了，那么路由表就会进入如下如下迭代更新的过程<br><figure class="highlight tap"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">D: dir,<span class="number"> 1 </span>dir,<span class="number"> 1 </span>dir,<span class="number"> 1 </span>dir,<span class="number"> 1 </span> ... dir,<span class="number"> 1 </span>dir, 1</div><div class="line">B: unreach C,<span class="number"> 4 </span>C,<span class="number"> 5 </span>C,6            C,11  C, 12</div><div class="line">C: B,<span class="number"> 3 </span>A,<span class="number"> 4 </span>A,<span class="number"> 5 </span>A,<span class="number"> 6 </span>             A,11 D, 11</div><div class="line">A: B,<span class="number"> 3 </span>C,<span class="number"> 4 </span>C,<span class="number"> 5 </span>C,<span class="number"> 6 </span>             C,11 C, 12</div></pre></td></tr></table></figure></p>
 <p>整个过程跑的很慢，依赖于路由B的路径经过了AC之间的持续循环才有能更新到真实值，这对于大新闻的传播很不利。</p>
 <h2 id="水平分割（Split_Horizon）">水平分割（<em>Split Horizon</em>）</h2><p>水平分割简单来说就是禁止路由向得到消息的接口再发送回原来的路由信息。</p>
 <blockquote>
@@ -1080,7 +1080,7 @@ var _hmt = _hmt || [];
 </footer>
     </div>
     
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
 
 
 <script>
@@ -1096,8 +1096,8 @@ var _hmt = _hmt || [];
 		open_in_new: true
 	}
 </script>
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
-<script src="/js/main.js" type="text/javascript"></script>
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
 
 
 

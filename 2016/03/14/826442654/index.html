@@ -5,16 +5,13 @@
   
   <title>这么早就说Hessian矩阵是半正定的，会不会给人一种凸函数的感觉？ | 扬州计划</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="我大湾里技校网管系扛把子的顾凌峰同学说他已经决定了，让我来整理这篇回答，和大家传授一些关于Hessian矩阵和函数凸性关系的人生经验。原回答地址：怎么理解二阶偏导与凸函数的Hessian矩阵是半正定的？ - 顾凌峰的回答
-本文将着力于分析多元函数Hessian矩阵的性质和函数凸性之间的充要关系，但由于我知识水平低下，也实在不是谦虚，严谨的数学证明还是另请高明，只试图给出一些直观的理解。
-接下来我们">
+  <meta name="description" content="我大湾里技校网管系扛把子的顾凌峰同学说他已经决定了，让我来整理这篇回答，和大家传授一些关于Hessian矩阵和函数凸性关系的人生经验。原回答地址：怎么理解二阶偏导与凸函数的Hessian矩阵是半正定的？ - 顾凌峰的回答 本文将着力于分析多元函数Hessian矩阵的性质和函数凸性之间的充要关系，但由于我知识水平低下，也实在不是谦虚，严谨的数学证明还是另请高明，只试图给出一些直观的理解。 接下来我们">
+<meta name="keywords" content="凸优化,微积分,线性代数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="这么早就说Hessian矩阵是半正定的，会不会给人一种凸函数的感觉？">
 <meta property="og:url" content="https://www.yangzhou301.com/2016/03/14/826442654/index.html">
 <meta property="og:site_name" content="扬州计划">
-<meta property="og:description" content="我大湾里技校网管系扛把子的顾凌峰同学说他已经决定了，让我来整理这篇回答，和大家传授一些关于Hessian矩阵和函数凸性关系的人生经验。原回答地址：怎么理解二阶偏导与凸函数的Hessian矩阵是半正定的？ - 顾凌峰的回答
-本文将着力于分析多元函数Hessian矩阵的性质和函数凸性之间的充要关系，但由于我知识水平低下，也实在不是谦虚，严谨的数学证明还是另请高明，只试图给出一些直观的理解。
-接下来我们">
+<meta property="og:description" content="我大湾里技校网管系扛把子的顾凌峰同学说他已经决定了，让我来整理这篇回答，和大家传授一些关于Hessian矩阵和函数凸性关系的人生经验。原回答地址：怎么理解二阶偏导与凸函数的Hessian矩阵是半正定的？ - 顾凌峰的回答 本文将着力于分析多元函数Hessian矩阵的性质和函数凸性之间的充要关系，但由于我知识水平低下，也实在不是谦虚，严谨的数学证明还是另请高明，只试图给出一些直观的理解。 接下来我们">
 <meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/826442654/1.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/826442654/2.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/826442654/3.png">
@@ -28,16 +25,15 @@
 <meta property="og:updated_time" content="2016-03-21T14:52:03.040Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="这么早就说Hessian矩阵是半正定的，会不会给人一种凸函数的感觉？">
-<meta name="twitter:description" content="我大湾里技校网管系扛把子的顾凌峰同学说他已经决定了，让我来整理这篇回答，和大家传授一些关于Hessian矩阵和函数凸性关系的人生经验。原回答地址：怎么理解二阶偏导与凸函数的Hessian矩阵是半正定的？ - 顾凌峰的回答
-本文将着力于分析多元函数Hessian矩阵的性质和函数凸性之间的充要关系，但由于我知识水平低下，也实在不是谦虚，严谨的数学证明还是另请高明，只试图给出一些直观的理解。
-接下来我们">
+<meta name="twitter:description" content="我大湾里技校网管系扛把子的顾凌峰同学说他已经决定了，让我来整理这篇回答，和大家传授一些关于Hessian矩阵和函数凸性关系的人生经验。原回答地址：怎么理解二阶偏导与凸函数的Hessian矩阵是半正定的？ - 顾凌峰的回答 本文将着力于分析多元函数Hessian矩阵的性质和函数凸性之间的充要关系，但由于我知识水平低下，也实在不是谦虚，严谨的数学证明还是另请高明，只试图给出一些直观的理解。 接下来我们">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/826442654/1.png">
   
     <link rel="alternative" href="/atom.xml" title="扬州计划" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.ico">
   
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
   
 <script type="text/javascript">
 var _hmt = _hmt || [];
@@ -99,13 +95,13 @@ var _hmt = _hmt || [];
 				<div class="tips-box hide">
 					<div class="tips-arrow"></div>
 					<ul class="tips-inner">
-						<li>菜单</li>
-						<li>標籤</li>
+						<li>Menu</li>
+						<li>Tags</li>
 						
-						<li>友情链接</li>
+						<li>Links</li>
 						
 						
-						<li>關於</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -359,18 +355,18 @@ var _hmt = _hmt || [];
     
 <nav id="article-nav">
   
-    <a href="/2016/03/18/807902920/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/02/29/561474648/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          我念了两句诗，然后就主动离开了知乎
+          SMO算法：跑的比香港记者还快
         
       </div>
     </a>
   
   
-    <a href="/2016/02/29/561474648/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">SMO算法：跑的比香港记者还快</div>
+    <a href="/2016/03/18/807902920/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">我念了两句诗，然后就主动离开了知乎</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -483,7 +479,7 @@ gitment.render('comments')
 </footer>
     </div>
     
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
 
 
 <script>
@@ -499,8 +495,8 @@ gitment.render('comments')
 		open_in_new: true
 	}
 </script>
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
-<script src="/js/main.js" type="text/javascript"></script>
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
 
 
 

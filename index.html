@@ -20,7 +20,7 @@
   
     <link rel="icon" href="/favicon.ico">
   
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
   
 <script type="text/javascript">
 var _hmt = _hmt || [];
@@ -82,13 +82,13 @@ var _hmt = _hmt || [];
 				<div class="tips-box hide">
 					<div class="tips-arrow"></div>
 					<ul class="tips-inner">
-						<li>菜单</li>
-						<li>標籤</li>
+						<li>Menu</li>
+						<li>Tags</li>
 						
-						<li>友情链接</li>
+						<li>Links</li>
 						
 						
-						<li>關於</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -266,10 +266,12 @@ var _hmt = _hmt || [];
 <li>比起$m$现在的配偶$w$，$m$更喜欢$w’$</li>
 <li>比起$w’$现在的配偶$m’$，$w’$更喜欢$m$</li>
 </ul>
+<p><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/pictures/489526910/2.png" alt="不稳定的配对"></p>
 <p>概括一下，有妇之夫$m$和有夫之妇$w’$都看自己的原配不如看对方顺眼，他们就会背叛自己原来的家庭，发生婚外情，这时包含$\left( {m,w} \right)$和$\left( m’,w’ \right)$的匹配结果就是<strong>不稳定</strong>的。</p>
 <p>反之，如果婚姻中双方都没有这样的出轨目标，那么这个婚姻就是稳定的。</p>
 <p>至此，我们定义稳定匹配为<strong>不存在</strong>任意一对<em>未配对</em>的异性<strong>偏爱对方</strong>都<strong>胜于自己现在的配偶</strong>的匹配方案。</p>
 <h3 id="目标">目标</h3><p>对于$\left| {\bf{M}} \right| = \left|{\bf{W}} \right| = n$设定下男女数量对等的配对方案，显然无论按照什么方法配对总能保证每个人有且只有一个配偶，不会留下“剩男”或者“剩女”，这也是配对本身的要求，问题预设了来相亲的肯定不是不婚主义者而是无论如何必须保证让自己脱单的单身焦虑者，但在这些方案中唯一能采纳的只有保证不会滋生寝取文学的稳定匹配方案。</p>
+<p><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/pictures/489526910/1.png" alt="匹配"></p>
 <p>为了让问题更加生活化，去思考这个问题的我们可以站在这个大型相亲活动的上帝视角来解决问题。这里假设我和读者们都是该相亲活动的举办方，给这$n$男$n$女安排一次集中会面，从而得到每个参与者心目中的对所有异性的好感度排名。</p>
 <p>做媒是不包含售后服务的，因此算法只会运行一次将所有的男女生成一对一的配对。假设我们这些媒人举办这样的活动是怀着某种崇高的理想，宁拆十座庙不愿意见到任何一对夫妻分手，那就需要给出一个让$2n$位参与者都愿意乖乖守在自己的婚姻中的配对方案，即使这个方案本身几乎一定不能让参与者满意自己的婚姻。</p>
 <p>参与活动的人以什么样的指标评价异性不是我们可以干涉的问题，我们能做的只是根据$2n$位参与者每个人各自对$n$位异性的好感排序硬点出$n$对异性建立关系，并且保证所有配对的人中不会有任何一个人同时具有出轨的野心和能力。</p>
@@ -278,7 +280,7 @@ var _hmt = _hmt || [];
 <li>输入：两个元素数量为$n$的两个集合中每个元素对于另一个集合成员的排序</li>
 <li>输出：给出$n$对双方分别来自这两个配对的配对，每个元素仅在所有配对中出现一次，不存在任意两个未配对的元素同时认为对方优于现在和他们配对的元素。</li>
 </ul>
-<h3 id="Gale-Shapley算法">Gale-Shapley算法</h3><div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">Gale, David, and Lloyd S. Shapley. &quot;<a href="http://opim.wharton.upenn.edu/~sok/papers/g/gale-shapley-1962.pdf">College admissions and the stability of marriage.</a>&quot; <em>The American Mathematical Monthly</em> 69, no. 1 (1962): 9-15.</span><a href="#fnref:1" rev="footnote"> ↩</a></li></ol></div></div>
+<h2 id="Gale-Shapley算法">Gale-Shapley算法</h2><div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">Gale, David, and Lloyd S. Shapley. &quot;<a href="http://opim.wharton.upenn.edu/~sok/papers/g/gale-shapley-1962.pdf">College admissions and the stability of marriage.</a>&quot; <em>The American Mathematical Monthly</em> 69, no. 1 (1962): 9-15.</span><a href="#fnref:1" rev="footnote"> ↩</a></li></ol></div></div>
       
     </div>
     
@@ -933,15 +935,15 @@ var _hmt = _hmt || [];
 <li><code>mathjax.ejs</code> 影响数学公式渲染，不作修改将无法编译解析<code>TeX</code>代码</li>
 </ul>
 <p><code>after-footer.ejs</code>第19行：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%- js(<span class="string">'http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min'</span>) %&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;%- js(<span class="string">'http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min'</span>) %&gt;</div></pre></td></tr></table></figure>
 <p>改为</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%- js(<span class="string">'https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min'</span>) %&gt;</span><br></pre></td></tr></table></figure>
-<p><code>mathjax.ejs</code>第18行<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;%- js(<span class="string">'https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min'</span>) %&gt;</div></pre></td></tr></table></figure>
+<p><code>mathjax.ejs</code>第18行<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"</span>&gt;</div></pre></td></tr></table></figure></p>
 <p>改为</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"</span>&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"</span>&gt;</div></pre></td></tr></table></figure>
 <h3 id="社会化分享">社会化分享</h3><p>我的主题使用的<code>JiaThis</code>支持<code>https</code>，但是需要稍作改动</p>
-<p><code>themes\yilia\layout\_partial\post\share.ejs</code>第12行<code>uid=</code>后面的内容为开发者申请项目的标识号，修改的时候用自己的就行<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"http://v3.jiathis.com/code/jia.js?uid=xxxx"</span> charset=<span class="string">"utf-8"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
-<p>改为<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"https://dn-gitseassl.qbox.me/jiathis/code/jia.js?uid=1405949716054953"</span> charset=<span class="string">"utf-8"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<p><code>themes\yilia\layout\_partial\post\share.ejs</code>第12行<code>uid=</code>后面的内容为开发者申请项目的标识号，修改的时候用自己的就行<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"http://v3.jiathis.com/code/jia.js?uid=xxxx"</span> charset=<span class="string">"utf-8"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
+<p>改为<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"https://dn-gitseassl.qbox.me/jiathis/code/jia.js?uid=1405949716054953"</span> charset=<span class="string">"utf-8"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
 <h3 id="社会化评论">社会化评论</h3><p>原来使用的多说评论的头像和表情不支持<code>https</code>，我们可以通过反向代理重新获取图片地址，这里为了提供一个最快捷且免费的方案就不折腾了，停用多说启用<a href="https://disqus.com/">disqus</a>，在项目的<code>_config.yml</code>中添加一条<code>disqus_shortname:</code>后面跟上申请到的项目的名字，比如我的是<code>wwwyangzhou301com</code></p>
 <h2 id="参考资料">参考资料</h2><p>[1]  <a href="https://blog.kloudsec.com/how-to-setup-github-custom-domain-with-https/">How to publish an encrypted website on Github Pages</a></p>
 
@@ -1117,7 +1119,7 @@ var _hmt = _hmt || [];
 </footer>
     </div>
     
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
 
 
 <script>
@@ -1133,8 +1135,8 @@ var _hmt = _hmt || [];
 		open_in_new: true
 	}
 </script>
-<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js" type="text/javascript"></script>
-<script src="/js/main.js" type="text/javascript"></script>
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
 
 
 
