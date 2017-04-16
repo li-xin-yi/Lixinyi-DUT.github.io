@@ -83,12 +83,12 @@ var _hmt = _hmt || [];
 					<div class="tips-arrow"></div>
 					<ul class="tips-inner">
 						<li>Menu</li>
-						<li>Tags</li>
+						<li>Тэги</li>
 						
 						<li>Links</li>
 						
 						
-						<li>About</li>
+						<li>О сайте</li>
 						
 					</ul>
 				</div>
@@ -298,7 +298,108 @@ var _hmt = _hmt || [];
 </ul>
 <p>其中<code>num</code>,<code>spouse</code>以及<code>spouse</code>向量中的每个元素的取值范围为$\left[ 1,n \right]$，代表的是参与者的编号，因此不能直接作为索引，在这里和后文中将经常见到它们作为索引使用前必须进行<code>-1</code>操作，而<code>cur</code>本身就是取值为$\left[ 0,n-1 \right]$的索引。</p>
 <p>成员函数<code>propose</code>所定义的追求行为关键在于每次都“沿着”<code>prefer</code>向量向后走一步，无论从对方那里获得的回应是接受还是拒绝。</p>
-<h4 id="当然是选择接受他了">当然是选择接受他了</h4><div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">Gale, David, and Lloyd S. Shapley. &quot;<a href="http://opim.wharton.upenn.edu/~sok/papers/g/gale-shapley-1962.pdf">College admissions and the stability of marriage.</a>&quot; <em>The American Mathematical Monthly</em> 69, no. 1 (1962): 9-15.</span><a href="#fnref:1" rev="footnote"> ↩</a></li></ol></div></div>
+<h4 id="当然是选择接受他了">当然是选择接受他了</h4><p>女性不会主动地去追求喜欢的可爱的男孩子，只会在接受到男性追求的时候回应接收或者拒绝。</p>
+<p>当妹子$w$还没有对象的时候，如果受到一个男性$m$的追求会无条件地接受这样的追求,形成匹配$(m,w)$；如果她已经有了对象，在受到其他男性比如$m’$追求时，会比较对于现在的对象$m$和追求者$m’$的好感度，选择和更喜欢的那位男士建立或维持关系：如果选择了继续和$m$保持关系，则拒绝$m’$的追求；如果选择了和$m’$另起炉灶，那就需要和原来的对象$m$分手，让$m$重回“自由身”。<br><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/pictures/489526910/4.png" alt="女性的回应策略"></p>
+<p>由于这样被动的接受机制，对于女性来说维护一个不一定要按顺序走完的偏好向量很不方便，不如维护一个好感度函数用来具体比较对于两位男性的好感程度，通俗来说就是依次给异性们打分而不是排序。</p>
+<p>那现在来模拟一下女性在这场大型相亲活动中的行为模式吧：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">woman</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,num,pref=[])</span>:</span></div><div class="line">        self.matched=<span class="keyword">False</span></div><div class="line">        self.num=num</div><div class="line">        <span class="keyword">if</span> len(pref)&gt;<span class="number">0</span>:</div><div class="line">            self.setscore(pref)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            self.score=[]</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setscore</span><span class="params">(self,pref)</span>:</span></div><div class="line">        n=len(pref)</div><div class="line">        self.score=[<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(n)]</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</div><div class="line">            self.score[pref[i]<span class="number">-1</span>]=n-i</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">response</span><span class="params">(self,m)</span>:</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.matched:</div><div class="line">            self.matched=<span class="keyword">True</span></div><div class="line">            self.spouse=m</div><div class="line">            <span class="keyword">return</span> <span class="keyword">True</span>,<span class="number">-1</span></div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">if</span> self.score[m.num<span class="number">-1</span>]&gt;self.score[self.spouse.num<span class="number">-1</span>]:</div><div class="line">                ex=self.spouse.num</div><div class="line">                self.spouse=m</div><div class="line">                <span class="keyword">return</span> <span class="keyword">True</span>,ex</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                <span class="keyword">return</span> <span class="keyword">False</span>,<span class="number">-1</span></div></pre></td></tr></table></figure></p>
+<p>成员变量方面和男性没有太大区别，只有两点需要特别注意的：</p>
+<ol>
+<li><code>spouse</code>除了初始化时置为<code>-1</code>其他时候存储的都是一个完整的<code>man</code>型对象而非编号，当然也可以为了统一在你自己写的时候处理成编号，这里这么做仅仅是笔者我个人认为比较方便。</li>
+<li>没有<code>prefer</code>向量，取而代之的是一个给男士们打分的<code>score</code>向量，但初始化时只需要输入和男士们一样的偏好向量<code>pref</code>就可以了</li>
+</ol>
+<p><code>woman</code>类核心的行为体现在成员函数<code>response</code>定义的对于男性追求的回应，通过比较返回是否接受追求以及被强行分手恢复单身的男性的编号，也可以理解会<code>response()</code>是一个告诉你你输了/你打败了谁赢了的回复。</p>
+<h4 id="匹配器">匹配器</h4><p>我们作为主办方当然是要搞一些事情的。参与活动的小哥哥小姐姐们都是非常聪明的人，我们无法干涉也没必要干涉他们的行为模式本身，但我们一句话不说也不好，所以我们要确定一下我们的责任：第一个是读取录入他们的信息（包括编号和偏好向量），第二个是确定整个算法开始的起点和终点，如果说还有一点，就是宣布最后的结果，这对于关注结果的人的命运也是很重要的。</p>
+<p>为了更清楚地给匹配器分配任务，到此为止我们先总结一下Gale-Shapleys算法的整个流程，参考由维基百科提供的非常简洁的面向过程的伪代码<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup><br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">function stableMatching &#123;</div><div class="line">    Initialize all m ∈ M <span class="keyword">and</span> w ∈ W <span class="keyword">to</span> free</div><div class="line">    <span class="keyword">while</span> ∃ free man m who still has a woman w <span class="keyword">to</span> propose <span class="keyword">to</span> &#123;</div><div class="line">       w = <span class="keyword">first</span> woman <span class="keyword">on</span> m’s <span class="built_in">list</span> <span class="keyword">to</span> whom m has <span class="keyword">not</span> yet proposed</div><div class="line">       <span class="keyword">if</span> w <span class="keyword">is</span> free</div><div class="line">         (m, w) become engaged</div><div class="line">       <span class="keyword">else</span> <span class="keyword">some</span> pair (m', w) already exists</div><div class="line">         <span class="keyword">if</span> w prefers m <span class="keyword">to</span> m'</div><div class="line">            m' becomes free</div><div class="line">           (m, w) become engaged</div><div class="line">         <span class="keyword">else</span></div><div class="line">           (m', w) remain engaged</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>简单来说就是让还单身着的男孩子不要回头地追求目前最喜欢的姑娘，被追的姑娘挑个喜欢的交往，甩了不喜欢的，当所有的男孩子们都有了女朋友或者被仅有的单身者已经追过了所有妹子还是单身，这个算法就结束了。</p>
+<p>因为已经有了$\left| {\bf{M}} \right| = \left|{\bf{W}} \right|$的假设，所以不会存在追了所有妹子最后还单身的情况（这一点后文会有说明），所以这里我们只要考虑匹配器匹配的终止条件是<strong>没有单身的男性</strong>，那么这里给出一种可行的思路：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">matcher</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,man_file,woman_file)</span>:</span></div><div class="line">        self.W=[]</div><div class="line">        self.M=[]</div><div class="line">        self.single_man=[]</div><div class="line">        fhandm=open(man_file)</div><div class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> fhandm:</div><div class="line">            info=line.split()</div><div class="line">            self.M.append(man(num=int(info[<span class="number">0</span>]),pref=map(int,info[<span class="number">1</span>:])))</div><div class="line">            self.single_man.append(int(info[<span class="number">0</span>])<span class="number">-1</span>)</div><div class="line">        fhandm.close()</div><div class="line"></div><div class="line">        fhandw=open(woman_file)</div><div class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> fhandw:</div><div class="line">            info=line.split()</div><div class="line">            self.W.append(woman(num=int(info[<span class="number">0</span>]),pref=map(int,info[<span class="number">1</span>:])))</div><div class="line">        fhandw.close()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">stable_match</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">            i=self.single_man.pop()</div><div class="line">            re,ex=self.M[i].propose(self.W)</div><div class="line">            <span class="keyword">if</span> re:</div><div class="line">                <span class="keyword">if</span> ex&gt;<span class="number">0</span>:</div><div class="line">                    self.M[ex<span class="number">-1</span>].inform_break()</div><div class="line">                    self.single_man.append(ex<span class="number">-1</span>)</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                self.single_man.append(i)</div><div class="line">            <span class="keyword">if</span> len(self.single_man)==<span class="number">0</span>:</div><div class="line">                <span class="keyword">break</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">declaim</span><span class="params">(self)</span>:</span></div><div class="line">        self.marriage=[]</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> self.M:</div><div class="line">            self.marriage.append((i.num,i.spouse))</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> self.marriage:</div><div class="line">            <span class="keyword">print</span> i</div></pre></td></tr></table></figure>
+<p>我们将男女各自的偏好列表写入文件，再将这两个文件的文件名作为输入初始化一个匹配器。举一个规模很小的例子<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup>，男性们对异性的偏好如下</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">1</th>
+<th style="text-align:left">2</th>
+<th style="text-align:left">3</th>
+<th style="text-align:left">4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">$m_1$</td>
+<td style="text-align:left">$w_2$</td>
+<td style="text-align:left">$w_4$</td>
+<td style="text-align:left">$w_1$</td>
+<td style="text-align:left">$w_3$</td>
+</tr>
+<tr>
+<td style="text-align:left">$m_2$</td>
+<td style="text-align:left">$w_3$</td>
+<td style="text-align:left">$w_1$</td>
+<td style="text-align:left">$w_4$</td>
+<td style="text-align:left">$w_2$</td>
+</tr>
+<tr>
+<td style="text-align:left">$m_3$</td>
+<td style="text-align:left">$w_2$</td>
+<td style="text-align:left">$w_3$</td>
+<td style="text-align:left">$w_1$</td>
+<td style="text-align:left">$w_4$</td>
+</tr>
+<tr>
+<td style="text-align:left">$m_4$</td>
+<td style="text-align:left">$w_4$</td>
+<td style="text-align:left">$w_1$</td>
+<td style="text-align:left">$w_3$</td>
+<td style="text-align:left">$w_2$</td>
+</tr>
+</tbody>
+</table>
+<p>女性们的偏好则是：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">1</th>
+<th style="text-align:left">2</th>
+<th style="text-align:left">3</th>
+<th style="text-align:left">4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">$w_1$</td>
+<td style="text-align:left">$m_2$</td>
+<td style="text-align:left">$m_1$</td>
+<td style="text-align:left">$m_4$</td>
+<td style="text-align:left">$m_3$</td>
+</tr>
+<tr>
+<td style="text-align:left">$w_2$</td>
+<td style="text-align:left">$m_4$</td>
+<td style="text-align:left">$m_3$</td>
+<td style="text-align:left">$m_1$</td>
+<td style="text-align:left">$m_2$</td>
+</tr>
+<tr>
+<td style="text-align:left">$w_3$</td>
+<td style="text-align:left">$m_1$</td>
+<td style="text-align:left">$m_4$</td>
+<td style="text-align:left">$m_3$</td>
+<td style="text-align:left">$m_2$</td>
+</tr>
+<tr>
+<td style="text-align:left">$w_4$</td>
+<td style="text-align:left">$m_2$</td>
+<td style="text-align:left">$m_1$</td>
+<td style="text-align:left">$m_4$</td>
+<td style="text-align:left">$m_3$</td>
+</tr>
+</tbody>
+</table>
+<p>对于每个参与者的信息，可以以自己的编号和自己的偏好列表作为一条记录写入文件，那么我们可以写出以下两个文件：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">----------------------</div><div class="line">woman_info.txt</div><div class="line"><span class="number">1</span> <span class="number">4</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span></div><div class="line"><span class="number">2</span> <span class="number">2</span> <span class="number">3</span> <span class="number">1</span> <span class="number">4</span></div><div class="line"><span class="number">3</span> <span class="number">2</span> <span class="number">4</span> <span class="number">3</span> <span class="number">1</span></div><div class="line"><span class="number">4</span> <span class="number">3</span> <span class="number">1</span> <span class="number">4</span> <span class="number">2</span></div><div class="line">----------------------</div><div class="line">man_info.txt</div><div class="line"><span class="number">1</span> <span class="number">4</span> <span class="number">1</span> <span class="number">3</span> <span class="number">2</span></div><div class="line"><span class="number">2</span> <span class="number">1</span> <span class="number">3</span> <span class="number">2</span> <span class="number">4</span></div><div class="line"><span class="number">3</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span></div><div class="line"><span class="number">4</span> <span class="number">4</span> <span class="number">1</span> <span class="number">3</span> <span class="number">2</span></div><div class="line">----------------------</div></pre></td></tr></table></figure></p>
+<p>最后可以得到匹配结果也就是<code>marriage</code>成员的值为<code>[(1,4),(2,3),(3,2),(4,1)]</code></p>
+<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">Gale, David, and Lloyd S. Shapley. &quot;<a href="http://opim.wharton.upenn.edu/~sok/papers/g/gale-shapley-1962.pdf">College admissions and the stability of marriage.</a>&quot; <em>The American Mathematical Monthly</em> 69, no. 1 (1962): 9-15.</span><a href="#fnref:1" rev="footnote"> ↩</a></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">2.</span><span style="display: inline-block; vertical-align: top;"><a href="https://en.wikipedia.org/wiki/Stable_marriage_problem#Algorithm">https://en.wikipedia.org/wiki/Stable_marriage_problem#Algorithm</a></span><a href="#fnref:2" rev="footnote"> ↩</a></li><li id="fn:3"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">3.</span><span style="display: inline-block; vertical-align: top;">示例数据来源于课件<a href="http://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15251-f10/Site/Materials/Lectures/Lecture21/lecture21.pdf">http://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15251-f10/Site/Materials/Lectures/Lecture21/lecture21.pdf</a></span><a href="#fnref:3" rev="footnote"> ↩</a></li></ol></div></div>
       
     </div>
     
