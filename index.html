@@ -412,6 +412,9 @@ var _hmt = _hmt || [];
 <li>如果$m$没有追求过$w$：那么$m$当然是追求了更喜欢的女性并得到了她的接受所以在没有继续追求$w$，因此比起$w$他更喜欢现在的配偶。</li>
 </ul>
 <p>综上所述，未配对的男女之间不可能同时存在喜欢对方超过自己现在的配偶，因此我们得到的输出结果一定是稳定匹配。</p>
+<h3 id="复杂度分析">复杂度分析</h3><p>这里$n$为男性或女性的总数量。</p>
+<h4 id="时间复杂度">时间复杂度</h4><p>由于整个过程中$n$位男性都会在至多追求$n$位女性，因此总共经历不多于$n^2$次追求，显然可以得到算法的时间复杂度为$o(n^2)$.</p>
+<h4 id="空间复杂度">空间复杂度</h4><p>实际上男女参与者需要各维护一个表示偏好的列表，至于辅助空间显然每次迭代都维持在常数级以内，因此整个算法的空间复杂度也为$o(n^2)$.</p>
 <div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">Gale, David, and Lloyd S. Shapley. &quot;<a href="http://opim.wharton.upenn.edu/~sok/papers/g/gale-shapley-1962.pdf">College admissions and the stability of marriage.</a>&quot; <em>The American Mathematical Monthly</em> 69, no. 1 (1962): 9-15.</span><a href="#fnref:1" rev="footnote"> ↩</a></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">2.</span><span style="display: inline-block; vertical-align: top;"><a href="https://en.wikipedia.org/wiki/Stable_marriage_problem#Algorithm">https://en.wikipedia.org/wiki/Stable_marriage_problem#Algorithm</a></span><a href="#fnref:2" rev="footnote"> ↩</a></li><li id="fn:3"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">3.</span><span style="display: inline-block; vertical-align: top;">示例数据来源于课件<a href="http://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15251-f10/Site/Materials/Lectures/Lecture21/lecture21.pdf">http://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15251-f10/Site/Materials/Lectures/Lecture21/lecture21.pdf</a></span><a href="#fnref:3" rev="footnote"> ↩</a></li></ol></div></div>
       
     </div>
