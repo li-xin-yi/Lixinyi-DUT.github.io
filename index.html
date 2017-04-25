@@ -415,7 +415,88 @@ var _hmt = _hmt || [];
 <h3 id="复杂度分析">复杂度分析</h3><p>这里$n$为男性或女性的总数量。</p>
 <h4 id="时间复杂度">时间复杂度</h4><p>由于整个过程中$n$位男性都会在至多追求$n$位女性，因此总共经历不多于$n^2$次追求，显然可以得到算法的时间复杂度为$o(n^2)$.</p>
 <h4 id="空间复杂度">空间复杂度</h4><p>实际上男女参与者需要各维护一个表示偏好的列表，至于辅助空间显然每次迭代都维持在常数级以内，因此整个算法的空间复杂度也为$o(n^2)$.</p>
-<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">Gale, David, and Lloyd S. Shapley. &quot;<a href="http://opim.wharton.upenn.edu/~sok/papers/g/gale-shapley-1962.pdf">College admissions and the stability of marriage.</a>&quot; <em>The American Mathematical Monthly</em> 69, no. 1 (1962): 9-15.</span><a href="#fnref:1" rev="footnote"> ↩</a></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">2.</span><span style="display: inline-block; vertical-align: top;"><a href="https://en.wikipedia.org/wiki/Stable_marriage_problem#Algorithm">https://en.wikipedia.org/wiki/Stable_marriage_problem#Algorithm</a></span><a href="#fnref:2" rev="footnote"> ↩</a></li><li id="fn:3"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">3.</span><span style="display: inline-block; vertical-align: top;">示例数据来源于课件<a href="http://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15251-f10/Site/Materials/Lectures/Lecture21/lecture21.pdf">http://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15251-f10/Site/Materials/Lectures/Lecture21/lecture21.pdf</a></span><a href="#fnref:3" rev="footnote"> ↩</a></li></ol></div></div>
+<h2 id="最佳匹配">最佳匹配</h2><p>实际上稳定匹配往往不止存在一种，我们这种基于男性追求策略的SMP算法输出的仅仅是一个可行的解。通过其他算法，比如女性优先追求可以输出其他可行的稳定匹配结果。</p>
+<p>假设有三个应聘者$(A,B,C)$选择参与三个企业$(X,Y,Z)$的招聘<sup id="fnref:4"><a href="#fn:4" rel="footnote">4</a></sup>，他们对于对方的排序分别如下</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:left">1</th>
+<th style="text-align:left">2</th>
+<th style="text-align:left">3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">A</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">X</td>
+<td style="text-align:left">Z</td>
+</tr>
+<tr>
+<td style="text-align:left">B</td>
+<td style="text-align:left">Z</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">X</td>
+</tr>
+<tr>
+<td style="text-align:left">C</td>
+<td style="text-align:left">X</td>
+<td style="text-align:left">Z</td>
+<td style="text-align:left">Y</td>
+</tr>
+<tr>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td style="text-align:left">X</td>
+<td style="text-align:left">B</td>
+<td style="text-align:left">A</td>
+<td style="text-align:left">C</td>
+</tr>
+<tr>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">C</td>
+<td style="text-align:left">B</td>
+<td style="text-align:left">A</td>
+</tr>
+<tr>
+<td style="text-align:left">Z</td>
+<td style="text-align:left">A</td>
+<td style="text-align:left">C</td>
+<td style="text-align:left">B</td>
+</tr>
+</tbody>
+</table>
+<p>这个例子可以有三种两种可行解（稳定匹配）：</p>
+<ol>
+<li>应聘者选择了最喜欢的企业而企业得到了最不中意的应聘者：AY,BZ,CX</li>
+<li>应聘者和企业都选择了彼此眼中“中庸”的选项：AX,BY,CZ</li>
+<li>应聘者去了最不喜欢的企业但企业得到了最中意的应聘者：AZ,BX,CY</li>
+</ol>
+<p>显然这三个解都是符合要求的稳定匹配，那么这些稳定匹配结果之间有优劣之分吗？根据实际问题最后应该哪一个稳定匹配作为最优解？</p>
+<p>当然对于这个例子来说，第一个解(AY,BZ,CX)是最符合实际的，因为这种工作关系的建立是由应聘者决定优先去哪个企业决定的，把三位应聘者代入主动追求方的角色（男性集合$\bf{W}$），企业则是作为待追求的女士们，运行我们的Gale-Shapley算法，得到的结果就是第一个解。这时显然应聘者们都如愿所偿地进入了最向往的企业，直觉地，这种由应聘者发起追求的策略可以保证输出对于应聘者来说最优的结果。</p>
+<p>这时我们所说的“对于某某最优的匹配”还是一种直觉上的说法，那么不妨来定义一下什么是最优的<sup id="fnref:5"><a href="#fn:5" rel="footnote">5</a></sup>：</p>
+<blockquote>
+<p>对于男士$m$来说，他最优搭档（<em>optimal partner</em>）$w$是指可以在保证全局最优匹配的情况下他能匹配到的他最喜欢的女士。</p>
+<p>对于男士集合$\bf{M}$来说，如果其中每个男士$m$都<strong>同时</strong>和自己的最优匹配最后建立了关系，那么这个全局的匹配方案就被称为男性最优匹配（<em>male optimal matching</em>）或$\bf{M}$最优匹配。</p>
+</blockquote>
+<p>也就是说如果对于一个输入来说有不止一个稳定匹配结果，那么对于某个$m$来说最优的配偶就是这些结果中与他配对的他最喜欢的女士，对于女性来说也是同理，她能稳定匹配到的最喜欢的男性就是她的最优配偶。同样地，我们可以定义对于某个男性$m$来说他的最差搭档（<em>pessible partner</em>）即所有稳定匹配中他匹配到的最不喜欢的女性，如果有一个稳定匹配使得所有男性<strong>同时</strong>匹配到了他们各自的最差搭档，那么这个匹配就是男性最差匹配（<em>male pessible matching</em>），当然这些对女性也同理所以这里不再重复说明。</p>
+<p>刚才那个招聘的例子中，符合“求职者者主动企业被动”模式的结果恰好是求职者去了“最优企业”而企业却招到了“最差员工”。这种情况并非偶然，而是必然的，主动追求的一方会得到最优匹配，同时被动选择的一方会获得最差匹配。</p>
+<p>为了说明主动出击的重要性，还是以上文的角色定位为例，接下来我们将用反证法证明在男性追求女性的模型下得到的稳定匹配，将是对于男性最优（<em>male optimal</em>）的同时也是对于女性最差（<em>female pessible</em>）的。</p>
+<h3 id="男性最优">男性最优</h3><p>这里将证明上文的算法输出的结果将是男性最优的。</p>
+<blockquote>
+<p>假设得到的结果<strong>不是</strong>男性最优的，那不妨具体地假设在算法运行中，第一个被自己的最优搭档$w^*$直接拒绝（或者强行分手）的男士为$m$，$w^*$比较了男士$m$和$m^*$后选择的$m^*$,这个事件发生在$t$时刻。</p>
+</blockquote>
+<p>既然$w^*$是$m$的最优搭档，那么肯定存在一个让他们成为配偶的稳定匹配，同时在这里稳定匹配中$m^*$选择了$w^*$以外的女士$w’$，也就是说这个包含这两对男女的稳定匹配可以写为$$S=\{(m,w^*),(m^*,w’),\ldots \}$$<br>接下来我们开始证明$(m^*,w^*)$是一对会发生婚外情让整个$S$成为不稳定匹配的绿色男女。</p>
+<p>首先来看$w^*$既然在我们的算法中比较了男士$m$和$m^*$后选择的$m^*$，那显然$w^*$喜欢$m^*$超过$m$。</p>
+<p><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/pictures/489526910/5.png" alt="两位男士的追求时间线"></p>
+<p>另一方面，$t$时刻才发生$\bf{M}$集合中的元素第一次被其最优配偶拒绝（或强行分手，本小节下文的拒绝自带强行分手的情况在内，不再重复说明），那么$[0,t]$的时间内$m^*$还没有被他的最优搭档（记作$w^{**}$）拒绝。$[0,t]$时间段内$m^*$并没有被$w^{**}$拒绝却去追求了$w^*$，说明对于$m^*$来说，$w^{**}$的追求顺序并不在$w^*$之前，也就是说$m^*$对$w^{**}$的喜爱没有超过$w^*$，他对他在$S$中的配偶$w’$的喜爱也一定不高于$w^{**}$，由于$w^{**}$和$w^*$不是同一个人，那么现在可以推出$m^*$喜欢$w^*$超过$m’$。</p>
+<p>综上所述，$S$是一个不稳定匹配，也就是说不存在这样的稳定匹配，这与假设矛盾，因此这个假设不成立，基于男性主动追求的算法得到的结果一定是男性最优的。</p>
+<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">Gale, David, and Lloyd S. Shapley. &quot;<a href="http://opim.wharton.upenn.edu/~sok/papers/g/gale-shapley-1962.pdf">College admissions and the stability of marriage.</a>&quot; <em>The American Mathematical Monthly</em> 69, no. 1 (1962): 9-15.</span><a href="#fnref:1" rev="footnote"> ↩</a></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">2.</span><span style="display: inline-block; vertical-align: top;"><a href="https://en.wikipedia.org/wiki/Stable_marriage_problem#Algorithm">https://en.wikipedia.org/wiki/Stable_marriage_problem#Algorithm</a></span><a href="#fnref:2" rev="footnote"> ↩</a></li><li id="fn:3"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">3.</span><span style="display: inline-block; vertical-align: top;">示例数据来源于课件<a href="http://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15251-f10/Site/Materials/Lectures/Lecture21/lecture21.pdf">http://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15251-f10/Site/Materials/Lectures/Lecture21/lecture21.pdf</a></span><a href="#fnref:3" rev="footnote"> ↩</a></li><li id="fn:4"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">4.</span><span style="display: inline-block; vertical-align: top;"><a href="https://en.wikipedia.org/wiki/Stable_marriage_problem#Optimality_of_the_solution">https://en.wikipedia.org/wiki/Stable_marriage_problem#Optimality_of_the_solution</a></span><a href="#fnref:4" rev="footnote"> ↩</a></li><li id="fn:5"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">5.</span><span style="display: inline-block; vertical-align: top;">定义和证明思路参考讲义<a href="https://inst.eecs.berkeley.edu/~cs70/fa14/notes/n4.pdf">https://inst.eecs.berkeley.edu/~cs70/fa14/notes/n4.pdf</a></span><a href="#fnref:5" rev="footnote"> ↩</a></li></ol></div></div>
       
     </div>
     
