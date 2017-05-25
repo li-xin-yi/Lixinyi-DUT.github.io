@@ -5,13 +5,13 @@
   
   <title>RIP毒性逆转：弄个大新闻把失效路由批判一番 | 扬州计划</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="原回答（RIP协议中，解决路由自环的毒性逆转思想是什么? - [已重置] 的回答）写于去南京考TOEFL前夜，由于时间仓促很多地方没来得及完善，后来也不了了之,想修改的时候发现这个号已经被知乎封了很久了，我也不打算再回知乎做任何输出了，所以回扬州计划整理顺便重写一下这个问题。 本文将从毒性逆转入手，介绍RIP协议中解决失效路由信息及其引发的自环回路问题的几个方法的思想。 距离向量（DV）协议距离向">
+  <meta name="description" content="原回答（RIP协议中，解决路由自环的毒性逆转思想是什么? - [已重置] 的回答）写于去南京考TOEFL前夜，由于时间仓促很多地方没来得及完善，后来也不了了之,想修改的时候发现这个号已经被知乎封了很久了，我也不打算再回知乎做任何输出了，所以回扬州计划整理顺便重写一下这个问题。 本文将从毒性逆转入手，介绍RIP协议中解决失效路由信息及其引发的自环回路问题的几个方法的思想。">
 <meta name="keywords" content="计算机网络,TCP/IP,RIP协议">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RIP毒性逆转：弄个大新闻把失效路由批判一番">
 <meta property="og:url" content="https://www.yangzhou301.com/2016/01/22/605176933/index.html">
 <meta property="og:site_name" content="扬州计划">
-<meta property="og:description" content="原回答（RIP协议中，解决路由自环的毒性逆转思想是什么? - [已重置] 的回答）写于去南京考TOEFL前夜，由于时间仓促很多地方没来得及完善，后来也不了了之,想修改的时候发现这个号已经被知乎封了很久了，我也不打算再回知乎做任何输出了，所以回扬州计划整理顺便重写一下这个问题。 本文将从毒性逆转入手，介绍RIP协议中解决失效路由信息及其引发的自环回路问题的几个方法的思想。 距离向量（DV）协议距离向">
+<meta property="og:description" content="原回答（RIP协议中，解决路由自环的毒性逆转思想是什么? - [已重置] 的回答）写于去南京考TOEFL前夜，由于时间仓促很多地方没来得及完善，后来也不了了之,想修改的时候发现这个号已经被知乎封了很久了，我也不打算再回知乎做任何输出了，所以回扬州计划整理顺便重写一下这个问题。 本文将从毒性逆转入手，介绍RIP协议中解决失效路由信息及其引发的自环回路问题的几个方法的思想。">
 <meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/605176933/1.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/605176933/2.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/605176933/3.png">
@@ -21,10 +21,10 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/605176933/6.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/605176933/7.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/605176933/8.png">
-<meta property="og:updated_time" content="2016-04-06T16:55:13.570Z">
+<meta property="og:updated_time" content="2017-05-25T09:31:10.024Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RIP毒性逆转：弄个大新闻把失效路由批判一番">
-<meta name="twitter:description" content="原回答（RIP协议中，解决路由自环的毒性逆转思想是什么? - [已重置] 的回答）写于去南京考TOEFL前夜，由于时间仓促很多地方没来得及完善，后来也不了了之,想修改的时候发现这个号已经被知乎封了很久了，我也不打算再回知乎做任何输出了，所以回扬州计划整理顺便重写一下这个问题。 本文将从毒性逆转入手，介绍RIP协议中解决失效路由信息及其引发的自环回路问题的几个方法的思想。 距离向量（DV）协议距离向">
+<meta name="twitter:description" content="原回答（RIP协议中，解决路由自环的毒性逆转思想是什么? - [已重置] 的回答）写于去南京考TOEFL前夜，由于时间仓促很多地方没来得及完善，后来也不了了之,想修改的时候发现这个号已经被知乎封了很久了，我也不打算再回知乎做任何输出了，所以回扬州计划整理顺便重写一下这个问题。 本文将从毒性逆转入手，介绍RIP协议中解决失效路由信息及其引发的自环回路问题的几个方法的思想。">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/605176933/1.png">
   
     <link rel="alternative" href="/atom.xml" title="扬州计划" type="application/atom+xml">
@@ -100,7 +100,7 @@ var _hmt = _hmt || [];
 						<li>Links</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -270,6 +270,7 @@ var _hmt = _hmt || [];
       
         <p>原回答（<a href="https://www.zhihu.com/question/39319653/answer/82747224">RIP协议中，解决路由自环的毒性逆转思想是什么? - [已重置] 的回答</a>）<del>写于去南京考TOEFL前夜，由于时间仓促很多地方没来得及完善，后来也不了了之,</del>想修改的时候发现这个号已经被知乎封了很久了，我也不打算再回知乎做任何输出了，所以回扬州计划整理顺便重写一下这个问题。</p>
 <p>本文将从毒性逆转入手，介绍RIP协议中解决失效路由信息及其引发的自环回路问题的几个方法的思想。</p>
+<a id="more"></a>
 <h2 id="距离向量（DV）协议">距离向量（<strong>DV</strong>）协议</h2><p>距离向量路由协议（<em>Distance-Vector Routing Protocol</em>, <strong>DV</strong>）与连接状态路由协议（<em>Link-State routing protocol</em>, <strong>LS</strong>）是两种主要的域内路由协议，其中路由信息协议（<em>Routing Information Protocol</em>, <strong>RIP</strong>）是一种典型的DV协议。</p>
 <p>无法理解距离向量算法的学习者大多是在对<strong>向量</strong>（<em>vector</em>）这个概念的理解上出现了偏差，这里的向量不能按我们在数学/物理上学习到的空间上有几何意义的矢量去理解，我们应该把它类比为统计学中<code>n</code>个特征构造而成的<code>n</code>维向量，实际就是以这个节点为源节点，到其他节点的距离构成的一个<code>1*n</code>的表格。这个概念更接近于我们在数据结构中学习到的向量（实际就是封装好的数组，参见<code>STL</code>的<code>vector</code>容器）。</p>
 <p>DV路由算法的核心思想是每个节点都要接收其邻节点发来的距离向量，然后用<code>Bellman-Ford</code>方法根据收到其他节点的距离向量对自己的距离向量进行松弛（<em>relax</em>）更新。</p>

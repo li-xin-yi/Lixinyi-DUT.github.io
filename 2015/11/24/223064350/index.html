@@ -5,18 +5,18 @@
   
   <title>如何理解“方差越大信息量就越多”？ | 扬州计划</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="问题描述 我们知道方差表示一个值距离平均值的远近程度，如果用一个二位图表示的话，方差越大，高斯分布越“平缓”，方差越小，高斯分布越“高尖”。 但是如何理解，“方差越大，信息量就越多”？ 或者，我们应该如何理解“信息量”这个词？在某一个特征中，系统的混乱程度？值的大小？多少？  原问题地址：https://www.zhihu.com/question/36481348 回答前面几位答主答的非常好非常">
+  <meta name="description" content="问题描述 我们知道方差表示一个值距离平均值的远近程度，如果用一个二位图表示的话，方差越大，高斯分布越“平缓”，方差越小，高斯分布越“高尖”。 但是如何理解，“方差越大，信息量就越多”？ 或者，我们应该如何理解“信息量”这个词？在某一个特征中，系统的混乱程度？值的大小？多少？  原问题地址：https://www.zhihu.com/question/36481348">
 <meta name="keywords" content="一本正经胡说八道,机器学习,信息论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何理解“方差越大信息量就越多”？">
 <meta property="og:url" content="https://www.yangzhou301.com/2015/11/24/223064350/index.html">
 <meta property="og:site_name" content="扬州计划">
-<meta property="og:description" content="问题描述 我们知道方差表示一个值距离平均值的远近程度，如果用一个二位图表示的话，方差越大，高斯分布越“平缓”，方差越小，高斯分布越“高尖”。 但是如何理解，“方差越大，信息量就越多”？ 或者，我们应该如何理解“信息量”这个词？在某一个特征中，系统的混乱程度？值的大小？多少？  原问题地址：https://www.zhihu.com/question/36481348 回答前面几位答主答的非常好非常">
+<meta property="og:description" content="问题描述 我们知道方差表示一个值距离平均值的远近程度，如果用一个二位图表示的话，方差越大，高斯分布越“平缓”，方差越小，高斯分布越“高尖”。 但是如何理解，“方差越大，信息量就越多”？ 或者，我们应该如何理解“信息量”这个词？在某一个特征中，系统的混乱程度？值的大小？多少？  原问题地址：https://www.zhihu.com/question/36481348">
 <meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/223064350/1.png">
-<meta property="og:updated_time" content="2016-03-17T15:14:44.757Z">
+<meta property="og:updated_time" content="2017-05-25T09:29:45.041Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何理解“方差越大信息量就越多”？">
-<meta name="twitter:description" content="问题描述 我们知道方差表示一个值距离平均值的远近程度，如果用一个二位图表示的话，方差越大，高斯分布越“平缓”，方差越小，高斯分布越“高尖”。 但是如何理解，“方差越大，信息量就越多”？ 或者，我们应该如何理解“信息量”这个词？在某一个特征中，系统的混乱程度？值的大小？多少？  原问题地址：https://www.zhihu.com/question/36481348 回答前面几位答主答的非常好非常">
+<meta name="twitter:description" content="问题描述 我们知道方差表示一个值距离平均值的远近程度，如果用一个二位图表示的话，方差越大，高斯分布越“平缓”，方差越小，高斯分布越“高尖”。 但是如何理解，“方差越大，信息量就越多”？ 或者，我们应该如何理解“信息量”这个词？在某一个特征中，系统的混乱程度？值的大小？多少？  原问题地址：https://www.zhihu.com/question/36481348">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/223064350/1.png">
   
     <link rel="alternative" href="/atom.xml" title="扬州计划" type="application/atom+xml">
@@ -92,7 +92,7 @@ var _hmt = _hmt || [];
 						<li>Links</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -266,6 +266,7 @@ var _hmt = _hmt || [];
 <p>或者，我们应该如何理解“信息量”这个词？在某一个特征中，系统的混乱程度？值的大小？多少？</p>
 </blockquote>
 <p>原问题地址：<a href="https://www.zhihu.com/question/36481348">https://www.zhihu.com/question/36481348</a></p>
+<a id="more"></a>
 <h2 id="回答">回答</h2><p>前面几位答主答的非常好非常专业，但是不太接地气，过于阳春白雪了，我来下里巴人一下，以我作为一个学识浅薄的门外汉的角度没什么干货的浅谈一下。</p>
 <p>题主问的很明确，为什么方差和信息量是正相关的？题主非常熟悉方差那一套理论，那么现在的疑问就是信息量的定义是什么？通过什么方法去量化信息量？</p>
 <p>以非专业的角度来说，我们直观感受什么叫信息量大？比如我今天看了一集电视剧，和昨天看的那一集一样是40分钟，下载下来大小也是一样的，但是大呼“卧槽，今天这集信息量好大，脑子转不过来了”是什么意思？这是我们日常语境的信息量，也就是事物给我们传递的信息的数量。比如今天我们要竞选特首，一共有3位候选人，如果完全按照基本法去产生，也就是说选举委员会的投票完全随机，那么这3位候选人当选的概率均等，服从均匀分布（也就是方差最大的一种情况），那么民众都是非常期待看到这场竞选的直播的，因为之前谁也不知道谁会当选，而看完以后就能获得“究竟谁能当选”这个信息；然而竞选开始之前，欧盟出了个报告说其中某位先生是钦定的，这场竞选中他赢的概率是100%（此时方差为0），那么基本上就没人想看竞选了，因为这场竞选只是走个形式并没有传递出任何其他信息。</p>

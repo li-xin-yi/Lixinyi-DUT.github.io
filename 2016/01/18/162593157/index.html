@@ -5,20 +5,20 @@
   
   <title>怎么有效理解可靠数据传输？ | 扬州计划</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="原回答地址：https://www.zhihu.com/question/39324847/answer/82082794 要想理解可靠数据传输（Reliable Data Transfer），那么不妨结合与其相对的概念——不可靠数据传输进行理解。 1. 什么是可靠数据传输服务？什么是可靠数据传输协议？比如我们要实现这样的一组通信，发送方通过一个网络协议给接收方发送一些数据分组，接收方有可能接收到">
+  <meta name="description" content="原回答地址：https://www.zhihu.com/question/39324847/answer/82082794 要想理解可靠数据传输（Reliable Data Transfer），那么不妨结合与其相对的概念——不可靠数据传输 进行理解。">
 <meta name="keywords" content="计算机网络,TCP/IP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="怎么有效理解可靠数据传输？">
 <meta property="og:url" content="https://www.yangzhou301.com/2016/01/18/162593157/index.html">
 <meta property="og:site_name" content="扬州计划">
-<meta property="og:description" content="原回答地址：https://www.zhihu.com/question/39324847/answer/82082794 要想理解可靠数据传输（Reliable Data Transfer），那么不妨结合与其相对的概念——不可靠数据传输进行理解。 1. 什么是可靠数据传输服务？什么是可靠数据传输协议？比如我们要实现这样的一组通信，发送方通过一个网络协议给接收方发送一些数据分组，接收方有可能接收到">
+<meta property="og:description" content="原回答地址：https://www.zhihu.com/question/39324847/answer/82082794 要想理解可靠数据传输（Reliable Data Transfer），那么不妨结合与其相对的概念——不可靠数据传输 进行理解。">
 <meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/162593157/1.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/162593157/2.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/162593157/3.png">
-<meta property="og:updated_time" content="2016-03-17T15:13:20.603Z">
+<meta property="og:updated_time" content="2017-05-25T09:29:21.103Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="怎么有效理解可靠数据传输？">
-<meta name="twitter:description" content="原回答地址：https://www.zhihu.com/question/39324847/answer/82082794 要想理解可靠数据传输（Reliable Data Transfer），那么不妨结合与其相对的概念——不可靠数据传输进行理解。 1. 什么是可靠数据传输服务？什么是可靠数据传输协议？比如我们要实现这样的一组通信，发送方通过一个网络协议给接收方发送一些数据分组，接收方有可能接收到">
+<meta name="twitter:description" content="原回答地址：https://www.zhihu.com/question/39324847/answer/82082794 要想理解可靠数据传输（Reliable Data Transfer），那么不妨结合与其相对的概念——不可靠数据传输 进行理解。">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/162593157/1.png">
   
     <link rel="alternative" href="/atom.xml" title="扬州计划" type="application/atom+xml">
@@ -94,7 +94,7 @@ var _hmt = _hmt || [];
 						<li>Links</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -263,7 +263,8 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>原回答地址：<a href="https://www.zhihu.com/question/39324847/answer/82082794">https://www.zhihu.com/question/39324847/answer/82082794</a></p>
-<p>要想理解<strong>可靠数据传输</strong>（<em>Reliable Data Transfer</em>），那么不妨结合与其相对的概念——<strong>不可靠数据传输</strong>进行理解。</p>
+<p>要想理解<strong>可靠数据传输</strong>（<em>Reliable Data Transfer</em>），那么不妨结合与其相对的概念——<strong>不可靠数据传输</strong> 进行理解。</p>
+<a id="more"></a>
 <h2 id="1-_什么是可靠数据传输服务？什么是可靠数据传输协议？">1. 什么是可靠数据传输服务？什么是可靠数据传输协议？</h2><p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/162593157/1.png" alt="通信"><br>比如我们要实现这样的一组通信，发送方通过一个网络协议给接收方发送一些数据分组，接收方有可能接收到了全部数据，也可能因为各种原因只接收到了部分数据分组或者根本没有收到任何数据分组。即使收到了全部的数据分组，但可能这些分组是有序的（或者说可以通过一些操作恢复为发送时的顺序）可以得到完整的消息（<em>message</em>)，也有可能是无序的，无法恢复出完整的信息。即使数据包是完整的、有序的，有可能在某些地方因为信道有噪声或者其他缘故出现一些差错，导致数据上出了偏差。</p>
 <p>协议要保证的不仅仅是发送方可以发数据，同时也会对接收方将接收到怎样的数据做出一定的保证，这才是完整的通信。</p>
 <blockquote>

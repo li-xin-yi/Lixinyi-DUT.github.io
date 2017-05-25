@@ -88,7 +88,7 @@ var _hmt = _hmt || [];
 						<li>Links</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -248,94 +248,7 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>原回答地址：<a href="https://www.zhihu.com/question/39324847/answer/82082794">https://www.zhihu.com/question/39324847/answer/82082794</a></p>
-<p>要想理解<strong>可靠数据传输</strong>（<em>Reliable Data Transfer</em>），那么不妨结合与其相对的概念——<strong>不可靠数据传输</strong>进行理解。</p>
-<h2 id="1-_什么是可靠数据传输服务？什么是可靠数据传输协议？">1. 什么是可靠数据传输服务？什么是可靠数据传输协议？</h2><p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/162593157/1.png" alt="通信"><br>比如我们要实现这样的一组通信，发送方通过一个网络协议给接收方发送一些数据分组，接收方有可能接收到了全部数据，也可能因为各种原因只接收到了部分数据分组或者根本没有收到任何数据分组。即使收到了全部的数据分组，但可能这些分组是有序的（或者说可以通过一些操作恢复为发送时的顺序）可以得到完整的消息（<em>message</em>)，也有可能是无序的，无法恢复出完整的信息。即使数据包是完整的、有序的，有可能在某些地方因为信道有噪声或者其他缘故出现一些差错，导致数据上出了偏差。</p>
-<p>协议要保证的不仅仅是发送方可以发数据，同时也会对接收方将接收到怎样的数据做出一定的保证，这才是完整的通信。</p>
-<blockquote>
-<p>Thus, to support these applications, something has to be done to <strong>guarantee</strong> that the data sent by one end of the application is delivered <strong>correctly</strong> and <strong>completely</strong> to the other end of the application. If a protocol provides such a guaranteed data delivery service, it is said to provide reliable data transfer.</p>
-</blockquote>
-<p>分组可能会在网络中丢失、损坏，应用层可能对网络通信有所要求，不允许出现这种差错，必须<strong>保证</strong>接收方的应用收到了<strong>完整</strong>且<strong>正确</strong>的数据，这种服务就是可靠数据传输服务。</p>
-<p>如果一个协议可以确保发送端发送了怎样的数据，那么接收端就必然能接收到怎样的数据，那么就可以说这个协议提供了可靠数据传输服务，这个协议是可靠的，反之则是不可靠的。</p>
-<p>类比一个比较形象的场景，一个记者去现场报道国家主席接见现任特首，那么这个记者就相当于一个通信协议，如果能保证把所有的信息都完整、真实、无差错地报道出来，让观众、读者可以通过她的报道真实感受现场情景，那么她就提供了可靠的数据传输服务，如果她可能故意问一些没有质量且水平低下的引导性问题，丢失一些信息没有完全报道，夹带私货，把无中生有的事再重复一遍，宣传上就出现了偏差，她就是不可靠的记者（协议）。</p>
-<h2 id="2-_为什么形容一个协议是可靠/不可靠的？为什么说TCP是可靠的，UDP是不可靠的，IP也是不可靠的？">2. 为什么形容一个协议是可靠/不可靠的？为什么说TCP是可靠的，UDP是不可靠的，IP也是不可靠的？</h2><p>TCP服务模型除了面向连接以外，也提供可靠数据传输服务。</p>
-<blockquote>
-<p>The communicating processes can rely on TCP to deliver <strong>all</strong> data sent <strong>without error</strong> and <strong>in the proper order</strong>. When one side of the application passes a stream of bytes into a socket, it can count on TCP to deliver the same stream of bytes to the receiving socket, with <strong>no missing</strong> or <strong>duplicate</strong> bytes.</p>
-</blockquote>
-<p>通过TCP协议的通信进程可以无差错地以正确的顺序传送所有数据。当一方的应用向套接字传送字节流时，它可以通过TCP向接收套接字传送完全相同的字节流而没有丢失或者冗余的字节。</p>
-<p>而同样是传输层的重要协议UDP则不提供可靠传输服务，仅仅提供最小服务（<em>minimal services</em>）,是无连接的。与之相对，无法保证接收套接字接收到的字节流是完整的、无差错的、有序的。</p>
-<p>传输层之下的网络层，主要使用的是因特网协议（IP协议）。IP协议是一个尽力而为（<em>best-effort</em>）的传送协议，只实现通信方之间逻辑上的连接，IP协议只能尽力去传送通信双方的报文段，而不作出任何保证（完整性、正确性、有序性）</p>
-<h3 id="2-1_为什么可以同时允许可靠/不可靠数据传输服务的存在？">2.1 为什么可以同时允许可靠/不可靠数据传输服务的存在？</h3><p>协议栈中只要有协议提供可靠数据传输服务，那么整个协议栈提供的服务就是可靠的。仅仅看网络层和传输层，UDP/IP架构是不可靠的，TCP/IP则是可靠的，很容易理解，这是一个“或/析取”的关系。假设整个协议栈各层由${ {p_1},{p_2}, \ldots ,{p_n}} $构成，$p_i$表示第$i$层所使用的协议，其值为是否提供可靠数据传输服务，那么整个协议栈的可靠性可以表示为$P = \bigcup\limits_{i = 1}^n $，当然这是个简单粗暴的表达形式，实际上不是每层都有真正意义上的唯一协议，而且各层之间并非完全独立。</p>
-<p>在实际上的通信实现中，选取怎样的协议，设计怎样的协议栈，协议本身特性固然重要，但也有考虑通信需求的进程。说具体一些的例子，一般常用的应用涉及的也就是TCP和UDP的选择，当然现实中还是使用TCP较多，因为大多数应用对数据的完整性、正确性有很高的要求，比如邮件服务/文件下载，但是对吞吐量和时间却没什么要求，而有些应用比如视频游戏/即时通讯对实时性的要求非常高，对数据丢失却是可以容忍的，视频聊天的时候清晰度不高或者出现小规模马赛克，略显失真不是什么大事，所以这个时候选用UDP协议更合适。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">应用</th>
-<th style="text-align:left">数据丢失</th>
-<th style="text-align:left">吞吐量</th>
-<th style="text-align:left">时间敏感性</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">文件传输/下载</td>
-<td style="text-align:left">无丢失</td>
-<td style="text-align:left">弹性</td>
-<td style="text-align:left">无</td>
-</tr>
-<tr>
-<td style="text-align:left">电子邮件</td>
-<td style="text-align:left">无丢失</td>
-<td style="text-align:left">弹性</td>
-<td style="text-align:left">无</td>
-</tr>
-<tr>
-<td style="text-align:left">Web文档</td>
-<td style="text-align:left">无丢失</td>
-<td style="text-align:left">弹性（几kbps）</td>
-<td style="text-align:left">无</td>
-</tr>
-<tr>
-<td style="text-align:left">网络电话/视频会议</td>
-<td style="text-align:left">可容忍丢失</td>
-<td style="text-align:left">视频：几kbps-1Mbps 音频：10kbps-5Mbps</td>
-<td style="text-align:left">有，100ms</td>
-</tr>
-<tr>
-<td style="text-align:left">流存储音频/视频</td>
-<td style="text-align:left">可容忍丢失</td>
-<td style="text-align:left">同上</td>
-<td style="text-align:left">有，几秒</td>
-</tr>
-<tr>
-<td style="text-align:left">互动游戏</td>
-<td style="text-align:left">可容忍丢失</td>
-<td style="text-align:left">几kbps-10kbps</td>
-<td style="text-align:left">有，几秒</td>
-</tr>
-<tr>
-<td style="text-align:left">即时消息</td>
-<td style="text-align:left">无丢失</td>
-<td style="text-align:left">弹性</td>
-<td style="text-align:left">有或没有</td>
-</tr>
-</tbody>
-</table>
-<p>还是沿用上面的类比，传输层协议就像记者一样，每个记者的技能点不一样，一般情况下我们当然会偏爱知识水平高、立场客观真实的西方记者，所以他的出勤会比较多比较著名。那么香港记者经验不足太肤浅、年轻不足以报道全部内容，她就一无是处吗？不是的，她就像UDP，不存在任何拥塞控制而且轻量简单（<em>simple</em>），跑的比谁都快，善于弄大新闻，对于实时性很高的新闻事件让她去也很合适。</p>
-<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/162593157/2.png" alt="应用层各协议依赖的传输层协议"></p>
-<p>因此应用层上的每个协议都会根据需求选择与之对应的传输层协议。</p>
-<h2 id="3-_怎样实现可靠数据传输？">3. 怎样实现可靠数据传输？</h2><p>对于底层信道完全可靠的情况，只需要调用跟着基本法来，接到上层调用就做一系列操作（打包之类的）把数据发给下层，接收方对应层协议收到下层的调用就将数据做些操作然后发给上层协议，其他的就不需要考虑了。</p>
-<p>我们已经在<code>2.1</code>提到，IP是不可靠的，但是可以依靠上层的协议（如TCP）使这个使用IP协议的通信变得可靠，这就好比记者在采访现场引导出了一些不符合积极向上的个人形象的言辞，但是没关系，上层还有编辑和其他审核人员，他们的专业技能可以保证把通讯稿写的符合基本法，那么宣传上就不会出现偏差。</p>
-<p>现在要解决的问题就是怎样在不可靠的网络层协议之上实现可靠的传输层协议。这里以在IP上实现的TCP为例。</p>
-<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/162593157/3.png" alt=""></p>
-<h3 id="3-1_差错检测">3.1 差错检测</h3><p>包括奇偶校验、校验和、CRC等方法判断收到的数据分组是否损坏，如果不能校正那就丢弃分组。</p>
-<h3 id="3-2_ACK确认">3.2 ACK确认</h3><p>这是在不可靠底层信道上加入的一种反馈机制，由接收方发送确认消息。发送方发送数据，接收方接收到了以后发了<code>ACK</code>表示“我已经收到了，可以继续发了”，就像发了一个“支持XXXX吗？”对方回答“吼啊”你才可以继续提问，如果你问的那么热情对方一句话也不说，这就不好了，虽然不排除无可奉告的可能，但是也不能再继续问下去了，这个模式就是停止等待（<em>stop-and-wait</em>）协议的思想，只有得到肯定的确认才能继续发送数据。除了肯定确认<code>ACK</code>表示确认收到以外，还有否定确认<code>NAK</code>，用来表示某个数据没有收到，比如滑动窗口协议中用的就是<code>NAK</code>，意思就是“没听说过”。</p>
-<p>发送方收到了接收方发来的<code>ACK/NAK</code>后自己也要判断的，然后再把接收方丢失的数据分组（无论是在信道上丢失的还是因为出了偏差所以主动丢弃的）重传一遍。</p>
-<p>以上其实就差不多是停止等待协议的基本内容了。</p>
-<h3 id="3-3_序号">3.3 序号</h3><p>但是<code>ACK/NAK</code>也可能在传输过程中被损坏，这时候就需要引入序号（<em>sequence number</em>），接收方可以通过检查收到的数据分组的序号发现哪些分组没有收到、哪些分组冗余了。发送ACK/NAK反馈时也可以指定Seq表示需要重传哪些分组或者继续往下发送哪些分组。序号的引入也让传送的效率大大提升，不用像停止等待那种朴素（<em>naive</em>）方法受限于当前的分组战战兢兢，可以以流水线传送数据。</p>
-<h2 id="4-后记">4.后记</h2><p>“如何理解可靠数据传输”这个问题实在太大，仅仅从概念上来讲就已经非常大了，我不知道题主需要的是具体哪方面的内容，所以把最基础的部分写出来了，事实上比如重传中的超时机制也是很重要的，虽然涉及了一些最基础的元素，但是基础的方法比如退回N步（Go-back-N）、选择重传（SR)、滑动窗口之类也都很重要，但是我的篇幅和精力有限，无法兼顾，只能带你进门，剩下的学习要你自己去完成。这还仅仅是概念，源码阅读和实际应用也需要你自己多多考虑一下。</p>
-<p>很惭愧，只做了一些微小的工作。</p>
-<h2 id="References">References</h2><p>[1] Velten, David, R. M. Hinden, and Jack Sax. <em>Reliable data protocol</em>. No. RFC 908. 1984.<br>[2] Kurose, James F. <em>Computer Networking: A Top-Down Approach Featuring the Internet, 3/E</em>. Pearson Education India, 2005.</p>
-
+<p>要想理解<strong>可靠数据传输</strong>（<em>Reliable Data Transfer</em>），那么不妨结合与其相对的概念——<strong>不可靠数据传输</strong> 进行理解。</p>
       
     </div>
     
@@ -348,6 +261,10 @@ var _hmt = _hmt || [];
 
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/01/18/162593157/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -396,53 +313,6 @@ var _hmt = _hmt || [];
       
         <p><strong>本文内容仅供娱乐，未满15岁的读者请在家长陪同下阅读。请勿模仿，一切后果作者概不负责</strong></p>
 <h2 id="导语">导语</h2><p>地域矛盾客观存在，堵是堵不住的，封也是封不完的。地域黑也是个雅俗共赏，人民喜闻乐见的活动，比较出名的地域黑聚集地如中华城市吧，高楼迷，西祠城坛，虽然用户水平参差不齐，但不乏让人印象深刻拍案叫绝的地域黑作品。那什么样的地域黑才是坠吼的？地域黑的正确姿势是什么？在各大社交平台喊口号骂街？这个样子显然是不行的会让人很生气。吟诗作对文艺撕逼？naive，你是来玩地域黑还是来搞基当网红的？那么画自制表格作对比总可以了吧？那只是你感觉，不过好歹说到了点子上，得让数据说话，不能无中生有见风是雨，用欧盟出了个报告说某地比其他地方不知道高到哪里去了说服力比一句彭定康说的强的多。</p>
-<p>造假数据到时候报道上出了偏差是要负责的，但是作为统计专业的学生，应该明白怎样选择性处理真数据造成误导性结果，比如说通过一句“支持”可以推导出钦定的意思。现在要学习一个的是，怎样做一些看上去比较正规、漂亮的地图来表现这个数据。</p>
-<h2 id="环境准备">环境准备</h2><h3 id="开发环境">开发环境</h3><p>本文使用<code>R语言</code>完成编程，编译的平台为<code>RStudio</code>(可以任意替换为其他用着顺手的支持R的编译器，听说现在Visual Studio也支持了大家可以去试一试)，需要安装以下封包：<code>ggplot2</code>,<code>maptools</code>,<code>regos</code>，<code>colorspace</code>，<code>RColorBrewer</code>。安装可以通过在编译器的控制台中输入如下命令：</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install.packages(<span class="string">'packagename'</span>) <span class="comment">#packagename替换为要安装的包名</span></div></pre></td></tr></table></figure>
-<h3 id="数据资源">数据资源</h3><ul>
-<li>来自国家基础地理信息系统(<a href="https://nfgis.nsdi.gov.cn)的官方数据">https://nfgis.nsdi.gov.cn)的官方数据</a>: <a href="https://cos.name/wp-content/uploads/2014/08/maps_data.7z">maps_data</a></li>
-<li>GADM: <a href="https://gadm.org/country">https://gadm.org/country</a></li>
-</ul>
-<h2 id="初级绘图">初级绘图</h2><p>这个阶段我们要解决的是怎样画出我国各省的分级，省内各市分级，以及市内各区县的分级。</p>
-<h3 id="各市内区县的分级">各市内区县的分级</h3><p>这里用到的数据是nfgis的官方数据的<code>bou4/BOUNT_poly.shp</code>，<code>.shp</code>文件代表<code>shapefile</code>，而这个文件里面包含的内容是区/县级的行政划分的多边形面图。我们可以用<code>readShapePoly</code>函数打开。</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">library</span>(<span class="string">"maptools"</span>)</div><div class="line">alldata=readShapePoly(<span class="string">"E:/maps_data/maps/bou4/BOUNT_poly.shp"</span>)</div></pre></td></tr></table></figure>
-<p>那这个文件里读出来放在<code>SpatialPolygonsDataFrame</code>型变量<code>alldata</code>中的是什么？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">names(alldata)</div><div class="line"># [1] &quot;AREA&quot;       &quot;PERIMETER&quot;  &quot;BOUNT_&quot;     &quot;BOUNT_ID&quot;  </div><div class="line"># [5] &quot;GBCODE&quot;     &quot;ADCODE99&quot;   &quot;NAME99&quot;     &quot;SH2&quot;       </div><div class="line"># [9] &quot;DI2&quot;        &quot;X2&quot;         &quot;CENTROID_Y&quot; &quot;CENTROID_X&quot;</div></pre></td></tr></table></figure>
-<p>这里洋文好的人也很多呐。大概就是面积周长，几种编号（其中<code>ADCODE99</code>需要注意），<code>NAME99</code>是中文名(<code>GBK</code>编码)，最值得关注的是最后两项是经纬度坐标。</p>
-<p><code>ADCODE</code>是nfgis定义的6位区域代码，这个代码我们其实很熟悉，就是身份证号的前6位，非常好查，举个例子，<code>32</code>代码江苏省，<code>3210</code>代表扬州市，<code>321023</code>是宝应县。这里以扬州大市为例学习一个，我们需要全扬州的多边形数据，那就找前四位是<code>3210</code>的记录提取出来，再用<code>fortify</code>函数转换为<code>data.frame</code>格式，部分编译器编码格式为<code>UTF-8</code>的还需要把<code>id</code>和<code>group</code>转换为<code>GBK</code>编码：</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">yangzhou=alldata[substr(as.character(alldata$ADCODE99), <span class="number">1</span>, <span class="number">4</span>) == <span class="string">"3210"</span>,]</div><div class="line">yangzhoudata = fortify(yangzhou, region = <span class="string">'NAME99'</span>)</div><div class="line">yangzhoudata= transform(yangzhoudata, id = iconv(id, from = <span class="string">'GBK'</span>), group = iconv(group, from = <span class="string">'GBK'</span>))</div></pre></td></tr></table></figure>
-<p>这时候可以看到：</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">names(yangzhoudata)</div><div class="line"><span class="comment">#[1] "long"  "lat"   "order" "hole"  "piece" "group" "id"</span></div></pre></td></tr></table></figure>
-<p><code>group</code>的数据后面会带编号，而<code>id</code>仅仅是个名字。现在画图需要的数据框已经有了，可以用<code>ggplot2</code>作图了</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">library</span>(<span class="string">"ggplot2"</span>)</div><div class="line">yangzhoumap = ggplot(yangzhoudata, aes(x = long, y = lat,group=group,fill=id))+</div><div class="line">          geom_polygon(aes(group=group))+</div><div class="line">          geom_path(colour = <span class="string">"gray40"</span>,aes(group=group))+</div><div class="line">          expand_limits(citydata) + coord_map()</div></pre></td></tr></table></figure>
-<p>查看<code>citymap</code>可以看到作图<br><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/323901700/1.png" alt="yangzhou1.png"></p>
-<p>牢记这个<code>group</code>在<code>geom_polygon</code>，<code>geom_path</code>里都必须绑定为它们的参数<code>group</code>，这个对作图的命运有很重大的影响。扬州是内陆地区所以不会出现一个<code>id</code>（区县名)对应多个形状，但是遇到沿海多岛屿的情况报道上就会出现偏差。</p>
-<p>这里肯定会有人不服，为什么画出来那么难看，因为<code>ggplot2</code>默认的配色就那么难看。我们也可以手动换一套配色：</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yangzhoumap+scale_fill_manual(values=colors())</div></pre></td></tr></table></figure>
-<p>效果：<br><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/323901700/2.png" alt="yangzhou2.png"></p>
-<p>当然配色方案这种事情看个人口味了，各种第三方封包也是可以借鉴一个的，参考<a href="https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/colorPaletteCheatsheet.pdf">R Color Cheatsheet</a>能找到很不错的填充主题。</p>
-<p>这里按照个人口味示范一个:</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">library</span>(<span class="string">'RColorBrewer'</span>)</div><div class="line">getPalette = colorRampPalette(brewer.pal(<span class="number">9</span>, <span class="string">"Blues"</span>))</div><div class="line">yangzhoumap+scale_fill_manual(values=getPalette(<span class="number">6</span>))</div></pre></td></tr></table></figure>
-<p>这里用的是一套蓝色深浅渐变，<code>colorRampPalette</code>函数生成一套配色仅仅是为了防止区县数量太多导致<code>RColorBrewer</code>自带配色数量不够无法填充，扬州因为区县少实际上没有这个问题，但不保证其他地区没有。</p>
-<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/323901700/3.png" alt="yangzhou3.png"></p>
-<p>这时候可能又有人不服，图例这种东西太不直观了，最好能把区县名标在地图上。这个Map drawing啊，最痛苦的事就是把地名标到地图上，一不小心文字就标的太多，弄出图了。比如上海有很多沿海或者江中的小岛屿，而它们的都是属于一个地区，但都是独立的形状，所以记录里面会分开记录这些<code>id</code>相同的形状，如果不做处理就标上去，那会导致很不美观的结果。这个时候我们的处理方针就是找到每个区县面积最大的一个多边形，然后记录中心坐标标到地图上。</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">agg=aggregate(AREA ~ NAME99,as.data.frame(city), max)</div><div class="line">arealist=merge(agg,as.data.frame(city))</div><div class="line">tmp=arealist[,cbind(<span class="number">11</span>,<span class="number">12</span>)]</div><div class="line">tmp$id = arealist$NAME99</div><div class="line">tmp$group= arealist$NAME99</div></pre></td></tr></table></figure>
-<p>tmp包含的数据是这样的(以膜都上海为例）：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">  CENTROID_Y CENTROID_X           id        group</div><div class="line"><span class="number">1</span>   <span class="number">31.65070</span>   <span class="number">121.5232</span>       崇明县       崇明县</div><div class="line"><span class="number">2</span>   <span class="number">30.91598</span>   <span class="number">121.5498</span>       奉贤县       奉贤县</div><div class="line"><span class="number">3</span>   <span class="number">31.35312</span>   <span class="number">121.2513</span>       嘉定区       嘉定区</div><div class="line"><span class="number">4</span>   <span class="number">30.83337</span>   <span class="number">121.2313</span>       金山区       金山区</div><div class="line"><span class="number">5</span>   <span class="number">31.10343</span>   <span class="number">121.4149</span>       闵行区       闵行区</div><div class="line"><span class="number">6</span>   <span class="number">31.02362</span>   <span class="number">121.7360</span>       南汇县       南汇县</div><div class="line"><span class="number">7</span>   <span class="number">31.12699</span>   <span class="number">121.0832</span>       青浦县       青浦县</div><div class="line"><span class="number">8</span>   <span class="number">31.23097</span>   <span class="number">121.6361</span> 上海市市辖区 上海市市辖区</div><div class="line"><span class="number">9</span>   <span class="number">31.01199</span>   <span class="number">121.2129</span>       松江区       松江区</div></pre></td></tr></table></figure></p>
-<p>标注到地图上需要调用<code>geom_text</code>增加一个图层：<br><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">modumap=modumap+geom_text(aes(x = CENTROID_X,y = CENTROID_Y,label = id), data = tmp)</div></pre></td></tr></table></figure></p>
-<p>效果:</p>
-<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/323901700/4.png" alt="shanghai1.png"></p>
-<p>当然有人嫌坐标、坐标轴、网格线碍事，只想要保留一个图形。那也很好办，加一个主题去掉这些多余的东西就行。</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">modumap=modumap++theme(axis.line=element_blank(),axis.text.x=element_blank(),</div><div class="line">                                                 axis.text.y=element_blank(),axis.ticks=element_blank(),</div><div class="line">                                                 axis.title.x=element_blank(),</div><div class="line">                                                 axis.title.y=element_blank(),</div><div class="line">                                                 panel.background=element_blank(),panel.border=element_blank(),panel.grid.major=element_blank(),</div><div class="line">                                                 panel.grid.minor=element_blank(),plot.background=element_blank())</div></pre></td></tr></table></figure>
-<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/323901700/5.png" alt="shanghai2.png"></p>
-<p>以上操作可以封装一个函数：<br><figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">citydrawing&lt;-<span class="keyword">function</span>(num,alldata,len=<span class="literal">TRUE</span>)&#123;</div><div class="line">  city=alldata[substr(as.character(alldata$ADCODE99), <span class="number">1</span>, <span class="number">4</span>) == as.character(num),]</div><div class="line">  citydata = fortify(city, region = <span class="string">'NAME99'</span>)</div><div class="line">  citydata= transform(citydata, id = iconv(id, from = <span class="string">'GBK'</span>), group = iconv(group, from = <span class="string">'GBK'</span>))</div><div class="line">  agg=aggregate(AREA ~ NAME99,as.data.frame(city), max)</div><div class="line">  arealist=merge(agg,as.data.frame(city))</div><div class="line">  tmp=arealist[,cbind(<span class="number">11</span>,<span class="number">12</span>)]</div><div class="line">  tmp$id = arealist$NAME99</div><div class="line">  tmp$group= arealist$NAME99</div><div class="line">  getPalette = colorRampPalette(brewer.pal(<span class="number">9</span>, <span class="string">"Blues"</span>))</div><div class="line">  citymap = ggplot(citydata, aes(x = long, y = lat,group=group,fill=id))+</div><div class="line">        geom_polygon(aes(group=group))+</div><div class="line">        geom_path(colour = <span class="string">"gray40"</span>,aes(group=group))+</div><div class="line">     expand_limits(citydata) + coord_map()+theme(axis.line=element_blank(),axis.text.x=element_blank(),</div><div class="line">                                                 axis.text.y=element_blank(),axis.ticks=element_blank(),</div><div class="line">                                                 axis.title.x=element_blank(),</div><div class="line">                                                 axis.title.y=element_blank(),</div><div class="line">                                                 panel.background=element_blank(),panel.border=element_blank(),panel.grid.major=element_blank(),</div><div class="line">                                                 panel.grid.minor=element_blank(),plot.background=element_blank())</div><div class="line">  <span class="keyword">if</span>(len==<span class="literal">TRUE</span>)</div><div class="line">  &#123;</div><div class="line">    citymap=citymap+scale_fill_manual(values=getPalette(nrow(tmp)))</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">else</span></div><div class="line">  &#123;</div><div class="line">  citymap=citymap+geom_text(aes(x = CENTROID_X,y = CENTROID_Y,label = id), family = <span class="string">"times"</span>, data = tmp)+scale_fill_manual(values=getPalette(nrow(tmp)),guide=<span class="literal">FALSE</span>)</div><div class="line">  &#125;</div><div class="line"><span class="keyword">return</span>(citymap)</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
-<p><code>num</code>为区域的四位代码，<code>alldata</code>是数据源（SpatialPolygonsDataFrame格式），<code>len</code>若置为<code>TRUE</code>则显示图例，若置为<code>FALSE</code>则直接在地图上标注地名。</p>
-<p>把这些操作封装成了<code>citydrawing</code>有一个好，配合<code>lapply</code>函数连续作图，跑的比谁都快。</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">number=<span class="number">2301</span>:<span class="number">2311</span></div><div class="line">graphs=lapply(number,FUN =citydrawing,alldata,<span class="literal">FALSE</span>)</div></pre></td></tr></table></figure>
-<p>黑龙江的哪个城市我没去过？你们很熟悉东北那一套。</p>
-<p>这时候还可以借用<code>knitr</code>写一个报告（<code>knitr</code>会在后续的文章中详细介绍），把这些地图都画出来，可能会得到几百个教授的一致通过。</p>
-<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/323901700/6.png" alt="Rmd.png"><br><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/323901700/7.png" alt="Report1.png"><br><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/323901700/8.png" alt="Report2.png"></p>
-<h2 id="未完待续">未完待续</h2><p>初级教程就先写到这里，感谢大家的关注，本文将随时更新，更多教程将陆续编写。</p>
-
       
     </div>
     
@@ -455,6 +325,10 @@ var _hmt = _hmt || [];
 
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2015/12/09/323901700/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -503,30 +377,6 @@ var _hmt = _hmt || [];
       
         <p>原问题地址：<a href="https://www.zhihu.com/question/37349649">https://www.zhihu.com/question/37349649</a></p>
 <h2 id="结论">结论</h2><p>信息论与机器学习同为涉及计算机科学和应用数学等学科的分支领域，这两门交叉学科在起源和应用上有很多相似之处。信息论的理论体系相对成熟一些。机器学习这些年比较受欢迎，理论和应用的扩充发展速度远远更快且看不到饱和的趋势。两个方向互有交叉，但主要还是机器学习中借用信息论的方法以此拓展理论研究和应用场景，比较典型的就是借鉴信息理论创造和改进学习算法（主要是分类问题），甚至衍生出了一个新方向，信息理论学习，详细介绍和研究近况可以看这里：<a href="https://cnel.ufl.edu/research/ITL.php">Information Theoretic Learning (ITL) research</a></p>
-<h2 id="说明">说明</h2><p>机器学习可以根据数学原理分为两种，一种基于经验公式（错误率、边界、代价、风险、实用性、分类边缘），还有一种则是基于信息理论。</p>
-<p>信息论中的一些度量也可以作为学习算法的度量。Watanabe也提出过“<strong>学习就是一个熵减的过程</strong>”，学习的过程也就是使信息的不确定度下降的过程。Bayesian理论也扎根于信息和优化的概念中。比起传统的经验公式为基础的机器学习，以信息理论为基础的机器学习也拥有无可比拟的优势。当少数类的样本数量接近0时，Bayesian分类器对少数类的分类趋向于完全的错误。而以互信息为学习准则的分类器则能够保护少数类，并根据各类样本数量比例自动平衡错误型和拒绝型。</p>
-<p>有目标随机变量$T$和预测结果随机变量$Y$</p>
-<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/636196834/1.png" alt="information measure"></p>
-<p>如果一个变量$T$在统计意义上提供真实值（也就是说$p(t) = ({p_1}, \ldots ,{p_m})$其中总体率${p_i}(i = 1, \ldots ,m)$已知），那么它的熵H(T)就是学习的基线，也就是说出现这种情况$I(T;Y) = H(T;Y) = H(Y;T) = H(Y) = H(T)$或这种情况$KL(T,Y) = KL(Y,T) = H(Y|T) = H(Y|T) = 0$时我们就可以说，我们就说这种方法达到了基线$H(T)$</p>
-<p>对于这些量的关系如下：</p>
-<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/636196834/2.png" alt="relationship1"></p>
-<p>我们记$E$,$Rej$,$A$,$CR$分别表示错误率，拒绝率，正确率和正确识别率。那么有$CR + E + {\mathop{\rm Re}\nolimits} j = 1$和$A = CR/(CR + E)$，这时有如下关系</p>
-<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/636196834/3.png" alt="relationship2"></p>
-<p>这里的${ {y_k}}  = { {t_k}}$表示每个对应标签样本之间都相等。对于有限的数据集来说，这种形式用来表示分布和度量，用$\leftrightarrow$ 表示对于等价关系的双向连接，用$\rightarrow$ 表示单向连接。</p>
-<ul>
-<li>准确分类的<strong>必要条件</strong>是所有信息度量都达到了基线$H(T)$</li>
-<li>当所有信息度量都达到了基线$H(T)$，也<strong>不能充分说明</strong>这是准确分类</li>
-<li>单向连接的不同位置解释了充分条件为什么存在以及充分条件是什么</li>
-</ul>
-<p>当然当遇到其他问题的时候我们还可以扩展到其他信息度量，比如聚类、特征选择/提取等。当我们从相似度（或者也能转变成相似度的相异度）着手来考虑机器学习/模式识别的过程的时候，有一个重要的定理用以描述它们的关系：一般来说，在经验定义的相似度量和信息度量之间，不存在一对一的对应关系（这个结论由错误和熵的学习边界的研究给出）。</p>
-<p>所以，由信息度量的优化并不能保证获得经验方法完成的优化效果。</p>
-<p>但是，也有不少研究者猜想，在机器学习中，所有学习目标的computational representation都是可以用熵函数的优化来描述或者解释的。这个猜想给了我们很好的一个研究着力的方向。</p>
-<h2 id="实例">实例</h2><p>上面的概述有点太宏大了，那么最后看一个大白话的实例：</p>
-<p>以互信息作为学习准则。例如以应用信息增益（归一化的互信息）构造最简结构决策树就是其中一种应用。这种基于信息理论为学习准则的原理就是将无序（标签、特征）数据转变为有序数据，以信息熵差值作为测量尺度来评价转换效果。</p>
-<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/636196834/4.png" alt="process"></p>
-<h2 id="结语">结语</h2><p>唔，坑开的有点大，还有具体实例也暂时没想到怎么表述，另外除了常用的几个，应用较多的如<code>Renyi entropy</code>也没提到，等有空了再来慢慢填坑吧，觉得我写的不好的或者等不及的可以自己看看列出的参考文献。</p>
-<h2 id="参考文献">参考文献</h2><p>[1] Hu, Bao-Gang. “Information Theory and Its Relation to Machine Learning.”Proceedings of the 2015 Chinese Intelligent Automation Conference. Springer Berlin Heidelberg, 2015.<br>[2] MacKay, David JC. Information theory, inference and learning algorithms. Cambridge university press, 2003.<br>[3] Principe, Jose C., Dongxin Xu, and John Fisher. “Information theoretic learning.” Unsupervised adaptive filtering 1 (2000): 265-319.</p>
-
       
     </div>
     
@@ -539,6 +389,10 @@ var _hmt = _hmt || [];
 
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2015/11/29/636196834/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -591,97 +445,6 @@ var _hmt = _hmt || [];
 <p>或者，我们应该如何理解“信息量”这个词？在某一个特征中，系统的混乱程度？值的大小？多少？</p>
 </blockquote>
 <p>原问题地址：<a href="https://www.zhihu.com/question/36481348">https://www.zhihu.com/question/36481348</a></p>
-<h2 id="回答">回答</h2><p>前面几位答主答的非常好非常专业，但是不太接地气，过于阳春白雪了，我来下里巴人一下，以我作为一个学识浅薄的门外汉的角度没什么干货的浅谈一下。</p>
-<p>题主问的很明确，为什么方差和信息量是正相关的？题主非常熟悉方差那一套理论，那么现在的疑问就是信息量的定义是什么？通过什么方法去量化信息量？</p>
-<p>以非专业的角度来说，我们直观感受什么叫信息量大？比如我今天看了一集电视剧，和昨天看的那一集一样是40分钟，下载下来大小也是一样的，但是大呼“卧槽，今天这集信息量好大，脑子转不过来了”是什么意思？这是我们日常语境的信息量，也就是事物给我们传递的信息的数量。比如今天我们要竞选特首，一共有3位候选人，如果完全按照基本法去产生，也就是说选举委员会的投票完全随机，那么这3位候选人当选的概率均等，服从均匀分布（也就是方差最大的一种情况），那么民众都是非常期待看到这场竞选的直播的，因为之前谁也不知道谁会当选，而看完以后就能获得“究竟谁能当选”这个信息；然而竞选开始之前，欧盟出了个报告说其中某位先生是钦定的，这场竞选中他赢的概率是100%（此时方差为0），那么基本上就没人想看竞选了，因为这场竞选只是走个形式并没有传递出任何其他信息。</p>
-<p>当然我说了这是我们的日常语境中十分不严格的定量分析，实际在信息论中，信息量（amount of information）一直是以信息熵（entropy）来度量的。信息论经典教材<em>elements of information theory</em>也从来没正面提到过怎么定义信息量，只提到过：</p>
-<ol>
-<li>信息熵可以用来描述随机变量包含的信息量</li>
-<li>互信息量（mutual information）是一种用来度量一个随机变量包含的关于另一个随机变量的信息量的手段</li>
-</ol>
-<p>理解了第一条的话，根据互信息量与信息熵的关系$I\left({X;Y}\right)=\left(Y\right)-H\left({Y|X}\right)$,也不难推出第二条推论。那么信息熵的定义里面，是提到过它是随机变量不确定度的度量，并且有许多符合度量信息的直观要求。那究竟是哪些特性可以反映信息量？</p>
-<p>信息量的定义可以追溯到Hartley（没错，就是那个有噪信道编码定理<code>Shannon-Hartley Theorem</code>的那个Hartley）提出如果一个信源以相等的概率从包含<code>S</code>个符号的有限集中选择<code>N</code>个传输符号进行传输，那么信息量就是<br>${H_0} = {\log_{10}}{S^N} = N{\log_{10}}S$（最早底数还是取的<code>10</code>，但是后来我们使用和讨论二元信道的情况更多，所以规定底数为<code>2</code>），这也是后来我们经常在各类书籍中看到的信息熵定义$H(X) =  - \sum\limits_{x \in X} {p(x) \cdot \log p(x)}$的一种特殊情况。很显然信息熵可以用来度量信息的不确定度，我们假设无噪声的情况下，信源发送的信息X是从一个有限集里面随机挑选的，然后X再经过信道传输给接收方，接收方得到信息X，<strong>这个过程正是破除了X的不确定性。</strong>如果一个信源只能从<code>{0,1}</code>中选择一个发给对方，<strong>那我接收这个信号得到的信息量就是X的不确定度，</strong>如果信源的字典只有一个<code>{1}</code>的话，这个信源就是信息量为0的，反正不接收我都能猜的对要传送的是什么，如果还是刚才的情况<code>{0,1}</code>但不是均匀分布，而是取0的概率为90%，那么信息量也比均匀分布坍缩不少，因为我们已经了解到很大可能性是0，而接收只是破除了10%的疑义。所以，从感性上来说，<strong>随机变量的不确定度是可以用来度量随机变量的信息量</strong>。</p>
-<p>那么剩下的问题是信息熵和（协）方差有什么关系？方差和信息熵是否正相关？</p>
-<p>那么我先说一下我的结论：“方差越大信息量就越多”这个断言是极具<strong>误导性</strong>的。若是没有任何应用的前提下单单谈这句话，是十分<strong>没有意义</strong>的。</p>
-<p>正如 <a href="https://www.zhihu.com/people/lei-tian-qi-10">@雷天琪</a> 的回答解释的非常直观，深入而浅出。因为在主成分分析（PCA）方法中，我们确实是把方差作为衡量信息量的指标，在我们的感性理解中，方差越大说明数据越具有多样性，相关性也就越强（参考协方差的定义）。</p>
-<p>然而，（协）方差度量的是数据分布的离散度（diversity，也称多样性），对于统计样本和随机变量都如是。而衡量信息量所用的信息熵则是用来度量不确定程度（物理上的熵表示混乱程度，实际这个混乱度的意义还是和Shannon熵的不确定意义一致）。在信息论体系下，解压也好传输也好降维也好，导致的信息损失（information loss）也是使用互信息量的差值表示。在这里，一个很明显的差异可以被发现：对于有量纲的样本数据，（协）方差是个<strong>有量纲</strong>的量，而信息熵，甚至包括建立在熵度量基础上的一系列度量（相对熵，条件熵，互信息量）都是<strong>无量纲</strong>的（这个说法也不严谨，可以认为熵的量纲取决于对数的底数）。那么这个差异也可以说明一个非常大的问题：方差的指取决于随机变量本身的取值，而信息熵和互信息量等量的取值<strong>仅仅与随机变量的分布有关，与随机变量本身的具体取值无关</strong>。</p>
-<p>那么这两个具有很大的相似度的两个量哪个更适合用来表示信息量？</p>
-<p>举个十分极端的例子，对于两个独立的离散随机变量$X_1$, ${X _2}$它们的取值可以有具体意义（比如天气预报预测未来一个月下雨的天数，可以从天气晴朗的0到30任意取整数值），也可以没有任何数学意义（如特首选举中当选的候选人编号）</p>
-<p>$X_1$和$X_2$有如下分布列：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">$X_1$</th>
-<th style="text-align:left">$p(X_1)$</th>
-<th style="text-align:left">$X_2$</th>
-<th style="text-align:left">$p(X_2)$</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">1</td>
-<td style="text-align:left">1/4</td>
-<td style="text-align:left">0</td>
-<td style="text-align:left">1/4</td>
-</tr>
-<tr>
-<td style="text-align:left">2</td>
-<td style="text-align:left">1/2</td>
-<td style="text-align:left">2</td>
-<td style="text-align:left">1/2</td>
-</tr>
-<tr>
-<td style="text-align:left">3</td>
-<td style="text-align:left">1/4</td>
-<td style="text-align:left">4</td>
-<td style="text-align:left">1/4</td>
-</tr>
-</tbody>
-</table>
-<p>那么有：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">$X$</th>
-<th style="text-align:left">数学期望$E(X)$</th>
-<th style="text-align:left">方差$D(X)$</th>
-<th style="text-align:left">信息熵$H(X)$</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">$X_1$</td>
-<td style="text-align:left">2</td>
-<td style="text-align:left">1/2</td>
-<td style="text-align:left">3/2</td>
-</tr>
-<tr>
-<td style="text-align:left">$X_2$</td>
-<td style="text-align:left">2</td>
-<td style="text-align:left">2</td>
-<td style="text-align:left">3/2</td>
-</tr>
-</tbody>
-</table>
-<p>这就是个方差越大，信息熵未必越大的例子。当然我还能举出很多方差增大但信息熵减少的例子，造成这些的原因是，当我们试图用方差去描述随机变量的不确定程度时，我们过分关注了随机变量的值域，而随机变量本身的取值跨度真的可以用来度量“信息量”吗？</p>
-<p>通过我们的直观感受，这两个离散随机变量包含的“信息量”有什么不一样吗？恐怕并没有吧，谁在意到底是具体是哪位先生当选特首，在意的只是选举的公平性。接受取值跨度大的信息破除的疑义就一定比接受取值跨度小的信息大吗？</p>
-<p>还是那句话，方差描述变量的<strong>离散</strong>程度，信息熵描述变量的<strong>不确定</strong>程度。两者虽然有一定的联系但并不等价。随机变量的取值可以很不确定但并不是非常离散，在信息论体系中，我们认为破除的疑义可以表达这个信息量，而变量的离散程度并不能表示这个疑义。所以，方差越大信息量越多这个说法是不正确的。</p>
-<p>那为什么主成分分析的过程是寻找能使方差最大的方向以此保持最大的信息量？在这种方法中，为什么就可以认为找到使降维后的数据样本方差最大的基底就使损失的信息最小化？</p>
-<p>不妨想一下PCA降维的目的，就是为了<strong>降噪</strong>。除去和结果关系不大的特征，保留最具相关性的特征。但是这些数据是以什么概率分布产生的，我们并不知道，这里的信息熵就没有什么太大意义了，不能开上帝视角找到最大信息熵的方向，PCA方法本来就是用来“揣测”和“创造”数据之间的规律。至于我们怎样区分出什么是噪声，什么是主成分，就是出于这种揣测的思路找到离散程度最高的方向，而离散程度低的方向更有可能是由于噪声的干扰表现出同一性，或者反过来说就是因为太同一所以没什么分析价值。因此我们把注意力放在离散程度高的成分上，因为它的多样性可以帮助我们分析数据间潜在的关系。</p>
-<p>那么从信号传输的角度看，分解协方差矩阵找到特征值最大的方向（也就是方差最大的方向）是否真正保留了信息论意义上的最大信息量？</p>
-<p>假设有这样一个信道：</p>
-<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/223064350/1.png" alt=""></p>
-<p>信源信号（输入）为向量$\bf{x}$，传输过程中的噪声为向量$\bf{z}$，最后得到的信号（输出）为$\bf{y}=\bf{x}+\bf{z}$。<br>那么考虑以下情况：</p>
-<ol>
-<li>$\bf{x}$服从Gaussian分布，$\bf{z}$也服从Gaussian分布且其协方差矩阵与恒等矩阵成比例（也就是$\bf{z}$向量各个维度<code>i.i.d</code>的情况）。我们定义PCA降为后的结果为${\bf{r}} = {\bf{w}}_l^{\bf{T}}{\bf{y}}$($\bf{w}$是新空间的基向量，$l$是新空间的维数），那么此时PCA确实最大化了互信息量$I({\bf{r}};{\bf{x}})$.</li>
-</ol>
-<ol>
-<li>如果噪声$\bf{z}$依然是Gaussian的，且还是遵从<code>i.i.d</code>，但信源信号$\bf{x}$却是非Gaussian信号（这是常见的应用场景），那么PCA至少最小化了信息损失的上界，而这里的信息损失表示为$I({\bf{r}};{\bf{x}})-I({\bf{y}};{\bf{x}})$.</li>
-</ol>
-<p>3.当噪声$\bf{z}$服从i.i.d，同时至少比信源信号$\bf{x}$更Gaussian，这里指在相对熵(<code>Kullback–Leibler divergence</code>)意义上更Guassian，PCA确实最小化了信息损失量。</p>
-<p>总之，当噪声$\bf{z}$的各个维度打破这种独立分布关系时，PCA就不能保证信息损失量的最优化了。</p>
-<p>[1] Wikipedia: <a href="https://en.wikipedia.org/wiki/Principal_component_analysis">https://en.wikipedia.org/wiki/Principal_component_analysis</a><br>[2] Cover T M, Thomas J A. Elements of information theory[M]. John Wiley &amp; Sons, 2012.<br>[3] Linsker R. Self-organization in a perceptual network[J]. Computer, 1988, 21(3): 105-117.<br>[4] Geiger B C, Kubin G. Signal enhancement as minimization of relevant information loss[C]//Systems, Communication and Coding (SCC), Proceedings of 2013 9th International ITG Conference on. VDE, 2013: 1-6.<br>[5] Rangayyan R M. Biomedical signal analysis[M]. John Wiley &amp; Sons, 2015.</p>
-
       
     </div>
     
@@ -694,6 +457,10 @@ var _hmt = _hmt || [];
 
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2015/11/24/223064350/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -749,34 +516,6 @@ var _hmt = _hmt || [];
 <li>Confidential 不能使用过于简单容易被猜到的口令，长度不能过短其中的数字重复不能太多，数字不能太有意义（比如直接用题主的生日，工号/学号，甚至身份证号），需要体现出一定的随机性，否则容易被拥有良好的字典的攻击者破解。应对暴力破解，最有效的方法就是增加口令长度，所以这里取题主说的上限14位作为目标口令的长度。</li>
 <li>Accessible 必须能随手找到工具容易生成，而且根据confidential原则，生成以后也不能随手用明文抄白纸上或者系统自带的备忘录上，否则熊孩子分分钟找的到然后就玩脱了，但是14位直接记住难度太高，所以我们可以考虑把口令加密以后进行记录，自己记住加密算法和密钥，或者反其道而行之，把某个或几个能记住的object作为密钥输入，加密结果直接作为生成的口令。</li>
 </ul>
-<p>综上所述，有一个可行的思路就是生成<strong>伪随机数</strong>作为口令。</p>
-<h3 id="方案一">方案一</h3><p>取一个能记住的字符串或者数字，用散列函数计算<code>hash</code>值，取前14位作为输出</p>
-<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/861014670/1.jpg" alt="s1_1.jpg"></p>
-<p>比如这个就可以取<code>60354186872526</code></p>
-<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/861014670/2.jpg" alt="s1_2.jpg"></p>
-<p>再比如这个可以取<code>32993841519355</code></p>
-<p>觉得生成的数字太凑巧的话也可以换个熟悉的单词短语再算一遍，直到生产满意的为止。</p>
-<h3 id="方案二">方案二</h3><p>找一张图片，比如你喜欢的CP的同人图，用<code>MD2</code>编码生成数字指纹作为随机种子，用这个种子生成一个14位的随机数作为口令。<br>如果需要得到这个口令，再用原来的图像按这个流程走一遍就行。</p>
-<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/861014670/3.jpg" alt="QQ截图20151103224343.jpg"></p>
-<p>我们可以事先定义一个函数：<br><figure class="highlight prolog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">ApplyForPassword</span>[x_] := &#123;</div><div class="line"><span class="symbol">SeedRandom</span>[<span class="symbol">Hash</span>[<span class="symbol">Import</span>[x], <span class="string">"MD2"</span>]];</div><div class="line">  <span class="symbol">RandomInteger</span>[&#123;<span class="number">10</span>^<span class="number">14</span>, <span class="number">10</span>^<span class="number">15</span> - <span class="number">1</span>&#125;]</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
-<p>这样需要口令的时候调用<code>ApplyForPassword[&quot;path&quot;]</code>就可以得到这个14位伪随机口令（其中<code>path</code>为图片路径字符串）</p>
-<h3 id="方案三">方案三</h3><p>随机生成一个14位自然数作为密码，使用隐写术（Steganography）将密码伪装成看上去非常普通的图片，需要再取用这个密码的时候恢复其中的信息。比如这里有个已经完成的隐写术代码方案可以参考一下：</p>
-<p>伪装过程：</p>
-<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/861014670/4.png" alt="ste_encpt.png"></p>
-<p>恢复过程：</p>
-<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/861014670/5.png" alt="ste_decpt.png"></p>
-<p>这些关于隐写术的操作也可以被封装为两个函数。<br>伪装函数（第一个参数为载体图片，第二个是密文）：</p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">StegCover[Carrier_Image, text_] := </div><div class="line"> <span class="keyword">Block</span>[&#123;CarrierData, TruncatedCarrier, pixelChannels, SecretBits, </div><div class="line">   LifeLength, SecretData&#125;,</div><div class="line">  CarrierData = <span class="keyword">ImageData</span>[Carrier, <span class="string">"Byte"</span>]; </div><div class="line">  TruncatedCarrier = <span class="keyword">BitAnd</span>[CarrierData, <span class="number">2</span>^^<span class="number">11111110</span>];</div><div class="line">  pixelChannels = <span class="keyword">Apply</span>[<span class="keyword">Times</span>, <span class="keyword">Dimensions</span>[CarrierData]]; </div><div class="line">  SecretBits = </div><div class="line">   <span class="keyword">Flatten</span>[<span class="keyword">IntegerDigits</span>[</div><div class="line">     <span class="keyword">ToCharacterCode</span>[</div><div class="line">      <span class="keyword">ToString</span>[text, <span class="keyword">InputForm</span>, <span class="keyword">CharacterEncoding</span> -&gt; <span class="string">"ASCII"</span>]], <span class="number">2</span>, </div><div class="line">     <span class="number">8</span>]]; LifeLength = <span class="keyword">IntegerDigits</span>[<span class="keyword">Length</span>[SecretBits], <span class="number">2</span>, <span class="number">48</span>];</div><div class="line">  SecretData = </div><div class="line">   <span class="keyword">Fold</span>[<span class="keyword">Partition</span>, </div><div class="line">    <span class="keyword">PadRight</span>[<span class="keyword">Join</span>[LifeLength, SecretBits], pixelChannels], </div><div class="line">    <span class="keyword">Reverse</span>@<span class="keyword">Rest</span>[<span class="keyword">Dimensions</span>[CarrierData]]];</div><div class="line">  <span class="keyword">Image</span>[TruncatedCarrier + SecretData, <span class="string">"Byte"</span>]]</div></pre></td></tr></table></figure>
-<p>恢复函数（参数为伪装图片）：</p>
-<figure class="highlight mathematica"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">StegUncover[CoverImage_Image] := </div><div class="line"> <span class="keyword">Block</span>[&#123;SecretData, LifeLength, secretBytes&#125;, </div><div class="line"> SecretData = <span class="keyword">Flatten</span>[<span class="keyword">BitAnd</span>[<span class="keyword">ImageData</span>[CoverImage, <span class="string">"Byte"</span>], <span class="number">1</span>]]; </div><div class="line"> LifeLength = <span class="keyword">FromDigits</span>[<span class="keyword">Take</span>[SecretData, <span class="number">48</span>], <span class="number">2</span>]; </div><div class="line"> secretBytes = <span class="keyword">Partition</span>[<span class="keyword">Take</span>[<span class="keyword">Drop</span>[SecretData, <span class="number">48</span>], LifeLength], <span class="number">8</span>]; </div><div class="line"> <span class="keyword">ToExpression</span>[</div><div class="line">  <span class="keyword">FromCharacterCode</span>[<span class="keyword">FromDigits</span>[#, <span class="number">2</span>] &amp; /@ <span class="keyword">Take</span>[secretBytes]]]</div><div class="line"> ]</div></pre></td></tr></table></figure>
-<p>这样需要使用的时候就可以直接调用<code>StegCover</code>和<code>StegUncover</code>了，就可以把任意文本（甚至其他形式的内容）隐藏在任意图片中了。</p>
-<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/861014670/6.png" alt="owl.png"></p>
-<p>当然这个方案也有很大缺陷，就是降低了资源的利用率。比如苏教版语文第七册一篇课文的彩色插图，<code>508*715</code>像素，有RGB三个色彩通道，以我们的方法完全可以存储<code>508*715*3/8=136207</code>个字符，而这里如果仅仅用来存储14位密码（+字符串终止标识<code>‘\0’</code>，一共15个<code>char</code>空间的密文）是严重浪费的。<a href="http://book.douban.com/subject/1324171/">中华人民共和国香港特别行政区基本法 (豆瓣)</a>全书一共55983字，即时假设全部为2个char长度的中文字符（<code>ASCII编码</code>），那么也只需要111966个字符的空间，再用于存储长度的6个字节，还剩24235字节是空余的，我们的方案这时就显得有些杀鸡用宰牛刀了。<br>那不妨偏个题，这样有个好处就是这样的方案可以隐藏非常大的信息量，一篇<em>GettysburgAddress</em>放进图片里简直毫无感觉。生成的伪装图片也可以通过存储为png或其他无损格式的图片在网络或者别的平台交换信息。</p>
-<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/861014670/8.png" alt="QQ截图20151112230045.png"></p>
-<p>彩蛋，猜猜这张图里藏了什么？</p>
-<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/861014670/9.png" alt="I_Presented_Flowers_to_the_elder.png"></p>
-<p>（未完待续）</p>
-
       
     </div>
     
@@ -789,6 +528,10 @@ var _hmt = _hmt || [];
 
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2015/11/15/861014670/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>

@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="扬州计划">
 <meta property="og:description" content="扬州计划已全站启用https，看着越来越多的博客都开始启用https，我也跟风部署了SSL证书。本文将详细讲述用Hexo生成部署在GitHub Pages且使用自定义域名重定向的博客如何开启全站https 超文本安全传输协议（HTTPS）也称HTTP Over SSL/TLS,实现原理是在HTTP的基础上再实现SSL(TLS与SSL类似以下不再赘述)那一套的封装，所以HTTPS比起HTTP有一个好">
 <meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/862978151/1.png">
-<meta property="og:updated_time" content="2016-03-24T14:20:20.000Z">
+<meta property="og:updated_time" content="2017-05-25T09:32:08.989Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="它是HTTPS协议，我们怎能不支持它？">
 <meta name="twitter:description" content="扬州计划已全站启用https，看着越来越多的博客都开始启用https，我也跟风部署了SSL证书。本文将详细讲述用Hexo生成部署在GitHub Pages且使用自定义域名重定向的博客如何开启全站https 超文本安全传输协议（HTTPS）也称HTTP Over SSL/TLS,实现原理是在HTTP的基础上再实现SSL(TLS与SSL类似以下不再赘述)那一套的封装，所以HTTPS比起HTTP有一个好">
@@ -92,7 +92,7 @@ var _hmt = _hmt || [];
 						<li>Links</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -262,9 +262,10 @@ var _hmt = _hmt || [];
       
         <p>扬州计划已全站启用<code>https</code>，看着越来越多的博客都开始启用<code>https</code>，我也跟风部署了SSL证书。本文将详细讲述用<code>Hexo</code>生成部署在<code>GitHub Pages</code>且使用自定义域名重定向的博客如何开启全站<code>https</code></p>
 <p>超文本安全传输协议（<em>HTTPS</em>）也称<em>HTTP Over SSL/TLS</em>,实现原理是在HTTP的基础上再实现SSL(TLS与SSL类似以下不再赘述)那一套的封装，所以<em>HTTPS</em>比起<em>HTTP</em>有一个好，更能保证访客的<strong>安全</strong>。实现方式是在传输层的所有报文上<strong>强制加密</strong>。具体来说的技术细节就是获取一个可以被浏览器验证的<em>SSL证书</em>并部署在服务器。当然证书可以由多种方式获得，价格不等。本文提供一种免费且快捷简单的方案（软文）。</p>
+<a id="more"></a>
 <p>一开始我试用了一下<a href="https://www.cloudflare.com/">cloudflare</a>的方案，似乎有些问题（dns设置变更没有响应），而且它家的<em>cdn加速</em>效果欠佳，于是就放弃了。</p>
 <p>然后我要推荐的是<a href="https://kloudsec.com/">kloudsec</a>。原理也是从<a href="https://letsencrypt.org/">Let’s Encrypt</a>获取CA再部署在代理服务器上（不使用kloudsec也可以通过<code>Nginx</code>自己搭建自己的代理服务器）。接下来详细说明如何快速开启小绿锁。</p>
-<h2 id="注册">注册</h2><p><a href="https://kloudsec.com/github-pages/new">https://kloudsec.com/github-pages/new</a> </p>
+<h2 id="注册">注册</h2><p><a href="https://kloudsec.com/github-pages/new">https://kloudsec.com/github-pages/new</a></p>
 <ul>
 <li>填写邮箱、设置登陆密码</li>
 <li>填写<strong>你的GitHub Pages</strong>的repo地址、自定义的域名（<code>CNAME</code>指向的地址而非一级域名）</li>
