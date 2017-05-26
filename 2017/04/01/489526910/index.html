@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/pictures/489526910/4.png">
 <meta property="og:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/pictures/489526910/5.png">
 <meta property="og:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/pictures/489526910/6.png">
-<meta property="og:updated_time" content="2017-05-25T15:27:49.978Z">
+<meta property="og:updated_time" content="2017-05-26T14:36:53.450Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="（施工现场）和你相见不到40分钟，我就认定你是我的妻子了">
 <meta name="twitter:description" content="失踪人口回归，很高兴在新的一年里本站又和大家见面，祝大家春节玉快，豁家欢络，万四如意。   和董先生相见不到3分钟，我就认定他是香港地区的特首了  这样带有硬点意味的话语在恋爱关系中非常常见，但很少会真的在见第一面的时候就脱口而出，一如闯入春晚现场紧紧握住歌唱家的手，这样的勇气非常人所及，但也只能当回想起“我的经历就是……”的时候才敢说这样的话，所以，人们一开始都是怎样确定应该认定哪个人作为自己的">
@@ -97,7 +97,7 @@ var _hmt = _hmt || [];
 						<li>Links</li>
 						
 						
-						<li>About</li>
+						<li>Über</li>
 						
 					</ul>
 				</div>
@@ -570,7 +570,19 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>$Z\backslash Z’$，即$Z$与$Z’$的差集也不是空集</p>
 </blockquote>
-<p>对于任意$m’ \in Z’$，假设他在$S$中的配偶为$w’$，因为他还没有被$w’$放弃，那么$w’$</p>
+<p>对于任意$m’ \in Z’$，假设他在$S$中的配偶为$w’$。根据$Z’$的定义，$w’$必然在$Z’$偏好列表的首位，所以$m’$此时一定与$w’$以及其他他认为和$w’$一样喜欢的女士们保持着配对关系，所以必然有边$(m’,w’) \in G$，那么自然可以得到$w’ \in U’$，所以$Z’$的每个结点唯一且各不相同的$S$中的配偶都在$U’$，那一定有$$\left| U’ \right| \ge \left| Z’ \right|$$根据定义$U’$是$U$的子集所以有$$\left| U \right| \ge \left| Z’ \right|$$回顾缺陷子集和关键子集的定义有$$\left| Z \right| - \left| U \right| = \delta \left( G \right) &gt; 0$$与上式相减可得$$\left| Z \right| - \left| {Z’} \right| &gt; 0$$至此可以证明$Z\backslash Z’$非空。接着我们还要再证明这样一个命题</p>
+<blockquote>
+<p>存在这样的一条边$(m’’,w’’)$，$m’’ \in Z\backslash Z’$同时$w’’ \in U’$</p>
+</blockquote>
+<p>还是得反证。假设这个命题不成立，那必然有${\cal N}(Z\backslash Z’) \subseteq (U\backslash U’)$，也就是说$Z\backslash Z’$中所有元素的邻结点都在$U$中却不在$U’$中。那么有$$\begin{align}<br>\left| Z\backslash Z’\right| - \left| {\cal N}\left( Z\backslash Z’ \right) \right| &amp; \ge \left| Z\backslash Z’ \right| - \left| U\backslash U’ \right| \\<br>&amp; \ge \left( \left| Z \right| - \left| Z’ \right| \right) - \left( \left| U \right| - \left| U’ \right| \right) \\<br>&amp; \ge \left| Z \right| - \left| U \right| - \left( \left| Z’ \right| - \left| U’ \right| \right) \\<br>&amp; \ge \left| Z \right| - \left| U \right|<br>\end{align}$$除了最后一步中$\left| Z’ \right| - \left| U’ \right| \le 0$利用了前面推出的结论，其他部分的推导全部利用的是集合本身的性质。</p>
+<p>注意$Z\backslash Z’$作为关键集$Z$的一个真子集（$Z’ \ne \emptyset$），竟然有$\left| Z\backslash Z’\right| - \left| {\cal N}\left( Z\backslash Z’ \right) \right|\ge \left| Z \right| - \left| U \right|$，相当于说$Z$有个真子集的缺陷不比$Z$的缺陷小，简直一派胡言，给关键集的定义泼脏水，我感到非常气愤，所以说这与假设是矛盾的，假设不成立，因此上述命题可以被证明是真的。</p>
+<blockquote>
+<p>回到这个命题本身，有了这样一条边$(m’’,w’’)$，又能推出什么呢？</p>
+</blockquote>
+<p>因为$m’’ \in Z\backslash Z’$，也就是说$m’’$在$S$的配偶$w^*$并不在$m’’$偏好列表的头部，但$m’’$又还没被$w^*$放弃，所以$m’’$还没开始追求$w^*$却已经和$w’’$配对，因此$m’’$认为$w’’&gt;w^*$。</p>
+<p>因为$w’’ \in U’$，所以$w’’$在$S$的配偶$w^*$现在在$w’’$偏好列表的末位，但$w’’$也接受了$m’’$的追求说明$m’’$也在末位，即$w’’$认为$m’’=m^*$</p>
+<p>综上所述，这对$(m’’,w’’)$的存在破坏了$S$是一个强稳定匹配的假设，因此假设不成立。</p>
+<p>所以，任何一对强稳定匹配中的男女都不会在算法的运行中被删除。这里的删除操作是广义的，包含配对以后被拆散和还没有配对就被从列表中删去的情况。那么当然，这个算法输出的配对结果即为强稳定匹配。</p>
 <div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">Gale, David, and Lloyd S. Shapley. &quot;<a href="http://opim.wharton.upenn.edu/~sok/papers/g/gale-shapley-1962.pdf">College admissions and the stability of marriage.</a>&quot; <em>The American Mathematical Monthly</em> 69, no. 1 (1962): 9-15.</span><a href="#fnref:1" rev="footnote"> ↩</a></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">2.</span><span style="display: inline-block; vertical-align: top;"><a href="https://en.wikipedia.org/wiki/Stable_marriage_problem">https://en.wikipedia.org/wiki/Stable_marriage_problem</a></span><a href="#fnref:2" rev="footnote"> ↩</a></li><li id="fn:3"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">3.</span><span style="display: inline-block; vertical-align: top;">示例数据来源于课件<a href="http://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15251-f10/Site/Materials/Lectures/Lecture21/lecture21.pdf">http://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15251-f10/Site/Materials/Lectures/Lecture21/lecture21.pdf</a></span><a href="#fnref:3" rev="footnote"> ↩</a></li><li id="fn:4"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">4.</span><span style="display: inline-block; vertical-align: top;"><a href="https://en.wikipedia.org/wiki/Stable_marriage_problem#Optimality_of_the_solution">https://en.wikipedia.org/wiki/Stable_marriage_problem#Optimality_of_the_solution</a></span><a href="#fnref:4" rev="footnote"> ↩</a></li><li id="fn:5"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">5.</span><span style="display: inline-block; vertical-align: top;">定义和证明思路参考讲义<a href="https://inst.eecs.berkeley.edu/~cs70/fa14/notes/n4.pdf">https://inst.eecs.berkeley.edu/~cs70/fa14/notes/n4.pdf</a></span><a href="#fnref:5" rev="footnote"> ↩</a></li><li id="fn:6"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">6.</span><span style="display: inline-block; vertical-align: top;">Irving, Robert W. <a href="http://www.sciencedirect.com/science/article/pii/0166218X9200179P">&quot;Stable marriage and indifference.&quot;</a> <em>Discrete Applied Mathematics</em> 48.3 (1994): 261-272.</span><a href="#fnref:6" rev="footnote"> ↩</a></li></ol></div></div>
       
     </div>
